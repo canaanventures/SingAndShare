@@ -1,0 +1,11 @@
+<body class="admin_tempstyle">
+    <div class="wrapper myaccount_page">
+        <div class="sidebar" data-color="purple" data-background-color="white">
+        </div>
+        <div class="main-panel">
+            <app-header></app-header>
+            <router-outlet (activate)="onActivate($event)"></router-outlet>
+            <app-footer></app-footer>
+        </div>
+    </div>
+</body>
