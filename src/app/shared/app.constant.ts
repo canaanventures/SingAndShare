@@ -9,6 +9,10 @@ export const CONST = Object.freeze({
         SELF: 'login',
         TITLE: 'login'
       },
+      REGISTER: {
+        SELF: 'register',
+        TITLE: 'register'
+      },
     }
   }
 });
