@@ -8,7 +8,7 @@ export const CONST = Object.freeze({
       LOGIN: {
         SELF: 'login',
         TITLE: 'login'
-      }
+      },
     }
   }
 });
