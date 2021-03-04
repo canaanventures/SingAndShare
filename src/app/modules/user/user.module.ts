@@ -29,6 +29,13 @@ const routes: Routes = [{
       data: {
         title: CONST.PATH.USER.LOGIN.TITLE
       }
+    },    
+    {
+      path: CONST.PATH.USER.LOGIN.SELF,
+      component: LoginComponent,
+      data: {
+        title: CONST.PATH.USER.LOGIN.TITLE
+      }
     }
   ]
 }];
