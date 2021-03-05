@@ -10,6 +10,7 @@ import { AppSharedModule } from '../../shared/app.shared.module';
 import { CONST } from '../../shared/app.constant';
 import { UserComponent } from './user.component';
 import { LoginComponent } from 'src/app/pages/user/login/login.component';
+import { RegisterComponent } from 'src/app/pages/user/register/register.component';
 
 const routes: Routes = [{
   path: '',
@@ -31,12 +32,19 @@ const routes: Routes = [{
       }
     },    
     {
-      path: CONST.PATH.USER.LOGIN.SELF,
-      component: LoginComponent,
+      path: CONST.PATH.USER.REGISTER.SELF,
+      component: RegisterComponent,
       data: {
-        title: CONST.PATH.USER.LOGIN.TITLE
+        title: CONST.PATH.USER.REGISTER.TITLE
       }
     }
+    {
+      path: CONST.PATH.USER.HOME.SELF,
+      component: HomeComponent,
+      data: {
+        title: CONST.PATH.USER.HOME.TITLE
+      }
+    },
   ]
 }];
 
