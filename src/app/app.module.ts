@@ -19,12 +19,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { ToastrModule } from 'ngx-toastr';
-import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

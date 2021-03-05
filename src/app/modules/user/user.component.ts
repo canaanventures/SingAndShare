@@ -12,4 +12,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onActivate(event) {
+    window.scroll(0,0);
+  }
 }
