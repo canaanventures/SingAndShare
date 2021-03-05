@@ -11,6 +11,7 @@ import { CONST } from '../../shared/app.constant';
 import { UserComponent } from './user.component';
 import { LoginComponent } from 'src/app/pages/user/login/login.component';
 import { RegisterComponent } from 'src/app/pages/user/register/register.component';
+import { HomeComponent } from 'src/app/pages/user/home/home.component';
 
 const routes: Routes = [{
   path: '',
@@ -37,7 +38,7 @@ const routes: Routes = [{
       data: {
         title: CONST.PATH.USER.REGISTER.TITLE
       }
-    }
+    },
     {
       path: CONST.PATH.USER.HOME.SELF,
       component: HomeComponent,

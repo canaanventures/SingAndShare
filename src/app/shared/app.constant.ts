@@ -13,6 +13,10 @@ export const CONST = Object.freeze({
         SELF: 'register',
         TITLE: 'register'
       },
+      HOME: {
+        SELF: 'home',
+        TITLE: 'home'
+      },
     }
   }
 });
