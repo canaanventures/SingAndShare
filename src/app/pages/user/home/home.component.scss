@@ -1,7 +1,7 @@
 .banner_section {
     width: 100%;
     float: left;
-    background-image: url(../pictures/banner-bg.jpg);
+    background-image: url('../../../../assets/images/banner-bg.jpg');
     height: auto;
     background-size: 100%;
     padding: 10px 0px 25px 0px;
@@ -174,8 +174,8 @@
     width: 100%;
     float: left;
     text-align: center;
-    font-size: 40px;
-    color: #f76d37;
+    font-size: 20px;
+    color: #291209;
     font-weight: bold;
 }
 
@@ -224,7 +224,7 @@ img.image {
 }
 
 .container_main:hover .overlay {
-    opacity: 1;
+    opacity: 0;
 }
 
 .text {
@@ -274,7 +274,7 @@ a:hover {
 .services_section {
     width: 100%;
     float: left;
-    background-image: url(../pictures/ministries-bg.jpg);
+    background-image: url('../../../../assets/images/ministries-bg.jpg');
     height: auto;
     padding-bottom: 100px;
     background-attachment: fixed;
@@ -535,7 +535,7 @@ a:hover {
 .mail_section {
     width: 100%;
     float: left;
-    background-image: url(../images/img-9.png);
+    background-image: url('../../../../assets/images/contact-bg.jpg');
     height: auto;
     padding: 23px 70px;
     background-repeat: no-repeat;
@@ -602,7 +602,6 @@ a:hover {
 }
 .main-bt a 
 {
-	
 	cursor: pointer;
 	background: #d33a11;
 	color: #000;
