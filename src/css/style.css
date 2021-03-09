@@ -1,6 +1,17 @@
+/*--------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
+
 @import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
+/*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
+ 2) font-family: 'Poppins', sans-serif;
+ ----------------------------------------*****/
+
+
+/*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
 
 @import url(animate.min.css);
 @import url(normalize.css);
@@ -13,6 +24,8 @@
 @import url(jquery.fancybox.min.css);
 @import url(jquery-ui.css);
 @import url(nice-select.css);
+
+/*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
 * {
     box-sizing: border-box !important;
@@ -246,10 +259,7 @@ button {
     color: #212120;
 }
 
-.logo {
- image: url(../assets/images/logo.png);	
-}
-
+.logo {}
 
 /* header section end */
 
@@ -258,7 +268,7 @@ button {
 .banner_section {
     width: 100%;
     float: left;
-    background-image: url(../assets/images/banner-bg.jpg);
+    background-image: url(../images/banner-bg.png);
     height: auto;
     background-size: 100%;
     padding: 10px 0px 25px 0px;
@@ -291,10 +301,9 @@ button {
 .there_text {
     width: 50%;
     float: left;
-    font-size:25px;
-    color:#007bff;
+    font-size: 16px;
+    color: #fff;
     margin: 0px;
- font-weight: bold;
     padding-bottom: 30px;
 }
 
@@ -486,8 +495,8 @@ img.image {
 }
 
 .text {
-    color: black;
-    font-size: 30px;
+    color: white;
+    font-size: 60px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -527,12 +536,12 @@ a:hover {
 
 /* gallery section end */
 
-/*  section start */
+/* services section start */
 
 .services_section {
     width: 100%;
     float: left;
-    background-image: url(../assets/images/ministries-bg.jpg);
+    background-image: url(../images/services-bg.png);
     height: auto;
     padding-bottom: 100px;
     background-attachment: fixed;
@@ -771,29 +780,27 @@ a:hover {
 
 .contact_section {
     width: 100%;
-    float: center;
+    float: left;
 }
 
 .contact_text {
     width: 100%;
-    float:left;
+    float: left;
     font-size: 40px;
     text-align: center;
     color: #f76d37;
     font-weight: bold;
 }
+
 .contact_section_2 {
-	
     width: 100%;
     float: left;
-
-
 }
 
 .mail_section {
     width: 100%;
     float: left;
-    background-image: url(../assets/images/contact-bg.jpg);
+    background-image: url(../images/img-9.png);
     height: auto;
     padding: 23px 70px;
     background-repeat: no-repeat;
@@ -826,7 +833,7 @@ a:hover {
     border-radius: 30px;
 }
 
-.message-bt {
+.massage-bt {
     color: #080707;
     width: 100%;
     height: 150px;
@@ -855,15 +862,8 @@ a:hover {
 }
 
 .main_bt a {
-    color: #000;
+    color: #ffffff;
     background-color: #d33a11;
-}
-.main-bt a 
-{
-	
-	cursor: pointer;
-	background: #d33a11;
-	color: #000;
 }
 
 .main_bt a:hover {
@@ -881,10 +881,10 @@ a:hover {
 
 .footer_section {
     width: 100%;
-    float: right;
+    float: left;
     background-color: #252525;
     height: auto;
-    padding: 20px 0px;
+    padding: 95px 0px;
 }
 
 .useful_text {
@@ -905,7 +905,7 @@ a:hover {
 
 .footer_menu {
     width: 100%;
-    float: right;
+    float: left;
 }
 
 .footer_menu ul {
@@ -936,7 +936,7 @@ a:hover {
 
 .location_text {
     width: 100%;
-    float: right;
+    float: left;
 }
 
 .location_text ul {
@@ -997,4 +997,3 @@ a:hover {
 .margin_top90 {
     margin-top: 90px;
 }
-	

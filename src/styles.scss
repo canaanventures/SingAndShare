@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.body-bg-img{
+	height: 100%;
+	width: 100%;
+	background-image: url("assets/images/banner.jpg");
+	background-position: inherit;
+	background-size: auto;
+	font-family: sans-serif;
+}

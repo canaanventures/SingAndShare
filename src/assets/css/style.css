@@ -225,17 +225,17 @@ p {
 
 /* line 35, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_common.scss */
 .bg-img-1 {
-  background-image: url(../assets/images/banner-bg.jpg);
+  background-image: url(../img/slider/slider-img-1.jpg);
 }
 
 /* line 38, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_common.scss */
 .bg-img-2 {
-  background-image: url(../assets/images/banner-bg.jpg);
+  background-image: url(../img/background-img/bg-img-2.jpg);
 }
 
 /* line 41, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_common.scss */
 .cta-bg-1 {
-  background-image: url(../assets/images/banner-bg.jpg);
+  background-image: url(../img/background-img/bg-img-3.jpg);
 }
 
 /* line 46, C:/Users/HP/Desktop/Augst-HTML/297.Photography/Agriculture_Template/assets/scss/_common.scss */

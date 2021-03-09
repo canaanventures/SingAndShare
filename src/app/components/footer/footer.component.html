@@ -1,4 +1,4 @@
-<div class="footer_section layout_padding">
+<div class="footer_section layout_padding" *ngIf="isVisible == 'block'">
    <div class="container">
       <div class="row">
          <div class="col-lg-2 col-sm-6">
@@ -49,7 +49,7 @@
 </div>
 <!-- footer section end -->
 <!-- copyright section start -->
-<div class="copyright_section">
+<div class="copyright_section" *ngIf="isVisible == 'block'">
    <div class="container">
     <p class="copyright_text">2021 All Rights Reserved By Sing and Share. Designed By  Vecan.Co</p>
    </div> 
