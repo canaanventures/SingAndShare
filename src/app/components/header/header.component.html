@@ -1,11 +1,11 @@
-<header  *ngIf="isVisible == 'block'">
+<header *ngIf="isVisible == 'block'">
     <div class="header-area">
         <div class="main-header header-sticky">
             <div class="container-fluid">
                 <div class="row align-items-center">          
                     <div class="col-xl-2 col-lg-2 col-md-1">
                         <div class="logo">
-                            <a href="index.html"><img src="../../../assets/images/logo.png" alt=""></a>
+                            <a routerLink="/home"><img src="../../../assets/images/logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-10">
@@ -17,7 +17,9 @@
                             </div>
                             <nav class="hamburger-menu">
                                 <ul id="navigation">
-                                    <li><a href="index.html">Home</a></li>
+                                    <li>
+                                        <a routerLink="/home">Home</a>
+                                    </li>
                                     <li>
                                         <a href="about.html">About</a>
                                         <ul class="submenu">
@@ -37,13 +39,14 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <div type="text" class="main_bt"><a href="login.html">Login</a></div>
+                                        <div type="text" class="main_bt">
+                                            <a routerLink="/login">Login</a>
+                                        </div>
                                     </li>
                                 </ul>
                             </nav>
                         </div>
-                    </div>
-        
+                    </div>       
                     <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
                     </div>

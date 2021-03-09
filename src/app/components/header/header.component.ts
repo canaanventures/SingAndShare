@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isVisible = 'none';
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     if(window.location.href.indexOf('login') > 0 || window.location.href.indexOf('register') > 0){
@@ -19,8 +19,6 @@ export class HeaderComponent implements OnInit {
 
   navCollapse() {
     document.getElementsByClassName('hamburger-menu')[0].classList.toggle("nav-menu-show");
-    document.getElementsByClassName('hamburger--collapse')[0].classList.toggle("isactive");
-    /*if(document.getElementById('hamburger-menu').style.visibility == 'hidden'){ }*/
-    
+    document.getElementsByClassName('hamburger--collapse')[0].classList.toggle("isactive");    
   }
 }

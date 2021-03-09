@@ -22,6 +22,8 @@ export class LoginComponent extends UserComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    
+  }
 
 }
