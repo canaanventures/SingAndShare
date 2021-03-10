@@ -20,11 +20,29 @@ import { catchError, map, tap } from 'rxjs/operators';
 
   }
 
-  /*getHero(id: number): Observable<Hero> {
-    const url = '';
-    return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Hero>(`getHero id=${id}`))
-    );
-  }*/
+  christmasImageObject = [
+    {
+        image: '../../../assets/images/christmas/christmas-1.png',
+        thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/5.jpg',
+        title: 'Hummingbirds are amazing creatures'
+    }, 
+    {
+        image: '../../../assets/images/christmas/christmas-2.jpg',
+        thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/9.jpg'
+    }, 
+    {
+        image: '../../../assets/images/christmas/christmas-3.jpg',
+        thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/4.jpg',
+        title: 'Example with title.'
+    },
+    {
+        image: '../../../assets/images/christmas/christmas-4.jpg',
+        thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/7.jpg',
+        title: 'Hummingbirds are amazing creatures'
+    }, 
+    {
+        image: '../../../assets/images/christmas/christmas-5.jpg',
+        thumbImage: 'https://sanjayv.github.io/ng-image-slider/contents/assets/img/slider/1.jpg'
+    }
+  ];
 }

@@ -628,6 +628,12 @@ a:hover{text-decoration:none;}
 .email_text .textarea{width:100%;margin-top:15px;}
 .message-bt{border-radius:20px;}
 .send_btn a{color:#fff;}
+.upcoming-event-desc{font-size: 13px;padding:10px;}
+.upcoming-event-box{border: 1px solid #e0e0e0;box-shadow: 0 0 6px #e0e0e0;border-radius: 5px;}
+.upcoming-event-btn{text-align:center;}
+.btn-upcoming-event{background-color:#fff;color:#666;border:1px solid #e0e0e0;font-size:13px;border-radius:5px;margin:0 auto;padding:8px 20px;margin-top:15px;margin-bottom:15px;cursor:pointer;}
+.upcoming-event-img{height:200px;background-repeat: no-repeat;background-position: center;background-size: cover;}
+.contact_text{margin-bottom:20px;}
 
 @media (max-width:767px){
     .email_text .form-group{width:100%}
