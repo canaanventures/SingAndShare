@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserComponent } from 'src/app/modules/user/user.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +17,14 @@ import { UserComponent } from 'src/app/modules/user/user.component';
    }
 
   ngOnInit(): void {
+
   }
 
+  /*getHero(id: number): Observable<Hero> {
+    const url = '';
+    return this.http.get<Hero>(url).pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
+  }*/
 }

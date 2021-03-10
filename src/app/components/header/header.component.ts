@@ -16,7 +16,12 @@ export class HeaderComponent implements OnInit {
     document.getElementsByClassName('hamburger--collapse')[0].classList.toggle("isactive");    
   }
 
-  navClick(param){
+  navClick(e){
+    const div =  document.getElementsByClassName('nav-option');
+    for(var i=0;i<div.length;i++){
+      div[i].classList.remove('nav-active');
+    }
+    document.getElementById(e).classList.add('nav-active');
     /* if(param == 'login' || param == 'register'){
       document.getElementsByTagName('body')[0].classList.add('body-bg-img');
     }else{
