@@ -12,6 +12,9 @@ import { UserComponent } from './user.component';
 import { LoginComponent } from 'src/app/pages/user/login/login.component';
 import { RegisterComponent } from 'src/app/pages/user/register/register.component';
 import { HomeComponent } from 'src/app/pages/user/home/home.component';
+import { AboutUsComponent } from 'src/app/pages/user/about-us/about-us.component';
+import { MinisteriesComponent } from 'src/app/pages/user/ministeries/ministeries.component';
+import {EventsComponent} from 'src/app/pages/user/events/events.component';
 
 const routes: Routes = [{
   path: '',
@@ -44,6 +47,27 @@ const routes: Routes = [{
       component: HomeComponent,
       data: {
         title: CONST.PATH.USER.HOME.TITLE
+      }
+    },
+    {
+      path: CONST.PATH.USER.ABOUTUS.SELF,
+      component: AboutUsComponent,
+      data: {
+        title: CONST.PATH.USER.ABOUTUS.TITLE
+      }
+    },
+    {
+      path: CONST.PATH.USER.MINISTERIES.SELF,
+      component: MinisteriesComponent,
+      data: {
+        title: CONST.PATH.USER.MINISTERIES.TITLE
+      }
+    },
+    {
+      path: CONST.PATH.USER.EVENTS.SELF,
+      component: EventsComponent,
+      data: {
+        title: CONST.PATH.USER.EVENTS.TITLE
       }
     },
   ]

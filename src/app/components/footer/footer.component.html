@@ -1,4 +1,4 @@
-<div class="footer_section layout_padding" *ngIf="isVisible == 'block'">
+<div class="footer_section layout_padding">
    <div class="container">
       <div class="row">
          <div class="col-lg-2 col-sm-6">
@@ -14,11 +14,11 @@
             <h3 class="useful_text">Menu</h3>
             <div class="footer_menu">
                <ul>
-                  <li><a routerLink="/home">Home</a></li>
-                  <li><a href="about.html">About Us</a></li>
-                  <li><a href="Ministries.html">Ministries</a></li>
-                  <li><a href="Events.html">Events</a></li>
-                  <li><a href="Media.html">Media</a></li>
+                  <li class='mb-1'><a routerLink="/home">Home</a></li>
+                  <li class='mb-1'><a href="about.html">About Us</a></li>
+                  <li class='mb-1'><a href="Ministries.html">Ministries</a></li>
+                  <li class='mb-1'><a href="Events.html">Events</a></li>
+                  <li class='mb-1'><a href="Media.html">Media</a></li>
                </ul>
             </div>
          </div>
@@ -26,19 +26,19 @@
             <h1 class="useful_text">Contact Us</h1>
             <div class="location_text">
                <ul>
-                  <li>
+                  <li class='mb-2'>
                      <a href="#">
-                     <i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_10">Address : Loram Ipusm</span>
+                     <i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_10">Geddalahalli, Rammana Layout, Bengaluru, Karnataka - 560077</span>
                      </a>
                   </li>
-                  <li>
-                     <a href="#">
-                     <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">Call : +01 1234567890</span>
+                  <li class='mb-2'>
+                     <a href="tel:+91 8072270478">
+                     <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">+91 807 227 0478</span>
                      </a>
                   </li>
-                  <li>
-                     <a href="#">
-                     <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">Email : demo@gmail.com</span>
+                  <li class='mb-2'>
+                     <a href="mailto:san@vecan.co">
+                     <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">san@vecan.co</span>
                      </a>
                   </li>
                </ul>
@@ -49,8 +49,8 @@
 </div>
 <!-- footer section end -->
 <!-- copyright section start -->
-<div class="copyright_section" *ngIf="isVisible == 'block'">
+<div class="copyright_section">
    <div class="container">
-    <p class="copyright_text">2021 All Rights Reserved By Sing and Share. Designed By  Vecan.Co</p>
+      <p class="copyright_text">2021 All Rights Reserved By Sing and Share. Designed By  Vecan.Co</p>
    </div> 
 </div>

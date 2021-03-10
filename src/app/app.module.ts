@@ -16,15 +16,21 @@ import { AppSharedModule } from './shared/app.shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule } from '@angular/router';
+import { RouterModule,Router, NavigationEnd } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { ToastrModule } from 'ngx-toastr';
-import { HomeComponent } from './home/home.component';
+import { AboutUsComponent } from './pages/user/about-us/about-us.component';
+import { MinisteriesComponent } from './pages/user/ministeries/ministeries.component';
+import { EventsComponent } from './pages/user/events/events.component';
+import { MediaComponent } from './pages/user/media/media.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    AboutUsComponent,
+    MinisteriesComponent,
+    EventsComponent,
+    MediaComponent
   ],
   imports: [
     BrowserModule,

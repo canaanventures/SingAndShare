@@ -6,19 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isVisible = 'none';
-  constructor() {}
+  isVisible = 'block';
+  constructor() { }
 
-  ngOnInit(): void {
-    if(window.location.href.indexOf('login') > 0 || window.location.href.indexOf('register') > 0){
-      this.isVisible = 'none';
-    }else{
-      this.isVisible = 'block';
-    }
-  }
+  ngOnInit(): void { }
 
   navCollapse() {
     document.getElementsByClassName('hamburger-menu')[0].classList.toggle("nav-menu-show");
     document.getElementsByClassName('hamburger--collapse')[0].classList.toggle("isactive");    
+  }
+
+  navClick(param){
+    /* if(param == 'login' || param == 'register'){
+      document.getElementsByTagName('body')[0].classList.add('body-bg-img');
+    }else{
+      document.getElementsByTagName('body')[0].classList.remove('body-bg-img');
+    } */
   }
 }

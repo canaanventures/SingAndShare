@@ -33,12 +33,6 @@ export class AppComponent {
 
   onActivate(event) {
     window.scroll(0, 0);
-
-    if(window.location.href.indexOf('login') > 0 || window.location.href.indexOf('register') > 0){
-      document.getElementsByTagName('body')[0].classList.add('body-bg-img');
-    }else{
-      document.getElementsByTagName('body')[0].classList.remove('body-bg-img');
-    }
   }
   
 }

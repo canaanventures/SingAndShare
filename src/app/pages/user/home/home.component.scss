@@ -619,3 +619,12 @@ a:hover {
 /* edited on 9th Mar 21 */
 .about_img img{width:100%;}
 a:hover{text-decoration:none;}
+.quick_icon img{width:35px;margin-top: -5px;}
+.quick_icon{padding-left:10px}
+.form-group input::placeholder,.form-group textarea::placeholder{font-size:13px;}
+.email_text .form-group{width:33.33%}
+.email-bt,.message-bt{padding: 16px 25px 20px;}
+.email_text .form-group{padding: 0 10px;}
+.email_text .textarea{width:100%;margin-top:15px;}
+.message-bt{border-radius:20px;}
+.send_btn a{color:#fff;}

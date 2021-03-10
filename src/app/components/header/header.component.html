@@ -1,4 +1,4 @@
-<header *ngIf="isVisible == 'block'">
+<header>
     <div class="header-area">
         <div class="main-header header-sticky">
             <div class="container-fluid">
@@ -18,18 +18,18 @@
                             <nav class="hamburger-menu">
                                 <ul id="navigation">
                                     <li>
-                                        <a routerLink="/home">Home</a>
+                                        <a routerLink="/home" (click)='navClick("home")'>Home</a>
                                     </li>
                                     <li>
-                                        <a href="about.html">About</a>
-                                        <ul class="submenu">
-                                            <li><a href="About.html">About</a></li>
-                                            <li><a href="Missions.html">Missions</a></li>
-                                            <li><a href="Faith statements.html">Faith Statements</a></li>
-                                        </ul>
+                                        <a routerLink="/aboutUs">About</a>
+                                        <!-- <ul class="submenu">
+                                            <li><a routerLink="/aboutUs">About</a></li>
+                                            <li><a routerLink="/aboutUs">Missions</a></li>
+                                            <li><a routerLink="/aboutUs">Faith Statements</a></li>
+                                        </ul> -->
                                     </li>
-                                    <li><a href="Ministries.html">Ministries</a></li>
-                                    <li><a href="Events.html">Events</a></li>
+                                    <li><a routerLink="/ministeries">Ministries</a></li>
+                                    <li><a routerLink="/events">Events</a></li>
                                     <li>
                                         <a href="Media.html">Media</a>
                                         <ul class="submenu">
@@ -40,7 +40,7 @@
                                     </li>
                                     <li>
                                         <div type="text" class="main_bt">
-                                            <a routerLink="/login">Login</a>
+                                            <a routerLink="/login" (click)='navClick("login")'>Login</a>
                                         </div>
                                     </li>
                                 </ul>

@@ -17,6 +17,18 @@ export const CONST = Object.freeze({
         SELF: 'home',
         TITLE: 'home'
       },
+      ABOUTUS: {
+        SELF: 'aboutUs',
+        TITLE: 'aboutUs'
+      },
+      MINISTERIES: {
+        SELF: 'ministeries',
+        TITLE: 'ministeries'
+      },
+      EVENTS: {
+        SELF: 'events',
+        TITLE: 'events'
+      }
     }
   }
 });
