@@ -640,4 +640,17 @@ a:hover{text-decoration:none;}
     .contact_section .container{float:left;padding:0;}
     .testimonial_section_2{padding:0 15px;}
     .testimonial_section_2::before{top:unset;bottom:0;}
+    .banner_taital{padding:0;}
+    #main_slider a.carousel-control-prev,#main_slider a.carousel-control-next{display:none;}
+    .about_taital_main{padding: 15px 0px;}
+    .about_section .read_bt{padding-top:15px;}
+    .about_taital{font-size:25px;}
+    .about_text{font-size: 13px;padding-top:0;}
+    .gallery_section_2{padding-top:15px;}
+    .gallery_taital{margin-top:25px;}
+    .services_section{padding: 20px 0;}
+    .contact_section{margin-top:0!important;}
+    h1.contact_text{margin-bottom:25px;}
+    .client_section .container{padding:0;}
+    .about_img{padding-top:20px;}
 }
