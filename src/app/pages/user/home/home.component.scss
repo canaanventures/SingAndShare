@@ -628,3 +628,16 @@ a:hover{text-decoration:none;}
 .email_text .textarea{width:100%;margin-top:15px;}
 .message-bt{border-radius:20px;}
 .send_btn a{color:#fff;}
+
+@media (max-width:767px){
+    .email_text .form-group{width:100%}
+    .services_section_2 .col-md-4{margin: 10px 0;}
+    .box_main .readmore_bt{padding-top: 20px;}
+    .box_main .decorate_text{padding-top:0}
+    .gallery_section_2 .col-md-6,.gallery_section_2 .col-md-4{padding:10px;}
+    .mail_section{padding:20px;}
+    .contact_section{float:left;}
+    .contact_section .container{float:left;padding:0;}
+    .testimonial_section_2{padding:0 15px;}
+    .testimonial_section_2::before{top:unset;bottom:0;}
+}
