@@ -634,6 +634,7 @@ a:hover{text-decoration:none;}
 .btn-upcoming-event{background-color:#fff;color:#666;border:1px solid #e0e0e0;font-size:13px;border-radius:5px;margin:0 auto;padding:8px 20px;margin-top:15px;margin-bottom:15px;cursor:pointer;}
 .upcoming-event-img{height:200px;background-repeat: no-repeat;background-position: center;background-size: cover;}
 .contact_text{margin-bottom:20px;}
+.btn-upcoming-event:hover{background-color: #e0e0e0;color: #000;}
 
 @media (max-width:767px){
     .email_text .form-group{width:100%}
@@ -659,4 +660,5 @@ a:hover{text-decoration:none;}
     h1.contact_text{margin-bottom:25px;}
     .client_section .container{padding:0;}
     .about_img{padding-top:20px;}
+    .upcoming_event_section .col-md-4{padding:10px 0;}
 }
