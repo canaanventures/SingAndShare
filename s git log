@@ -1,0 +1,102 @@
+[33mcommit b456fc2fd129ab884aab16308b7dd4c948459a0f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Nayana Das <nayana@vecan.co>
+Date:   Fri Mar 5 21:45:39 2021 +0530
+
+    html commit of home, login, register
+
+[33mcommit 14dc11898c63f82be913d33c89b706a119e9617c[m
+Merge: 5ae06bd 0c4b03c
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Fri Mar 5 16:49:33 2021 +0530
+
+    added home and register component
+
+[33mcommit 5ae06bdca6f1725df2b44238e20eca625bc23e83[m
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Fri Mar 5 13:24:39 2021 +0530
+
+    test home
+
+[33mcommit 07835201e23402b745e0ce1fed6ccd38b8c287ac[m
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Fri Mar 5 13:08:27 2021 +0530
+
+    test home
+
+[33mcommit 129082b218a10dfebac61d5121d0d904e233be52[m
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Fri Mar 5 13:08:09 2021 +0530
+
+    test register
+
+[33mcommit df04f5109a201a7fd1f7646df3cd2342e255ee8e[m
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Thu Mar 4 21:47:46 2021 +0530
+
+    test register
+
+[33mcommit 4c65188afd4675301a64664a2160c8f6960c459c[m
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Thu Mar 4 21:47:23 2021 +0530
+
+    test register
+
+[33mcommit 0590485bd2a9820918efd31f476b82ec5247dad0[m
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Thu Mar 4 18:20:26 2021 +0530
+
+    test register
+
+[33mcommit 416925344d5bec76dfbbf9e53138b94c02d238d8[m
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Thu Mar 4 18:14:17 2021 +0530
+
+    test register
+
+[33mcommit fc57267037d6c0a21909ca0382cb1cea90a48392[m
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Thu Mar 4 18:13:27 2021 +0530
+
+    test register
+
+[33mcommit 0c4b03c93c798ffd8b631a925cd12a3bc19f1e13[m
+Author: Nayana Das <nayana@vecan.co>
+Date:   Thu Mar 4 12:43:16 2021 +0530
+
+    test drive - 3
+
+[33mcommit 0881302c336940306abb17c92a370968cbad4966[m
+Author: Nayana Das <nayana@vecan.co>
+Date:   Thu Mar 4 12:39:38 2021 +0530
+
+    test drive - 2
+
+[33mcommit c02700b07c1b393ecb10bac422783e31a82fb757[m
+Author: Nayana Das <nayana@vecan.co>
+Date:   Thu Mar 4 12:25:50 2021 +0530
+
+    This is a test Drive for Git
+
+[33mcommit e4908a0f058b12d2d313dea0ea675ea8e2c5dcb6[m
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Thu Mar 4 11:17:12 2021 +0530
+
+    test for login page
+
+[33mcommit da5aa1119b098d27aad56fcd0f7854e30ac80433[m
+Author: Kingslin Jawahar N S <kingslinzoe78@gmail.com>
+Date:   Thu Mar 4 11:01:19 2021 +0530
+
+    test git setup
+
+[33mcommit 2670b0c15cfa1ca05bc7df59ccebd27ef9c67ddc[m
+Author: rbnjathanna <rbnjathanna@gmail.com>
+Date:   Thu Mar 4 09:18:23 2021 +0530
+
+    Sing And Share
+
+[33mcommit 79a5ed079542dd6b9fe851ebad5f70e50d56ec06[m
+Author: rbnjathanna <rbnjathanna@gmail.com>
+Date:   Mon Mar 1 16:20:54 2021 +0530
+
+    initial commit
