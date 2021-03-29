@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: CONST.PATH.USER.SELF,
     loadChildren: () => import('./modules/user/user.module').then(mod => mod.UserModule)
+  },
+  {
+    path: CONST.PATH.ADMIN.SELF,
+    loadChildren: () => import('./modules/admin/admin.module').then(mod => mod.AdminModule)
   }
 ];
 

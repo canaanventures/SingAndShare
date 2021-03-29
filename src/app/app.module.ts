@@ -24,13 +24,16 @@ import { MinisteriesComponent } from './pages/user/ministeries/ministeries.compo
 import { EventsComponent } from './pages/user/events/events.component';
 import { MediaComponent } from './pages/user/media/media.component';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     AboutUsComponent,
     MinisteriesComponent,
     EventsComponent,
-    MediaComponent
+    MediaComponent,
   ],
   imports: [
     BrowserModule,

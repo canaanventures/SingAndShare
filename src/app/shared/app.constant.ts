@@ -29,6 +29,13 @@ export const CONST = Object.freeze({
         SELF: 'events',
         TITLE: 'events'
       }
+    },
+    ADMIN: {
+      SELF: '',
+      DASHBOARD : {
+        SELF:'dashboard',
+        TITLE:'dashboard'
+      }
     }
   }
 });
