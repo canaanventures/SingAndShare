@@ -9,15 +9,7 @@ import { ApiService } from './app.service';
 export class AuthInterceptor implements HttpInterceptor {
   constructor(public auth: ApiService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.auth.getToken();
-    if (token !== undefined && token !== null) {
-      req = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token.access_token}`,
-          Accept: 'application/json'
-        }
-      });
-    }
+    
     /* if(token!==undefined && token!==null){
       return next.handle(req).catch((error, caught) => {
         //intercept the respons error and displace it to the console

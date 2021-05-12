@@ -20,11 +20,11 @@ const routes: Routes = [{
   },
   children: [   
     {
-        path: CONST.PATH.ADMIN.DASHBOARD.SELF,
-        component: DashboardComponent,
-        data: {
-          title: CONST.PATH.ADMIN.DASHBOARD.TITLE
-        }
+      path: CONST.PATH.ADMIN.DASHBOARD.SELF,
+      component: DashboardComponent,
+      data: {
+        title: CONST.PATH.ADMIN.DASHBOARD.TITLE
+      }
     },
   ]
 }];

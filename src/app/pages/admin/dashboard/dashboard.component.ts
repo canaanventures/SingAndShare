@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, AfterViewInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ApiService } from '../../../shared/app.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { AdminComponent } from 'src/app/modules/admin/admin.component';
 
 @Component({
@@ -8,7 +13,23 @@ import { AdminComponent } from 'src/app/modules/admin/admin.component';
 })
 export class DashboardComponent extends AdminComponent implements OnInit {
 
-  constructor() { super() }
+  constructor(
+    activatedRoute: ActivatedRoute,
+    router: Router,
+    ApiService: ApiService,
+    location: Location,
+    spinner: NgxSpinnerService,
+    toastr: ToastrService
+  ) { 
+    super(
+      activatedRoute,
+      router,
+      ApiService,
+      location,
+      spinner,
+      toastr
+    ) 
+  }
 
   ngOnInit(): void {
   }

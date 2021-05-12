@@ -1,41 +1,9 @@
-export const CONST = Object.freeze({
-  SESSION_NAME: 'singandshare',
-  VERSION: '',
-  PATH: {
-    // For User Module
-    USER: {
-      SELF: '',
-      LOGIN: {
-        SELF: 'login',
-        TITLE: 'login'
-      },
-      REGISTER: {
-        SELF: 'register',
-        TITLE: 'register'
-      },
-      HOME: {
-        SELF: 'home',
-        TITLE: 'home'
-      },
-      ABOUTUS: {
-        SELF: 'aboutUs',
-        TITLE: 'aboutUs'
-      },
-      MINISTERIES: {
-        SELF: 'ministeries',
-        TITLE: 'ministeries'
-      },
-      EVENTS: {
-        SELF: 'events',
-        TITLE: 'events'
-      }
-    },
-    ADMIN: {
-      SELF: '',
-      DASHBOARD : {
-        SELF:'dashboard',
-        TITLE:'dashboard'
-      }
-    }
-  }
-});
+export const url = Object.freeze({
+    imgurl : 'http://singandshare.vecan.co',
+    apiurl : 'http://localhost:3000/'
+    //apiurl : 'https://singshare-api.padahjobs.com/'
+    //apiurl : "https://korban-api.herokuapp.com/"
+})
+
+/*apiurl : 'https://singshare-api.padahjobs.com/'
+ apiurl : 'http://localhost:3000/' */

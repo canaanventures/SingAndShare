@@ -3,13 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SingAndShare": {
+    "SingAndShareUser": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -17,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/SingAndShare",
+            "outputPath": "dist/SingAndShareUser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -65,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SingAndShare:build"
+            "browserTarget": "SingAndShareUser:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SingAndShare:build:production"
+              "browserTarget": "SingAndShareUser:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SingAndShare:build"
+            "browserTarget": "SingAndShareUser:build"
           }
         },
         "test": {
@@ -91,7 +87,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -113,19 +109,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "SingAndShare:serve"
+            "devServerTarget": "SingAndShareUser:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "SingAndShare:serve:production"
+              "devServerTarget": "SingAndShareUser:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "SingAndShare",
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "SingAndShareUser"
 }

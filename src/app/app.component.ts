@@ -1,24 +1,18 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import {
-  ActivatedRoute, Router, NavigationEnd
-} from '@angular/router';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
-/* [ Spinner ] */
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-/* [ App Service ] */
 import { ApiService } from './shared/app.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(
+  title = 'Sing And Share';
+  constructor (
     public activatedRoute: ActivatedRoute,
     public router: Router,
     public ApiService: ApiService,
@@ -28,11 +22,7 @@ export class AppComponent {
   ) {
   }
 
-  ngInit(){ 
+  ngOnInit(){
+    
   }
-
-  onActivate(event) {
-    window.scroll(0, 0);
-  }
-  
 }

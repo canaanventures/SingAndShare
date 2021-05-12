@@ -17,7 +17,15 @@ import { catchError, map, tap } from 'rxjs/operators';
    }
 
   ngOnInit(): void {
-
+    fetch('https://ipapi.co/json/')
+    .then(function(response) {
+      response.json().then(jsonData => {
+        console.log(jsonData);
+      });
+    })
+    .catch(function(error) {
+      console.log(error)
+    });
   }
 
   christmasImageObject = [
