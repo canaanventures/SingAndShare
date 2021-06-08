@@ -1,4 +1,4 @@
-.backdrop{background-color:rgba(0,0,0,0.6);position:absolute;width:100%;height:100%;z-index: 1049;}
+.backdrop{background-color:rgba(0,0,0,0.6);position:absolute;width:100%;height:500vh;z-index: 1049;}
 .swiper-img-div{cursor:pointer;}
 .modal-open{overflow:hidden};
 #user_login{background-color: #630460;border-color: #630460;cursor:pointer;}
@@ -9,3 +9,15 @@
 #user-action li a{color:#630460;font-size:13px;font-weight:500;padding:0;}
 #user-action hr{margin:10px 0;}
 .header-transparent ul li a{color:#630460;font-weight:500;}
+.navbar ul.active{display:block;}
+#name_initials{border: 3px solid #fff;color: #fff;border-radius: 50%;padding: 7px 9px;font-weight: 600;margin-left: 15px;letter-spacing: 2px;text-transform: uppercase;}
+header{padding-top: 10px;}
+
+@media (max-width: 767px){
+    #header #logo img {max-height: 75px;}
+    #navbar{position:relative;}
+    #navbar ul{position: absolute;right: 0;top: 100%;background-color: #fff;width: 200px;}
+    #navbar ul li a{color:#616161;font-weight:500;font-size:13px;}
+    .navbar > ul > li{padding:15px;}
+    #header-user-icon{margin-right: 20px;}
+}

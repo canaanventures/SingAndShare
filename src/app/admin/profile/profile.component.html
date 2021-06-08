@@ -1,23 +1,25 @@
 <div class="wrapper container">
     <div class="main">
         <main class="content">
-            <div class="container-fluid p-0">
+            <div class="container-fluid p-0 mb-4">
                 <h1 class="h3 mb-3">Profile</h1>
                 <div class="row">
                     <div class="col-md-4 col-xl-3">
                         <div class="card mb-3">                           
                             <div class="card-body text-center pt-3">
                                 <div class='user-img-div'>
-                                    <img src="assets/img/avatar-4.jpg" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+                                    <img [src]='imageToShow' *ngIf='imageToShow' alt="Profile Image" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+                                    <img src='../../../assets/img/avatar2.png' *ngIf='!imageToShow' alt="Profile Image" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+                                    <input type="file" name='blog_image' class="form-control custom-file-input" id="blog-image" (change)='selectImage($event)' style='display:none;' />
                                     <div class='user-img-action-div' id='edit-icon'>
-                                        <img src='assets/img/edit.png' class='user-img-action' />
+                                        <img src='assets/img/edit.png' class='user-img-action' (click)='triggerClick()' />
                                     </div>
                                     <div class='user-img-action-div' id='delete-icon'>
                                         <img src='assets/img/delete.png' class='user-img-action' />
                                     </div>
                                 </div>
-                                <h4 class="card-title mb-1 mt-0">Christina Mason</h4>
-                                <div class="text-muted mb-2">Lead Developer</div>
+                                <h4 class="card-title mb-1 mt-0">{{userprofile.data[0].user_first_name}} {{userprofile.data[0].user_last_name}}</h4>
+                                <div class="text-muted mb-2">{{userprofile.data[0].role_name}}</div>
                             </div>                         
                         </div>
                     </div>

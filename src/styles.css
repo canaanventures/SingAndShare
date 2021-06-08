@@ -1484,11 +1484,14 @@ section {
   padding: 0;
   vertical-align: middle;
   text-align: center;
+  width: 100%;
+  height: 300px;
 }
 
 #gallery .gallery-item img {
   transition: all ease-in-out 0.4s;
   width: 100%;
+  height:100%;
 }
 
 #gallery .gallery-item:hover img {
@@ -1767,3 +1770,4 @@ label{font-weight:500!important;}
   display: none;
 }
 .form-check-input:checked{background-color: #1ddba5;border-color: #1dc9ca;}
+.edit-modal-open .modal{overflow-y:auto;}

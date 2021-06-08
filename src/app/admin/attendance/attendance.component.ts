@@ -19,7 +19,7 @@ export class AttendanceComponent implements OnInit {
   members:any = [];
   attendees:any; total:any;srslist;
 
-  @Input() attendancedetails = {srs_id:'',meeting_date:'',attendees:'',new_attendees:'',created_by:''}
+  @Input() attendancedetails = {srs_id:'',meeting_date:'',attendees:'',new_attendees:0,created_by:'',total_members:0,presentees:0,absentees:0}
   @Input() attendeesdtls = {vals:[],row:''}
   
   constructor(public restApi: ApiService, public router: Router) { }
@@ -41,7 +41,7 @@ export class AttendanceComponent implements OnInit {
   addAttendance() {   
     this.attendancedetails.created_by = this.tk.user_id;
     this.restApi.postMethod('addAttendance',this.attendancedetails).subscribe((resp:any) => {
-      let arr = this.done;     
+      let arr = [...this.done,...this.todo];
       let a=[], b=[];
       for(var i=0;i<arr.length;i++){
         let newArray = [];
@@ -51,8 +51,6 @@ export class AttendanceComponent implements OnInit {
         newArray.push(resp.rowid);
         b.push(newArray);
       }
-      console.log(this.attendeesdtls.vals);
-
       this.attendeesdtls.vals = b;
       this.restApi.postMethod('addAttendees',this.attendeesdtls).subscribe((resp:any) => {
         alert(resp.message);
@@ -72,11 +70,12 @@ export class AttendanceComponent implements OnInit {
     } else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
-    //if(type == 'attendees'){
+    this.todo = this.todo.map(v => ({...v, attendance_status: "A"}))
     this.total = this.todo.length;
+    this.done = this.done.map(v => ({...v, attendance_status: "P"}))
     this.attendees = this.done.length;
-    this.attendancedetails.attendees = String(this.done.length);
-    //}
+    this.attendancedetails.presentees = this.done.length;
+    this.attendancedetails.absentees = this.todo.length;
   }
 
   fetchUser() {
@@ -84,6 +83,9 @@ export class AttendanceComponent implements OnInit {
       this.todo = resp.data;
       this.total = resp.data.length;
       this.attendees = 0;
+      this.attendancedetails.total_members = resp.data.length;
+      this.attendancedetails.presentees = this.done.length;
+      this.attendancedetails.absentees = this.todo.length;
     });
   }
 }

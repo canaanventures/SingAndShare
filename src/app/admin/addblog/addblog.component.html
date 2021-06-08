@@ -81,6 +81,7 @@
                 <div class="card-body">
                     <form id='blog_form' name='addBlogForm'> <!-- (ngSubmit)="addBlog($event)" -->
                         <input type='hidden' name='blog_id' id='blog-id' [value]=edit_id />
+                        <img [src]='imageToShow' class='col-md-4'  *ngIf='edit' />
                         <div class="form-group col-md-4">
                             <label for="title">Title</label>
                             <input type="text" name='blog_title' class="form-control" id='title' value="" placeholder='Enter the title of the blog' />
@@ -148,8 +149,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <h5 class='mb-3 card-header'> Comment Approval Modal <span class='close modal-close' (click)='closeCommentModal()' data-dismiss="modal">&times;</span> </h5>
+                <h5 class='mb-3 card-header'> Comment Approval <span class='close modal-close' (click)='closeCommentModal()' data-dismiss="modal">&times;</span> </h5>
                 <div class='px-4'>
+                    <div class='col-md-12 p-0 my-4' *ngIf='commentlist.length == 0'>
+                        <h4 style='text-align:center;margin-top:10px;color: #de5d47;'>No Comments to be displayed</h4>
+                    </div>
                     <div class='col-md-12 p-0 my-4' *ngFor='let list of commentlist'>
                         <span id='comment_user'>{{list.name}}</span> 
                         <span id='comment_date'>{{list.added_on | date:'dd/MM/yyyy'}}</span>

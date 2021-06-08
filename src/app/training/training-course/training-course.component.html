@@ -1,0 +1,94 @@
+<div class="wrapper container mb-5">
+    <div class="main">
+        <main class="content">
+            <!-- <h1 class="h3 mb-3">Course Category</h1> -->
+            <div class="row">
+                <div class="col-md-5 card p-0">
+                    <div class="card-body h-100 p-0">
+                        <h5 class='mb-3 p-4 font-weight-bold card-header'>Add Course</h5>
+                        <div class='row px-4'>
+                            <div class='col-md-12'>
+                                <div class='form-group'>
+                                    <img [src]='imageToShow' alt="Profile Image" class="img-fluid rounded-circle mb-2" *ngIf='imageToShow' />
+                                    <img src='../../../assets/img/course.png' alt="Profile Image" class="img-fluid rounded-circle mb-2" *ngIf='!imageToShow' />
+                                    <input type="file" name='blog_image' class="form-control custom-file-input" id="blog-image" (change)='selectImage($event)' />
+                                </div>
+                            </div>
+                            <div class='col-md-12'>
+                                <div class='form-group'>
+                                    <label for='category_name'>Category Name</label>
+                                    <select class='form-control' id='category_name' [(ngModel)]='course.category_id'>
+                                        <option value=''>Select Category Name</option>
+                                        <option value='{{list.row_id}}' *ngFor='let list of catlist'>{{list.category_name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='col-md-12'>
+                                <div class='form-group'>
+                                    <label for='course_name'>Course Name</label>
+                                    <input type='text' class='form-control' placeholder='Select Course Name' id='course_name' [(ngModel)]='course.course_name' />
+                                </div>
+                            </div>
+                            <div class='col-md-12'>
+                                <div class='form-group'>
+                                    <label for='description'>Description</label>
+                                    <textarea class='form-control' rows='5' id='description' placeholder="Course's Description" [(ngModel)]='course.course_description'></textarea>
+                                </div>
+                            </div>
+                            <div class='col-md-12 mt-3'>
+                                <div class='form-group'>
+                                    <button class='btn-primary btn' id='add_course' *ngIf='!edit' (click)='addCourse()'>Add the Course </button>
+                                    <button class='btn-primary btn' id='edit_course' *ngIf='edit' (click)='updateCourse()'>Update the Course </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-md-7'>
+                    <div class="card">
+                        <div class='category-table card-body'>
+                            <table class='table-bordered table mb-0'>
+                                <thead>
+                                    <tr>
+                                        <th>Category Name</th>
+                                        <th>Course Name</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf='courselist.length == 0'>
+                                        <td class='table-thumbnail-img' colspan='4'>
+                                            <h4 style='text-align: center;margin-top: 15px;color: #630460;'>No Data to be displayed</h4>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor='let list of courselist'>                                               
+                                        <td>{{list.category_name}}</td>
+                                        <td>{{list.course_name}}</td>
+                                        <td>
+                                            <span [ngClass] = "list.course_status == 'Y' ? 'label label-success' : 'label label-danger'">
+                                                <span *ngIf='list.course_status == "Y"'>Enable</span>
+                                                <span *ngIf='list.course_status == "N"'>Disable</span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class='action-img-div'>
+                                                <img src='assets/img/edit.png' class='action-img' (click)='editCourse(list.row_id);' />
+                                            </div>
+                                            <div class='action-img-div switch'>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" [attr.checked]="list.course_status == 'Y' ? true : null" (change)='changeStatus($event,list.row_id)' />
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+

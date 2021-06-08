@@ -18,7 +18,7 @@ export class UsersComponent implements OnInit {
   display='none';
   userlist :any = [];
   tk:any = {};
-  status; edit; srs_name; srslist:any = [];
+  status; edit; srs_name = ''; role_nme; srslist:any = [];
 
   @Input() userdetails = {url:'',email:''}
   @Input() disableuser = {modified_by_user_id:'',userid:'',status:''}
@@ -31,11 +31,12 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.fetchSRSlist();
     this.fetchRole();
+    this.tk = jwt_decode(sessionStorage.getItem('user_token'));
+    this.role_nme = this.tk.role_name;
   }
 
   changeStatus(event,id){
     (event.target.checked) ? this.status = "Enable" : this.status = "Disable";
-    this.tk = jwt_decode(sessionStorage.getItem('user_token'));
     this.disableuser.modified_by_user_id = this.tk.user_id;
     this.disableuser.userid = id;
     this.disableuser.status = this.status;
@@ -52,31 +53,37 @@ export class UsersComponent implements OnInit {
       "last_name":(<HTMLInputElement>document.getElementById('mentee_last_name')).value,
       "email_id":(<HTMLInputElement>document.getElementById('mentee_email_id')).value,
       "mentor_email_id": this.tk.email,
-      "role_id":(<HTMLInputElement>document.getElementById('mentee_user_type')).value
+      "srs_id": this.tk.srs_id,
+      "role_id": (<HTMLInputElement>document.getElementById('mentee_user_type')).value,
+      "parent_id":this.tk.user_id
+    }
+
+    if(this.role_nme == 'Admin'){
+      obj.srs_id = this.srs_name;
+    }else{
+      obj.srs_id = this.tk.srs_id;
     }
     
     this.encryptInfo = encodeURIComponent(CryptoJS.AES.encrypt(JSON.stringify(obj), 'secret key 123').toString());
 
     this.userdetails.url = this.encryptInfo;
     this.userdetails.email = (<HTMLInputElement>document.getElementById('mentee_email_id')).value;
-
-    this.restApi.postMethod('sendUserLink',this.userdetails)
-      .subscribe((data:{}) => {
-        //this.router.navigate(['register/' + this.encryptInfo]);
-        alert('Mail has been sent to the Mentee');
-      });
+    this.restApi.postMethod('sendUserLink',this.userdetails).subscribe((data:any) => {
+      //this.router.navigate(['register/' + this.encryptInfo]);
+      this.display = 'none';
+      alert('Mail has been sent to the Mentee');
+    });
   }
 
   fetchRole() {
-    this.restApi.getMethod('getRole')
-      .subscribe((resp) => {
-        this.userrole = resp;//resp.data;
-        this.fetchUser();
-      });
+    this.restApi.getMethod('getRole').subscribe((resp) => {
+      this.userrole = resp;//resp.data;
+      this.fetchUser();
+    });
   }
 
   fetchSRSlist() {
-    this.restApi.getMethod('getBranches/all')
+    this.restApi.getMethod('getBranches/adduser')
       .subscribe((resp:any) => {
         this.srslist = resp.data;
       });
@@ -95,6 +102,8 @@ export class UsersComponent implements OnInit {
     this.edit = false;
     this.display='block';
     document.getElementsByTagName('body')[0].classList.add('modal-open');
+    (<HTMLInputElement>document.getElementById('mentee_user_type')).value = '10';
+    (<HTMLInputElement>document.getElementById('mentee_user_type')).setAttribute("disabled", 'disabled');
   }
 
   closeModal() {
@@ -111,7 +120,10 @@ export class UsersComponent implements OnInit {
         (<HTMLInputElement>document.getElementById('mentee_email_id')).value = resp.data[0].user_email_id;
         (<HTMLInputElement>document.getElementById('mentee_user_type')).value = resp.data[0].role_id;
         (<HTMLInputElement>document.getElementById('mentor_email_id')).value = resp.data[0].mentor_email_id;
-        (resp.data[0].srs_id) ? this.srs_name = resp.data[0].srs_id : this.srs_name = '';
+        if(this.role_nme == 'Admin'){
+          (resp.data[0].srs_id) ? this.srs_name = resp.data[0].srs_id : this.srs_name = '';
+          (<HTMLInputElement>document.getElementById('mentee_user_type')).removeAttribute("disabled");
+        }
         (<HTMLInputElement>document.getElementById('hidden_id')).value = id;
         this.display='block';
         document.getElementsByTagName('body')[0].classList.add('modal-open');
@@ -126,7 +138,12 @@ export class UsersComponent implements OnInit {
     this.updateuser.mentor_email_id = (<HTMLInputElement>document.getElementById('mentor_email_id')).value;
     this.updateuser.user_id = (<HTMLInputElement>document.getElementById('hidden_id')).value;
     this.updateuser.modified_by = this.tk.user_id;
-    this.updateuser.srs_id = this.srs_name;
+    
+    if(this.role_nme == 'Admin'){
+      this.updateuser.srs_id = this.srs_name;;
+    }else{
+      this.updateuser.srs_id = this.tk.role_id;
+    }
 
     this.restApi.postMethod('updateUser',this.updateuser)
       .subscribe((data:{}) => {

@@ -1,42 +1,44 @@
-<input type='hidden' id='event_hidden_id' />
+<input type='hidden' id='event_hidden_id' [(ngModel)]='registeruser.event_id' />
+
 <div class='form-group hide-first col-md-2'>
     <label for='contact_sal'>Sal</label>
-    <select class='form-control' id='contact_sal'>
+    <select class='form-control' id='contact_sal' [(ngModel)]='registeruser.contact_sal'>
+        <option value=''>Select</option>
         <option value='Mr.'>Mr.</option>
         <option value='Mr.'>Mrs.</option>
     </select>
 </div>
 <div class='form-group hide-first col-md-5'>
     <label for='contact_first_name'>First Name</label>
-    <input type='text' class='form-control' id='contact_first_name' placeholder='Enter your First Name' />
+    <input type='text' class='form-control' id='contact_first_name' [(ngModel)]='registeruser.contact_first_name' placeholder='Enter your First Name' />
 </div>
 <div class='form-group hide-first col-md-5'>
     <label for='contact_last_name'>Last Name</label>
-    <input type='text' class='form-control' id='contact_last_name' placeholder='Enter your Last Name' />
+    <input type='text' class='form-control' id='contact_last_name' [(ngModel)]='registeruser.contact_last_name' placeholder='Enter your Last Name' />
 </div>
 <div class='form-group col-md-6'>
     <label for='contact_email_id'>Email ID</label>
-    <input type='text' class='form-control' id='contact_email_id' placeholder='Enter your Email ID' />
+    <input type='text' class='form-control' id='contact_email_id' [(ngModel)]='registeruser.contact_email_id' placeholder='Enter your Email ID' />
 </div>
 <div class='form-group hide-first col-md-6'>
     <label for='contact_number'>Contact Number</label>
-    <input type='text' class='form-control' id='contact_number' placeholder='Enter your Contact Number' />
+    <input type='text' class='form-control' id='contact_number' [(ngModel)]='registeruser.contact_number' placeholder='Enter your Contact Number' />
 </div>
 <div class='form-group hide-first col-md-6'>
     <label for='contact_state'>State</label>
-    <select class='form-control' id='contact_state' (change)="print_city($event);"> </select>
+    <select class='form-control' id='contact_state' [(ngModel)]='registeruser.contact_state' (change)="print_city($event);"> </select>
 </div>
 <div class='form-group hide-first col-md-6'>
     <label for='contact_city'>City</label>
-    <select class='form-control'  id="contact_city"> </select>
+    <select class='form-control'  id="contact_city" [(ngModel)]='registeruser.contact_city'> </select>
 </div>
 <div class='form-group hide-first col-md-12'>
     <label for='contact_referrer'>Referrer</label>
-    <input type='text' class='form-control' id='contact_referrer' placeholder='Enter your Referrer Name' />
+    <input type='text' class='form-control' id='contact_referrer' [(ngModel)]='registeruser.contact_referrer' placeholder='Enter your Referrer Name' />
 </div>
 <div class='form-group hide-first col-md-12'>
     <label for='contact_address'>Address</label>
-    <textarea class='form-control' id='contact_address' placeholder='Enter your Address' rows='5'></textarea>
+    <textarea class='form-control' id='contact_address' [(ngModel)]='registeruser.contact_address' placeholder='Enter your Address' rows='5'></textarea>
 </div>
 <div class='form-group hide-first col-md-6'>
     <label for='event_register'> &nbsp; </label>

@@ -14,7 +14,8 @@ export class HeaderComponent implements OnInit {
   public resp:any;
   public loggeduser:any;
   classApplied = false;
-  tk:any = {}; access; encryptInfo;
+  tk:any = {}; access; encryptInfo; role_name;
+  classtoggle = false; f_nme; l_nme;
 
   @Input() userdetails = {email:'',pass_word:''};
   @Input() user = {user_id:''};
@@ -23,8 +24,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     if(sessionStorage.getItem('user_token')){
+      this.tk = jwt_decode(sessionStorage.getItem('user_token'));
+      this.f_nme = this.tk.first_name.charAt(0); 
+      this.l_nme = this.tk.last_name.charAt(0);
       console.log("Token Present");
-      this.loggeduser = true;
+      this.loggeduser = true;     
+      this.role_name = this.tk.role_name;
     }else{
       console.log("Token not present");
       this.loggeduser = false;
@@ -64,11 +69,13 @@ export class HeaderComponent implements OnInit {
   openLoginModal(){
     this.displayLogin='block';
     document.getElementsByTagName('body')[0].classList.add('modal-open');
+    document.getElementsByTagName('html')[0].classList.add('modal-open');
   }
 
   closeLoginModal() {
     this.displayLogin='none';
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
+    document.getElementsByTagName('html')[0].classList.add('modal-open');
   }
 
   toggleHeaderMenu(){
@@ -83,5 +90,9 @@ export class HeaderComponent implements OnInit {
       this.restApi.setAccessToken(encryptInfo);
       window.location.href = '/calendar';
     })
+  }
+
+  navToggleClass() {
+    this.classtoggle = !this.classtoggle;
   }
 }

@@ -43,14 +43,12 @@
                                                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" [attr.checked]="user.status == 'Enable' ? true : null" (change)='changeStatus($event,user.user_id)' />
                                                     </div>
                                                 </div>
-                                                <div class='action-img-div'>
-                                                    <div class="form-check form-switch">
-                                                        <img src='assets/img/access.png' class='action-img' (click)='toggleAccess(user.user_id);' />
-                                                    </div>
+                                                <div class='action-img-div' *ngIf='user.role_name != "Mentee"'>
+                                                    <img src='assets/img/access.png' class='action-img' (click)='toggleAccess(user.user_id);' />
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr id='row{{user.user_id}}' class='table-hidden-row'>
+                                        <tr id='row{{user.user_id}}' class='table-hidden-row' *ngIf='user.role_name != "Mentee"'>
                                             <td colspan='7'>
                                                 <div class='row px-3'>
                                                     <div class="star01 s3">
@@ -169,7 +167,7 @@
                             <input type='text' placeholder='Email ID' class='form-control' id='mentor_email_id' />
                         </div>
                     </div>
-                    <div class='col-md-6' *ngIf='edit'>
+                    <div class='col-md-6' *ngIf='role_nme == "Admin"'>
                         <div class='form-group'>
                             <label for='sns_name'>SNS Name</label> 
                             <select class='form-control' id='sns_name' [(ngModel)]='srs_name'>
@@ -179,7 +177,8 @@
                         </div>
                     </div>
                     <div class='col-md-6'>
-                        <div class='form-group'>                  
+                        <div class='form-group'>   
+                            <label for='submit_btn' class='w-100'> &nbsp; </label>                
                             <button id='submit_btn' *ngIf='!edit' class='btn btn-primary' (click)='addUser()'>Submit</button>
                             <button id='update_btn' *ngIf='edit' class='btn btn-primary' (click)='updateUser()'>Update</button>
                         </div>

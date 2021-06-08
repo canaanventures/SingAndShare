@@ -1,5 +1,6 @@
 <div class="backdrop" [ngStyle]="{'display':display}"></div>
 <div class="backdrop" [ngStyle]="{'display':typedisplay}"></div>
+<div class="backdrop" [ngStyle]="{'display':gallerydisplay}"></div>
 
 <div class="wrapper container">
     <div class="main">
@@ -12,45 +13,81 @@
                 </h1>
                 <div class="row">
                     <div class="col-md-12 col-xl-12">
-                        <div class="card">
+                        <div class="card" style='padding:15px;'>
+                            <ul class="nav nav-tabs">
+                                <li id='upcoming_events_tab' class="event-tab active"><a data-toggle="tab" (click)='eventsTab("upcoming_events")'>Upcoming / Ongoing Events</a></li>
+                                <li id='past_events_tab' class='event-tab'><a data-toggle="tab" (click)='eventsTab("past_events")'>Past Events</a></li>
+                            </ul>
                             <div class="card-body h-100">
-                                <table class='table-bordered table'>
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Event Name</th>
-                                            <th>Event Start Date</th>
-                                            <th>Event End Date</th>
-                                            <th>Event Type</th>
-                                            <!-- <th>Event Status</th> -->
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor='let evntlist of eventlist.data'>
-                                            <td class='table-thumbnail-img'>
-                                                <img src={{imgurl}}{{evntlist.poster_url}} class='w-100' />
-                                            </td>
-                                            <td>{{evntlist.event_name}}</td>
-                                            <td>{{evntlist.event_start_date  | date:'dd/MM/yyyy'}}</td>
-                                            <td>{{evntlist.event_end_date  | date:'dd/MM/yyyy'}}</td>
-                                            <td>{{evntlist.EventType}}</td>
-                                            <!-- <td>{{evntlist.event_status}}</td> -->
-                                            <td><span [ngClass] = "evntlist.status == 'Enable' ? 'label label-success' : 'label label-danger'"> {{evntlist.status}} </span></td>
-                                            <td>
-                                                <div class='action-img-div'>
-                                                    <img src='assets/img/edit.png' class='action-img' (click)='editEvent(evntlist.event_id);' />
-                                                </div>
-                                                <div class='action-img-div'>
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" [attr.checked]="evntlist.status == 'Enable' ? true : null" (change)='changeStatus($event,evntlist.event_id)' />
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="tab-content">
+                                    <div id='upcoming_events' class="tab-pane fade in active">
+                                        <h3 class='mt-3'>Upcoming Events</h3>
+                                        <table class='table-bordered table'>
+                                            <thead>
+                                                <tr>
+                                                    <th>Event Name</th>
+                                                    <th>Event Start Date</th>
+                                                    <th>Event End Date</th>
+                                                    <th>Event Type</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor='let evntlist of eventlist.data'>
+                                                    <td>{{evntlist.event_name}}</td>
+                                                    <td>{{evntlist.event_start_date  | date:'dd/MM/yyyy'}}</td>
+                                                    <td>{{evntlist.event_end_date  | date:'dd/MM/yyyy'}}</td>
+                                                    <td>{{evntlist.EventType}}</td>
+                                                    <!-- <td>{{evntlist.event_status}}</td> -->
+                                                    <td><span [ngClass] = "evntlist.status == 'Enable' ? 'label label-success' : 'label label-danger'"> {{evntlist.status}} </span></td>
+                                                    <td>
+                                                        <div class='action-img-div'>
+                                                            <img src='assets/img/edit.png' class='action-img' (click)='editEvent(evntlist.event_id);' />
+                                                        </div>
+                                                        <div class='action-img-div'>
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" [attr.checked]="evntlist.status == 'Enable' ? true : null" (change)='changeStatus($event,evntlist.event_id)' />
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id='past_events' class="tab-pane fade">
+                                        <h3 class='mt-3'>Past Events</h3>
+                                        <table class='table-bordered table'>
+                                            <thead>
+                                                <tr>
+                                                    <th>Event Name</th>
+                                                    <th>Event Start Date</th>
+                                                    <th>Event End Date</th>
+                                                    <th>Event Type</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor='let evntlist of pasteventlist'>
+                                                    <td>{{evntlist.event_name}}</td>
+                                                    <td>{{evntlist.event_start_date  | date:'dd/MM/yyyy'}}</td>
+                                                    <td>{{evntlist.event_end_date  | date:'dd/MM/yyyy'}}</td>
+                                                    <td>{{evntlist.EventType}}</td>
+                                                    <td><span [ngClass] = "evntlist.status == 'Enable' ? 'label label-success' : 'label label-danger'"> {{evntlist.status}} </span></td>
+                                                    <td [ngClass] = "evntlist.status == 'Enable' ? 'icon-success' : 'icon-danger'">
+                                                        <div class='action-img-div'>
+                                                            <img src='assets/img/gallery.png' class='action-img' (click)='openGallery(evntlist.event_id);' />
+                                                        </div>
+                                                        <div class='action-img-div'>
+                                                            <img src='assets/img/delete.png' class='action-img' (click)='deleteGallery(evntlist.event_id);' />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>                               
                             </div>
                         </div>
                     </div>
@@ -74,7 +111,7 @@
                         <div class='col-md-6'>
                             <div class='form-group'>
                                 <label for='event_image'>Upload Event Image</label>
-                                <input type='file' id='event_image' class='form-control' />
+                                <input type='file' id='event_image' class='form-control' name='event_image' (change)='selectImage($event);' />
                             </div>
                         </div>
                         <div class='col-md-6'>
@@ -163,6 +200,42 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<div id="galleryModal" class="modal" role="dialog" [ngStyle]="{'display':gallerydisplay}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form id='blog_form' name='addBlogForm'>
+                    <h5 class='mb-3 card-header'> Add Event Gallery Image <span class='close modal-close' (click)='closegalModal()' data-dismiss="modal">&times;</span> </h5>
+                    <div class='px-4'>
+                        <div class='col-md-12'>
+                            <div class='form-group'>
+                                <label for='event_main_img'>Main Event Image</label>
+                                <input type='file' id='event_main_img' name='event_main_img' class='form-control' [(ngModel)]='eventtype.event_type' (change)='selectMainImage($event)' />
+                            </div>
+                        </div>
+                        <div id='dummymainelem'></div>
+                        <div class='col-md-12' id='preview_main_img'> </div>
+                        <div class='col-md-12 mt-3'>
+                            <div class='form-group'>
+                                <label for='event_gallery_img'>Event Gallery Image</label>
+                                <input type='file' multiple id='event_gallery_img' class='form-control' (change)='handleFileSelect($event)' name='multiple_images' />
+                            </div>
+                        </div>
+                        <div id='dummyelem'></div>
+                        <div class='col-md-12 row' id='preview_gallery_img'> </div>
+                        <div class='col-md-12 mt-3'>
+                            <div class='form-group'>
+                                <label for='gallery_btn'> &nbsp; </label>
+                                <button class='btn btn-primary' id='gallery_btn' (click)='addGallery();'>Add Images</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>               
             </div>
         </div> 
     </div>

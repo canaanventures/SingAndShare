@@ -24,13 +24,23 @@
                             </div>
                             <div class='col-md-12'>
                                 <div class='form-group'>
-                                    <label for='people_attended'>No. of people Attended</label>
-                                    <input type='text' class='form-control' placeholder='No. of People Attended' id='people_attended' [(ngModel)]='attendancedetails.attendees' readonly>
+                                    <label for='total_members'>Total Members</label>
+                                    <input type='text' class='form-control' placeholder='No. of People Attended' id='total_members' [(ngModel)]='attendancedetails.total_members' readonly>
+                                </div>
+                            </div>
+                            <div class='col-md-12 p-0'>
+                                <div class='form-group col-md-6'>
+                                    <label for='presentees'>Presentees</label>
+                                    <input type='text' class='form-control' placeholder='No. of Presentees' id='presentees' [(ngModel)]='attendancedetails.presentees' readonly>
+                                </div>
+                                <div class='form-group col-md-6'>
+                                    <label for='absentees'>Absentees</label>
+                                    <input type='text' class='form-control' placeholder='No. of Absentees' id='absentees' [(ngModel)]='attendancedetails.absentees' readonly>
                                 </div>
                             </div>
                             <div class='col-md-12'>
                                 <div class='form-group'>
-                                    <label for='new_people_attended'>No. of new people Attended</label>
+                                    <label for='new_people_attended'>No. of new Attendes</label>
                                     <input type='text' class='form-control' placeholder='No. of New People Attended' id='new_people_attended' [(ngModel)]='attendancedetails.new_attendees'>
                                 </div>
                             </div>
