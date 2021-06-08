@@ -138,7 +138,13 @@
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <label for='mentee_first_name'>First Name</label>
-                            <input type='text' placeholder='First Name' class='form-control' id='mentee_first_name' />
+                            <input type='text' placeholder='First Name' class='form-control' id='mentee_first_name' name="first_name" [(ngModel)]="addUserDetails.first_name" #first_name="ngModel"/>
+                            <div class="error_msg"
+                                        *ngIf="first_name.touched && first_name.invalid">
+                                        <div *ngIf="first_name.errors.required">
+                                            <small  class="error_text"> First Name is required</small> 
+                                        </div>
+                                    </div>
                         </div>
                     </div>
                     <div class='col-md-6'>

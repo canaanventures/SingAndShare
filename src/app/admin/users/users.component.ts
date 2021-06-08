@@ -46,8 +46,8 @@ export class UsersComponent implements OnInit {
       alert("The status of the user has been changed successfully");
     })
   }
-
-  addUserdetails:any;
+ 
+  addUserDetails:any=[];
 
   addUser(){
     var obj = {
@@ -59,7 +59,16 @@ export class UsersComponent implements OnInit {
       "role_id": (<HTMLInputElement>document.getElementById('mentee_user_type')).value,
       "parent_id":this.tk.user_id
     }
-    this.addUserdetails = obj
+
+    this.addUserDetails['first_name'] = obj.first_name;
+    this.addUserDetails['last_name'] = obj.first_name;
+    this.addUserDetails['email_id'] = obj.email_id;
+    this.addUserDetails['mentor_email_id'] = obj.mentor_email_id;
+    this.addUserDetails['srs_id'] = obj.srs_id;
+    this.addUserDetails['role_id'] = obj.role_id;
+    this.addUserDetails['parent_id'] = obj.parent_id;
+
+    
 
     if(this.role_nme == 'Admin'){
       obj.srs_id = this.srs_name;
