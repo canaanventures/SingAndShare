@@ -35,19 +35,27 @@ export class TrainingCourseComponent implements OnInit {
  
   addCourse(){
     this.course.created_by = this.tk.user_id;
+    if(this.images != ''){
+      const formData = new FormData();
+      formData.append('image', this.images);
+      let name = this.course.course_name.split(' ').join('_');
 
-    const formData = new FormData();
-    formData.append('image', this.images);
-    let name = this.course.course_name.split(' ').join('_');
-
-    this.restApi.postImgMethod('addTrainingCourseImg/'+name,formData).subscribe((data:any) => {
-      this.course.course_image_url = data.filepath;
-      this.restApi.postMethod('addLMSCourse',this.course).subscribe((resp:any) => {
-        this.fetchCourse();
-        this.images = '';
-        alert(resp.message);
-        this.resetForm();
+      this.restApi.postImgMethod('addTrainingCourseImg/'+name,formData).subscribe((data:any) => {
+        this.course.course_image_url = data.filepath;
+        this.addCourseData();
       })
+    }else{
+      this.course.course_image_url = '';
+      this.addCourseData();
+    }
+  }
+
+  addCourseData() {
+    this.restApi.postMethod('addLMSCourse',this.course).subscribe((resp:any) => {
+      this.fetchCourse();
+      this.images = '';
+      alert(resp.message);
+      this.resetForm();
     })
   }
 

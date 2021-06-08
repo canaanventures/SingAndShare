@@ -24,7 +24,7 @@
         </div>
         <div class='row' *ngIf='originalfilter.length == 0'>
             <div class='col-md-12 p-0'>
-                <h4 id='report_chart_msg'>No Data to be displayed</h4>
+                <h3 class='chart_msg'>No Data to be displayed</h3>
             </div>
         </div>
         <div class='row' *ngIf='originalfilter.length > 0'>
@@ -76,7 +76,7 @@
 
                     <tr *ngIf='userlist.length == 0 && originalfilter.length > 0'>
                         <td colspan='8'>
-                            <h3 class='matched-msg'>No Match Found</h3>
+                            <h3 class='chart_msg'>No Match Found</h3>
                         </td>
                     </tr>
 

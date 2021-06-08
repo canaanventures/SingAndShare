@@ -28,19 +28,27 @@ export class TrainingCategoryComponent implements OnInit {
 
   addCategory(){
     this.category.created_by = this.tk.user_id;
+    if(this.images != ''){
+      const formData = new FormData();
+      formData.append('image', this.images);
+      let name = this.category.category_name.split(' ').join('_');
 
-    const formData = new FormData();
-    formData.append('image', this.images);
-    let name = this.category.category_name.split(' ').join('_');
-
-    this.restApi.postImgMethod('addTrainingCatImg/'+name,formData).subscribe((data:any) => {
-      this.category.category_image_url = data.filepath;
-      this.restApi.postMethod('addLMSCategory',this.category).subscribe((resp:any) => {
-        this.fetchCategory();
-        this.images = '';
-        alert(resp.message);
-        this.resetForm();
+      this.restApi.postImgMethod('addTrainingCatImg/'+name,formData).subscribe((data:any) => {
+        this.category.category_image_url = data.filepath;
+        this.addCategoryData();
       })
+    }else{
+      this.category.category_image_url = '';
+      this.addCategoryData();
+    }
+  }
+
+  addCategoryData(){
+    this.restApi.postMethod('addLMSCategory',this.category).subscribe((resp:any) => {
+      this.fetchCategory();
+      this.images = '';
+      alert(resp.message);
+      this.resetForm();
     })
   }
 
