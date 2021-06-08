@@ -19,3 +19,7 @@
 .checlist-card-parent{padding:0 20px;margin-bottom:20px}
 
 /* .form-control .ng-touched .ng-invalid{border:2px solid red !important;} */
+
+.error_text{
+    color:red;
+}

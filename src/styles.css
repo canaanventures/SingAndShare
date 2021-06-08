@@ -1773,6 +1773,6 @@ label{font-weight:500!important;}
 .form-check-input:checked{background-color: #1ddba5;border-color: #1dc9ca;}
 .edit-modal-open .modal{overflow-y:auto;}
 
-.ng-invalid.ng-touched {
+.form-control.ng-invalid.ng-touched {
   border:1px solid red;
-}
+} 

@@ -10,3 +10,7 @@
 #galleryModal{overflow-y:auto;}
 #preview_gallery_img{padding-right:0;}
 .icon-danger .action-img-div img{opacity:0.5;pointer-events: none;}
+
+.error_text{
+    color:red;
+}

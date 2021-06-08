@@ -47,6 +47,8 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  addUserdetails:any;
+
   addUser(){
     var obj = {
       "first_name":(<HTMLInputElement>document.getElementById('mentee_first_name')).value,
@@ -57,6 +59,7 @@ export class UsersComponent implements OnInit {
       "role_id": (<HTMLInputElement>document.getElementById('mentee_user_type')).value,
       "parent_id":this.tk.user_id
     }
+    this.addUserdetails = obj
 
     if(this.role_nme == 'Admin'){
       obj.srs_id = this.srs_name;
