@@ -110,7 +110,7 @@
                     <form id="upload_form" class='row' enctype="multipart/form-data">
                         <div class='col-md-6'>
                             <div class='form-group'>
-                                <label for='event_image'>Upload Event Image</label>
+                                <label for='event_image'>Upload Event Image<span style="color: red;">*</span></label>
                                 <input type='file' id='event_image' class='form-control' name='event_image' (change)='selectImage($event);' [(ngModel)]='addevent.imgurl'
                                 #imgurl= 'ngModel' required />
                                 <div class="error_msg"

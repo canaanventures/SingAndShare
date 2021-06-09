@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as CryptoJS from 'crypto-js';
 import jwt_decode from "jwt-decode";
+import { User} from '../user.interface'
 
 @Component({
   selector: 'app-users',
@@ -33,6 +34,7 @@ export class UsersComponent implements OnInit {
     this.fetchRole();
     this.tk = jwt_decode(sessionStorage.getItem('user_token'));
     this.role_nme = this.tk.role_name;
+   
   }
 
   changeStatus(event,id){
@@ -47,7 +49,8 @@ export class UsersComponent implements OnInit {
     })
   }
  
-  addUserDetails:any=[];
+  addUserDetails:any={};
+  data;
 
   addUser(){
     var obj = {
@@ -59,14 +62,20 @@ export class UsersComponent implements OnInit {
       "role_id": (<HTMLInputElement>document.getElementById('mentee_user_type')).value,
       "parent_id":this.tk.user_id
     }
+    //console.log("i am obj"+JSON.stringify(obj))
 
-    this.addUserDetails['first_name'] = obj.first_name;
-    this.addUserDetails['last_name'] = obj.first_name;
-    this.addUserDetails['email_id'] = obj.email_id;
-    this.addUserDetails['mentor_email_id'] = obj.mentor_email_id;
-    this.addUserDetails['srs_id'] = obj.srs_id;
-    this.addUserDetails['role_id'] = obj.role_id;
-    this.addUserDetails['parent_id'] = obj.parent_id;
+   // this.addUserDetails.push(obj)
+    
+
+    // this.addUserDetails['first_name'] = obj.first_name;
+    // this.addUserDetails['last_name'] = obj.first_name;
+    // this.addUserDetails['email_id'] = obj.email_id;
+    // this.addUserDetails['mentor_email_id'] = obj.mentor_email_id;
+    // this.addUserDetails['srs_id'] = obj.srs_id;
+    // this.addUserDetails['role_id'] = obj.role_id;
+    // this.addUserDetails['parent_id'] = obj.parent_id;
+
+    console.log("this.addUserDetails================"+this.addUserDetails)
 
     
 

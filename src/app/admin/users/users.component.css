@@ -106,3 +106,15 @@
 .star01 .checkbox {
     padding-left: 0px;
 }
+
+.error_text{
+    color:red;
+}
+
+.error_msg{
+   margin-bottom: -20px;
+}
+ 
+.form-control.ng-invalid.ng-touched {
+    border:1px solid red;
+  } 
