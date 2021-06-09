@@ -11,37 +11,68 @@
                                 <div class='form-group'>
                                     <img [src]='imageToShow' alt="Profile Image" class="img-fluid rounded-circle mb-2" *ngIf='imageToShow' />
                                     <img src='../../../assets/img/lesson.png' alt="Profile Image" class="img-fluid rounded-circle mb-2" *ngIf='!imageToShow' />
-                                    <input type="file" name='blog_image' class="form-control custom-file-input" id="blog-image" (change)='selectImage($event)' />
+                                    <input type="file" name='blog_image' class="form-control custom-file-input" (change)='selectImage($event)'
+                                    [(ngModel)]="lesson.lesson_image_url" #lesson_image_url='ngModel' name="lesson_image_url" required />
+                                    <div class="error_msg"
+                                        *ngIf="lesson_image_url.touched && lesson_image_url.invalid">
+                                        <div *ngIf="lesson_image_url.errors.required">
+                                            <small class="error_text"> Lesson Image is required</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class='col-md-12'>
                                 <div class='form-group'>
-                                    <label for='category_name'>Category Name</label>
-                                    <select class='form-control' id='category_name' [(ngModel)]='lesson.category_id'>
+                                    <label for='category_name'>Category Name <span style="color: red;">*</span></label>
+                                    <select class='form-control' id='category_name' [(ngModel)]='lesson.category_id' #category_id="ngModel" name="category_id" required >
                                         <option value=''>Select Category Name</option>
                                         <option value='{{list.row_id}}' *ngFor='let list of catlist'>{{list.category_name}}</option>
                                     </select>
+                                    <div class="error_msg"
+                                        *ngIf="category_id.touched && category_id.invalid">
+                                        <div *ngIf="category_id.errors.required">
+                                            <small class="error_text"> Category Name is required</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class='col-md-12'>
                                 <div class='form-group'>
-                                    <label for='course_id'>Course Name</label>
-                                    <select class='form-control' id='course_id' [(ngModel)]='lesson.course_id'>
+                                    <label for='course_id'>Course Name <span style="color: red;">*</span></label>
+                                    <select class='form-control' id='course_id' [(ngModel)]='lesson.course_id'  #course_id="ngModel" name="course_id" required >
                                         <option value=''>Select Course Name</option>
                                         <option value='{{list.row_id}}' *ngFor='let list of courselist'>{{list.course_name}}</option>
                                     </select>
+                                    <div class="error_msg"
+                                    *ngIf="course_id.touched && course_id.invalid">
+                                    <div *ngIf="course_id.errors.required">
+                                        <small class="error_text"> Course Name is required</small>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <div class='col-md-12'>
                                 <div class='form-group'>
-                                    <label for='lesson_name'>Lesson Name</label>
-                                    <input type='text' class='form-control' placeholder='Select Lesson Name' id='lesson_name' [(ngModel)]='lesson.lesson_name' />
+                                    <label for='lesson_name'>Lesson Name <span style="color: red;">*</span></label>
+                                    <input type='text' class='form-control' placeholder='Select Lesson Name' id='lesson_name' [(ngModel)]='lesson.lesson_name' #lesson_name="ngModel" name="lesson_name" required/>
+                                    <div class="error_msg"
+                                    *ngIf="lesson_name.touched && lesson_name.invalid">
+                                    <div *ngIf="lesson_name.errors.required">
+                                        <small class="error_text"> Lesson Name is required</small>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <div class='col-md-12'>
                                 <div class='form-group'>
-                                    <label for='description'>Description</label>
-                                    <textarea class='form-control' rows='5' id='description' placeholder="Lesson Description" [(ngModel)]='lesson.lesson_description'></textarea>
+                                    <label for='description'>Description <span style="color: red;">*</span></label>
+                                    <textarea class='form-control' rows='5' id='description' placeholder="Lesson Description" [(ngModel)]='lesson.lesson_description' #lesson_description="ngModel" name="lesson_description" required></textarea>
+                                    <div class="error_msg"
+                                    *ngIf="lesson_description.touched && lesson_description.invalid">
+                                    <div *ngIf="lesson_description.errors.required">
+                                        <small class="error_text"> Description is required</small>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <div class='col-md-12 mt-3'>

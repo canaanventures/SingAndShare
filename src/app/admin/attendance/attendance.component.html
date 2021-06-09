@@ -9,39 +9,75 @@
                         <div class='row px-4'>
                             <div class='col-md-12'>
                                 <div class='form-group'>
-                                    <label for='attend_sns_name'>SNS Name</label>
-                                    <select class='form-control' id='attend_sns_name' [(ngModel)]='attendancedetails.srs_id' disabled>
+                                    <label for='attend_sns_name'>SNS Name<span style="color: red;">*</span></label>
+                                    <select class='form-control' id='attend_sns_name' [(ngModel)]='attendancedetails.srs_id' name="srs_id" #srs_id= 'ngModel' required disabled>
                                         <option value=''>Select the Name</option>
                                         <option [value]='list.srs_id' *ngFor="let list of srslist">{{list.srs_name}}</option>
                                     </select>
+                                    <div class="error_msg"
+                                *ngIf="srs_id.touched && srs_id.invalid">
+                                <div *ngIf="srs_id.errors.required">
+                                    <small class="error_text" >SNS Name is required</small> 
+                                </div>
+                            </div>
                                 </div>
                             </div>
                             <div class='col-md-12'>
                                 <div class='form-group'>
-                                    <label for='meeting_date'>Meeting Date</label>
-                                    <input type='date' class='form-control' placeholder='Select Meeting Date' id='meeting_date' [(ngModel)]='attendancedetails.meeting_date' >
+                                    <label for='meeting_date'>Meeting Date<span style="color: red;">*</span></label>
+                                    <input type='date' class='form-control' placeholder='Select Meeting Date' id='meeting_date' [(ngModel)]='attendancedetails.meeting_date' name="meeting_date" #meeting_date= 'ngModel' required >
+                                    <div class="error_msg"
+                                    *ngIf="meeting_date.touched && meeting_date.invalid">
+                                    <div *ngIf="meeting_date.errors.required">
+                                        <small class="error_text" >Meeting Date is required</small> 
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <div class='col-md-12'>
                                 <div class='form-group'>
-                                    <label for='total_members'>Total Members</label>
-                                    <input type='text' class='form-control' placeholder='No. of People Attended' id='total_members' [(ngModel)]='attendancedetails.total_members' readonly>
+                                    <label for='total_members'>Total Members<span style="color: red;">*</span></label>
+                                    <input type='text' class='form-control' placeholder='No. of People Attended' id='total_members' [(ngModel)]='attendancedetails.total_members'  name="total_members" #total_members= 'ngModel' required readonly>
+                                    <div class="error_msg"
+                                    *ngIf="total_members.touched && total_members.invalid">
+                                    <div *ngIf="total_members.errors.required">
+                                        <small class="error_text" >Total Members is required</small> 
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <div class='col-md-12 p-0'>
                                 <div class='form-group col-md-6'>
-                                    <label for='presentees'>Presentees</label>
-                                    <input type='text' class='form-control' placeholder='No. of Presentees' id='presentees' [(ngModel)]='attendancedetails.presentees' readonly>
+                                    <label for='presentees'>Presentees<span style="color: red;">*</span></label>
+                                    <input type='text' class='form-control' placeholder='No. of Presentees' id='presentees' [(ngModel)]='attendancedetails.presentees' name="presentees" #presentees= 'ngModel' required readonly>
+                                    <div class="error_msg"
+                                    *ngIf="presentees.touched && presentees.invalid">
+                                    <div *ngIf="presentees.errors.required">
+                                        <small class="error_text" >Presentees is required</small> 
+                                    </div>
+                                </div>
                                 </div>
                                 <div class='form-group col-md-6'>
-                                    <label for='absentees'>Absentees</label>
-                                    <input type='text' class='form-control' placeholder='No. of Absentees' id='absentees' [(ngModel)]='attendancedetails.absentees' readonly>
+                                    <label for='absentees'>Absentees<span style="color: red;">*</span></label>
+                                    <input type='text' class='form-control' placeholder='No. of Absentees' id='absentees' [(ngModel)]='attendancedetails.absentees' name="absentees" #absentees= 'ngModel' required readonly>
+                                    <div class="error_msg"
+                                    *ngIf="absentees.touched && absentees.invalid">
+                                    <div *ngIf="absentees.errors.required">
+                                        <small class="error_text" >Absentees is required</small> 
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <div class='col-md-12'>
                                 <div class='form-group'>
-                                    <label for='new_people_attended'>No. of new Attendes</label>
-                                    <input type='text' class='form-control' placeholder='No. of New People Attended' id='new_people_attended' [(ngModel)]='attendancedetails.new_attendees'>
+                                    <label for='new_people_attended'>No. of new Attendes<span style="color: red;">*</span></label>
+                                    <input type='text' class='form-control' placeholder='No. of New People Attended' id='new_people_attended' [(ngModel)]='attendancedetails.new_attendees' name="new_attendees" #new_attendees= 'ngModel' required>
+                                    <div class="error_msg"
+                                    *ngIf="new_attendees.touched && new_attendees.invalid">
+                                    <div *ngIf="new_attendees.errors.required">
+                                        <small class="error_text" >No. of new Attendes is required</small> 
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <div class='col-md-12 mt-3'>

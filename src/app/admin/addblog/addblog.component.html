@@ -83,31 +83,63 @@
                         <input type='hidden' name='blog_id' id='blog-id' [value]=edit_id />
                         <img [src]='imageToShow' class='col-md-4'  *ngIf='edit' />
                         <div class="form-group col-md-4">
-                            <label for="title">Title</label>
-                            <input type="text" name='blog_title' class="form-control" id='title' value="" placeholder='Enter the title of the blog' />
+                            <label for="title">Title<span style="color: red;">*</span></label>
+                            <input type="text" name='title' class="form-control" id='title' value="" placeholder='Enter the title of the blog' [(ngModel)]='editblog.title'  #title='ngModel' required />
+                            <div class="error_msg"
+                            *ngIf="title.touched && title.invalid">
+                            <div *ngIf="title.errors.required">
+                                <small class="error_text" >Blog Title is required</small> 
+                            </div>
+                        </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="category">Category</label>
-                            <select class="form-control" name='category' id='category'>
+                            <label for="category">Category<span style="color: red;">*</span></label>
+                            <select class="form-control" name='category' id='category' [(ngModel)]='editblog.category'  #category='ngModel' required >
                                 <option value=''>Select Blog Category</option>
                                 <option [value]='list.category_id' *ngFor='let list of blogCatlist'>{{list.category_name}}</option>
                             </select>
+                            <div class="error_msg"
+                            *ngIf="category.touched && category.invalid">
+                            <div *ngIf="category.errors.required">
+                                <small class="error_text" >Blog Category is required</small> 
+                            </div>
+                        </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="blog-image">Upload Image</label>
-                            <input type="file" name='blog_image' class="form-control custom-file-input" id="blog-image" (change)='selectImage($event)' />
+                            <label for="blog-image">Upload Image<span style="color: red;">*</span></label>
+                            <input type="file" name='blog_image' class="form-control custom-file-input" id="blog-image" (change)='selectImage($event)' [(ngModel)]='editblog.imgurl'  #imgurl='ngModel' required />
+                            <div class="error_msg"
+                            *ngIf="imgurl.touched && imgurl.invalid">
+                            <div *ngIf="imgurl.errors.required">
+                                <small class="error_text" >Blog Image is required</small> 
+                            </div>
+                        </div>
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="description">Description</label>
-                            <angular-editor id='description' name='blog_description' [config]="editorConfig" [(ngModel)]="htmlContent"></angular-editor>
+                            <label for="description">Description<span style="color: red;">*</span></label>
+                            <angular-editor id='description' name='description' [config]="editorConfig"  [(ngModel)]='editblog.description'  #description='ngModel' required></angular-editor>
+                            <!-- [(ngModel)]="htmlContent" -->
+                            <div class="error_msg"
+                            *ngIf="description.touched && description.invalid">
+                            <div *ngIf="description.errors.required">
+                                <small class="error_text" > Blog Description is required</small> 
+                            </div>
+                        </div>
                         </div>
                         <div class="form-group col-md-4" *ngIf='edit && access.blog_approve_access == 1'>
                             <label for="approval_status">Approval Status</label>
-                            <select id='approval_status' name='approval_status' class='form-control'>
+                            <select id='approval_status' name='approval_status' class='form-control'
+                            [(ngModel)]='editblog.approval_status'  #approval_status='ngModel' required>
                                 <option value=''>Select Status</option>
                                 <option value='Y'>Approve</option>
                                 <option value='N'>Disapprove</option>
                             </select>
+                            <div class="error_msg"
+                            *ngIf="approval_status.touched && approval_status.invalid">
+                            <div *ngIf="approval_status.errors.required">
+                                <small class="error_text" >Approval Status is required</small> 
+                            </div>
+                        </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label for='updateBlog' *ngIf='edit'></label>
@@ -129,8 +161,14 @@
                 <div class='px-4'>
                     <div class='col-md-12'>
                         <div class='form-group'>
-                            <label for='blog_category_name'>Blog Category Name</label>
-                            <input type='text' id='blog_category_name' class='form-control' placeholder='Add Blog Category Name' [(ngModel)]='addcat.category_name' />
+                            <label for='blog_category_name'>Blog Category Name<span style="color: red;">*</span></label>
+                            <input type='text' id='blog_category_name' class='form-control' placeholder='Add Blog Category Name' [(ngModel)]='addcat.category_name' name="category_name" #category_name='ngModel' required/>
+                            <div class="error_msg"
+                            *ngIf="category_name.touched && category_name.invalid">
+                            <div *ngIf="category_name.errors.required">
+                                <small class="error_text" >Blog Category Name is required</small> 
+                            </div>
+                        </div>
                         </div>
                     </div>
                     <div class='col-md-6'>

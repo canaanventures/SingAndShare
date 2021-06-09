@@ -5,3 +5,4 @@
 .action-img-div{display:inline-block;}
 .switch{margin-left:20px;}
 .form-switch .form-check-input:focus,#blog-image:focus{outline: 0; box-shadow: none;}
+.error_text{ color:red;}
