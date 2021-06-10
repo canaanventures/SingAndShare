@@ -2,15 +2,27 @@
     <form action="forms/contact.php" method="post" role="form" class="php-email-form">
         <div class="row">
             <div class="form-group col-lg-6">
-                <input type="text" name="name" class="form-control" id="visitor_name" placeholder="Your Name">
+                <input type="text" name="visitor_name" class="form-control" id="visitor_name" placeholder="Your Name" [(ngModel)]="visitorsdetails.visitor_name" #visitor_name="ngModel" required>
+                <div class="error_msg"
+                *ngIf="visitor_name.touched && visitor_name.invalid">
+                <div *ngIf="visitor_name.errors.required">
+                    <small class="error_text" >Name is required</small> 
+                </div>
+            </div>
             </div>
             <div class="form-group col-lg-6">
-                <input type="email" class="form-control" name="email" id="visitor_email_id"  placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                <input type="email" class="form-control" name="visitor_email_id" id="visitor_email_id"  placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" [(ngModel)]="visitorsdetails.visitor_email_id" #visitor_email_id="ngModel" required />
+                <div class="error_msg"
+                *ngIf="visitor_email_id.touched && visitor_email_id.invalid">
+                <div *ngIf="visitor_email_id.errors.required">
+                    <small class="error_text" >Email Id is required</small> 
+                </div>
+            </div>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-lg-6">
-                <select class="form-control" id='visitor_subject' required>
+                <select class="form-control" name="visitor_subject" id='visitor_subject' [(ngModel)]="visitorsdetails.visitor_subject" #visitor_subject="ngModel" required>
                     <option value="">--I want to--</option>
                     <option>attend fellowship/events</option>
                     <option>join a Bible study group</option>
@@ -18,13 +30,31 @@
                     <option>Share prayer point</option>
                     <option>Share praise point</option>
                 </select>
+                <div class="error_msg"
+                *ngIf="visitor_subject.touched && visitor_subject.invalid">
+                <div *ngIf="visitor_subject.errors.required">
+                    <small class="error_text" >Subject is required</small> 
+                </div>
+            </div>
             </div>
             <div class="form-group col-lg-6">
-                <input type="text" name="name" class="form-control" id="visitor_contact_number" placeholder="Your Phone" data-rule="minlen:10" data-msg="Phone number must have 10 chars">
+                <input type="text" name="visitor_contact_number" class="form-control" id="visitor_contact_number" placeholder="Your Phone" data-rule="minlen:10" data-msg="Phone number must have 10 chars" [(ngModel)]="visitorsdetails.visitor_contact_number" #visitor_contact_number="ngModel" required />
+                <div class="error_msg"
+                *ngIf="visitor_contact_number.touched && visitor_contact_number.invalid">
+                <div *ngIf="visitor_contact_number.errors.required">
+                    <small class="error_text" >Phone Number is required</small> 
+                </div>
+            </div>
             </div>
         </div>
         <div class="form-group">
-            <textarea class="form-control" name="message" rows="5" id='message' placeholder="Message" required></textarea>
+            <textarea class="form-control" name="message" rows="5" id='message' placeholder="Message" [(ngModel)]="visitorsdetails.message" #message="ngModel" required></textarea>
+            <div class="error_msg"
+                *ngIf="message.touched && message.invalid">
+                <div *ngIf="message.errors.required">
+                    <small class="error_text" >Message is required</small> 
+                </div>
+            </div>
         </div>
         <div class="text-center">
             <button type="submit" (click)='visitorDetails($event)'>Send Message</button>

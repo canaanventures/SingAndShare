@@ -1776,3 +1776,5 @@ label{font-weight:500!important;}
 .form-control.ng-invalid.ng-touched {
   border:1px solid red;
 } 
+
+.error_msg{color:red}
