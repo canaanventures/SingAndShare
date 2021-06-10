@@ -2,7 +2,7 @@
     <div class='row'>
         <div class='col-md-3 form-group'>
             <label for='type'>Select Type<span style="color: red;">*</span></label>
-            <select class='form-control' id='type' [(ngModel)]='report.type' #type="ngModel" name="type" required>
+            <select class='form-control' id='type' name="type" [(ngModel)]='report.type' #type='ngModel' required>
                 <option>Select type</option>
                 <option value='attendance'>Attendance</option>
                 <!-- <option value='event'>Event</option> -->
@@ -15,8 +15,7 @@
         </div>
         <div class='col-md-3 form-group'>
             <label for='month'>Select Month<span style="color: red;">*</span></label>
-            <input type='month' id='month' class='form-control' placeholder='Select the Month'
-                [(ngModel)]='report.val' #val="ngModel" name="val" required />
+            <input type='month' id='month' name="val" class='form-control' placeholder='Select the Month' [(ngModel)]='report.val' #val="ngModel"  required />
                 <div class="error_msg" *ngIf="val.touched && val.invalid">
                     <div *ngIf="val.errors.required">
                         <small class="error_text"> Month is required</small>
@@ -96,49 +95,49 @@
                     <tr>
                         <td>
                             <input type='text' class='form-control filter-fld' id='users_name'
-                                [(ngModel)]='filter.users_name' (keyup)="filterList($event,'users_name')"  #users_name="ngModel" name="users_name" required 
+                                [(ngModel)]='filter.users_name' (keyup)="filterList($event,'users_name')" name="users_name" 
                                 placeholder="Your Team member's Name" />
-                                <div class="error_msg" *ngIf="users_name.touched && users_name.invalid">
+                                <!-- <div class="error_msg" *ngIf="users_name.touched && users_name.invalid">
                                     <div *ngIf="users_name.errors.required">
                                         <small class="error_text"> Your Team member's Name is required</small>
                                     </div>
-                                </div>
+                                </div> -->
                         </td>
                         <td>
                             <select id='srs_id' class='form-control filter-fld' [(ngModel)]='filter.srs_id'
-                                (change)="filterList($event,'srs_id')" #srs_id="ngModel" name="srs_id" required >
+                                (change)="filterList($event,'srs_id')" name="srs_id" >
                                 <option value=''>Select the SNS Name<span style="color: red;">*</span></option>
                                 <option value='{{list.srs_id}}' *ngFor='let list of srslist'>{{list.srs_name}}</option>
                             </select>
-                            <div class="error_msg" *ngIf="srs_id.touched && srs_id.invalid">
+                            <!-- <div class="error_msg" *ngIf="srs_id.touched && srs_id.invalid">
                                 <div *ngIf="srs_id.errors.required">
                                     <small class="error_text"> SNS Name is required</small>
                                 </div>
-                            </div>
+                            </div> -->
                         </td>
                         <td>
                             <input type='text' class='form-control filter-fld' id='captain_name'
-                                [(ngModel)]='filter.captain_name' (keyup)="filterList($event,'captain_name')" #captain_name="ngModel" name="captain_name" required
+                                [(ngModel)]='filter.captain_name' (keyup)="filterList($event,'captain_name')"  name="captain_name" 
                                 placeholder="Captain's Name" />
-                                <div class="error_msg" *ngIf="captain_name.touched && captain_name.invalid">
+                                <!-- <div class="error_msg" *ngIf="captain_name.touched && captain_name.invalid">
                                     <div *ngIf="captain_name.errors.required">
                                         <small class="error_text"> Captain's Name is required</small>
                                     </div>
-                                </div>
+                                </div> -->
                         </td>
                         <td>
                             <select id='attendance_status' class='form-control filter-fld'
-                                [(ngModel)]='filter.attendance_status' #attendance_status="ngModel" name="attendance_status" required
+                                [(ngModel)]='filter.attendance_status' name="attendance_status" 
                                 (change)="filterList($event,'attendance_status')">
                                 <option value=''>Attendance Status</option>
                                 <option value='P'>Present</option>
                                 <option value='A'>Absent</option>
                             </select>
-                            <div class="error_msg" *ngIf="attendance_status.touched && attendance_status.invalid">
+                            <!-- <div class="error_msg" *ngIf="attendance_status.touched && attendance_status.invalid">
                                 <div *ngIf="attendance_status.errors.required">
                                     <small class="error_text"> Attendance Status is required</small>
                                 </div>
-                            </div>
+                            </div> -->
                         </td>
                         <td> </td>
                     </tr>

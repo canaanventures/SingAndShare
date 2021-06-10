@@ -30,56 +30,101 @@
                                 <div class='row px-4'>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
-                                            <label for='profile_first_name'>First name</label>
-                                            <input type='text' class='form-control' placeholder='First Name' id='profile_first_name' [value]='userprofile.data[0].user_first_name' />
+                                            <label for='profile_first_name'>First name<span style="color: red;">*</span></label>
+                                            <input type='text' class='form-control' placeholder='First Name' id='profile_first_name' name='profile_first_name' [value]='userprofile.data[0].user_first_name' [(ngModel)]="saveprofile.profile_first_name" #profile_first_name='ngModel' required />
+                                            <div class="error_msg" *ngIf="profile_first_name.touched && profile_first_name.invalid">
+                                                <div *ngIf="profile_first_name.errors.required">
+                                                    <small class="error_text"> First Name is required</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
-                                            <label for='profile_last_name'>Last name</label>
-                                            <input type='text' class='form-control' placeholder='Last Name' id='profile_last_name' [value]='userprofile.data[0].user_last_name' />
+                                            <label for='profile_last_name'>Last name<span style="color: red;">*</span></label>
+                                            <input type='text' class='form-control' placeholder='Last Name' id='profile_last_name' name="profile_last_name" [value]='userprofile.data[0].user_last_name' [(ngModel)]="saveprofile.profile_last_name" #profile_last_name='ngModel' required/>
+                                            <div class="error_msg" *ngIf="profile_last_name.touched && profile_last_name.invalid">
+                                                <div *ngIf="profile_last_name.errors.required">
+                                                    <small class="error_text"> Last Name is required</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
-                                            <label for='profile_email_id'>Email ID</label>
-                                            <input type='text' class='form-control' placeholder='Email ID' id='profile_email_id' [value]='userprofile.data[0].user_email_id' readonly />
+                                            <label for='profile_email_id'>Email ID<span style="color: red;">*</span></label>
+                                            <input type='text' class='form-control' placeholder='Email ID' id='profile_email_id' name="profile_email_id" [value]='userprofile.data[0].user_email_id'[(ngModel)]="saveprofile.profile_email_id" #profile_email_id='ngModel' required readonly />
+                                            <div class="error_msg" *ngIf="profile_email_id.touched && profile_email_id.invalid">
+                                                <div *ngIf="profile_email_id.errors.required">
+                                                    <small class="error_text"> Email Id is required</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
-                                            <label for='profile_contact_number'>Contact Number</label>
-                                            <input type='text' class='form-control' placeholder='Contact Number' id='profile_contact_number' [value]='userprofile.data[0].user_contact_number' />
+                                            <label for='profile_contact_number'>Contact Number<span style="color: red;">*</span></label>
+                                            <input type='text' class='form-control' placeholder='Contact Number' id='profile_contact_number' [value]='userprofile.data[0].user_contact_number' [(ngModel)]="saveprofile.profile_contact_number" #profile_contact_number='ngModel' required />
+                                            <div class="error_msg" *ngIf="profile_contact_number.touched && profile_contact_number.invalid">
+                                                <div *ngIf="profile_contact_number.errors.required">
+                                                    <small class="error_text"> Contact Number is required</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class='col-md-12'>
                                         <div class='form-group'>
-                                            <label for='profile_address'>Address</label>
-                                            <textarea type='text' class='form-control' id='profile_address' placeholder='Address' rows='3' [value]='userprofile.data[0].user_address'></textarea>
+                                            <label for='profile_address'>Address<span style="color: red;">*</span></label>
+                                            <textarea type='text' class='form-control' id='profile_address' name="profile_address" placeholder='Address' rows='3' [value]='userprofile.data[0].user_address' [(ngModel)]="saveprofile.profile_address" #profile_address='ngModel' required></textarea>
+                                            <div class="error_msg" *ngIf="profile_address.touched && profile_address.invalid">
+                                                <div *ngIf="profile_address.errors.required">
+                                                    <small class="error_text"> Address is required</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
-                                            <label for='profile_pincode'>Pincode</label>
-                                            <input type='text' class='form-control' placeholder='Pincode' id='profile_pincode' [value]='userprofile.data[0].user_pincode' />
+                                            <label for='profile_pincode'>Pincode<span style="color: red;">*</span></label>
+                                            <input type='text' class='form-control' placeholder='Pincode' id='profile_pincode' name="profile_pincode" [value]='userprofile.data[0].user_pincode' [(ngModel)]="saveprofile.profile_pincode" #profile_pincode='ngModel' required />
+                                            <div class="error_msg" *ngIf="profile_pincode.touched && profile_pincode.invalid">
+                                                <div *ngIf="profile_pincode.errors.required">
+                                                    <small class="error_text"> Pincode is required</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
-                                            <label for='profile_city'>City</label>
-                                            <input type='text' class='form-control' placeholder='City' id='profile_city' [value]='userprofile.data[0].user_city' />
+                                            <label for='profile_city'>City<span style="color: red;">*</span></label>
+                                            <input type='text' class='form-control' placeholder='City' id='profile_city' name="profile_city" [value]='userprofile.data[0].user_city' [(ngModel)]="saveprofile.profile_city" #profile_city='ngModel' required />
+                                            <div class="error_msg" *ngIf="profile_city.touched && profile_city.invalid">
+                                                <div *ngIf="profile_city.errors.required">
+                                                    <small class="error_text"> Last Name is required</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
-                                            <label for='profile_state'>State</label>
-                                            <input type='text' class='form-control' placeholder='State' id='profile_state' [value]='userprofile.data[0].user_state' />
+                                            <label for='profile_state'>State<span style="color: red;">*</span></label>
+                                            <input type='text' class='form-control' placeholder='State' id='profile_state' name="profile_state" [value]='userprofile.data[0].user_state' [(ngModel)]="saveprofile.profile_state" #profile_state='ngModel' required />
+                                            <div class="error_msg" *ngIf="profile_state.touched && profile_state.invalid">
+                                                <div *ngIf="profile_state.errors.required">
+                                                    <small class="error_text"> Last Name is required</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
-                                            <label for='profile_role'>Your Role</label>
-                                            <input type='text' class='form-control' placeholder='Your Role' id='profile_role' [value]='userprofile.data[0].role_name' readonly />
+                                            <label for='profile_role'>Your Role<span style="color: red;">*</span></label>
+                                            <input type='text' class='form-control' placeholder='Your Role' id='profile_role' name="profile_role" [value]='userprofile.data[0].role_name' [(ngModel)]="saveprofile.profile_role" #profile_role='ngModel' required readonly />
+                                            <div class="error_msg" *ngIf="profile_role.touched && profile_role.invalid">
+                                                <div *ngIf="profile_role.errors.required">
+                                                    <small class="error_text"> Last Name is required</small>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class='col-md-12 mt-3'>
@@ -90,24 +135,36 @@
                                 </div>
 
                                 <hr class='mb-0' />
-                                <h5 class='mb-3 card-header p-4'>Change Password</h5>
+                                <h5 class='mb-3 card-header p-4'>Change Password<span style="color: red;">*</span></h5>
                                 <div class='row px-4'>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
                                             <label for='profile_current_password'>Current Password</label>
-                                            <input type='text' class='form-control' placeholder='Enter your current Password' id='profile_current_password' />
+                                            <input type='text' class='form-control' placeholder='Enter your current Password' id='profile_current_password' name="profile_current_password" ngModel #profile_current_password='ngModel' required/>
+                                            <div class="error_msg"
+                                                  *ngIf="profile_current_password.invalid && profile_current_password.touched">
+                                        <small class="error_text"> Current Password is required</small>
+                                </div>
                                         </div>
                                     </div>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
-                                            <label for='profile_new_password'>New Password</label>
-                                            <input type='text' class='form-control' placeholder='Enter your new Password' id='profile_new_password' />
+                                            <label for='profile_new_password'>New Password<span style="color: red;">*</span></label>
+                                            <input type='text' class='form-control' placeholder='Enter your new Password' id='profile_new_password' name="profile_new_password" ngModel #profile_new_password='ngModel' required />
+                                            <div class="error_msg"
+                                            *ngIf="profile_new_password.invalid && profile_new_password.touched">
+                                  <small class="error_text"> Current Password is required</small>
+                          </div>
                                         </div>
                                     </div>
                                     <div class='col-md-6'>
                                         <div class='form-group'>
-                                            <label for='profile_confirm_password'>Confirm New Password</label>
-                                            <input type='text' class='form-control' placeholder='Confirm your new Password' id='profile_confirm_password' />
+                                            <label for='profile_confirm_password'>Confirm New Password<span style="color: red;">*</span></label>
+                                            <input type='text' class='form-control' placeholder='Confirm your new Password' id='profile_confirm_password' name="profile_confirm_password" ngModel #profile_confirm_password='ngModel' required/>
+                                            <div class="error_msg"
+                                            *ngIf="profile_confirm_password.invalid && profile_confirm_password.touched">
+                                  <small class="error_text"> Current Password is required</small>
+                          </div>
                                         </div>
                                     </div>
                                     <div class='col-md-6'>

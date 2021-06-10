@@ -4,7 +4,7 @@
             <div class='col-md-12 p-0 mt-3'>
                 <h4 id='report_chart_msg' class='col-md-2'> Mentees Report </h4>
                 <div class='form-group col-md-2'>
-                    <label for='from_date'>From Date</label>
+                    <label for='from_date'>From Date<span style="color: red;">*</span></label>
                     <input type='datetime-local' id='from_date' name='from_date' class='form-control' [(ngModel)]='filter.from_date' #from_date='ngModel' placeholder='From Date' (change)='fromDateChange();' required/>
                     <div class="error_msg" *ngIf="from_date.touched && from_date.invalid">
                         <div *ngIf="from_date.errors.required">
@@ -13,10 +13,10 @@
                     </div>
                 </div>
                 <div class='form-group col-md-2'>
-                    <label for='to_date'>To Date</label>
+                    <label for='to_date'>To Date<span style="color: red;">*</span></label>
                     <input type='datetime-local' id='to_date' name='to_date' class='form-control' [(ngModel)]='filter.to_date' #to_date="ngModel" placeholder='To Date' required/>
-                    <div class="error_msg" *ngIf="from_date.touched && from_date.invalid">
-                        <div *ngIf="from_date.errors.required">
+                    <div class="error_msg" *ngIf="to_date.touched && to_date.invalid">
+                        <div *ngIf="to_date.errors.required">
                             <small class="error_text"> To date is required</small>
                         </div>
                     </div>
@@ -51,13 +51,28 @@
                 <tbody>
                     <tr> 
                         <td>
-                            <input type='text' class='form-control filter-fld' id='mentee_name' name="mentee_name" [(ngModel)]='filter.mentee_name' #mentee_name="ngModel"(keyup)="filterList($event,'mentee_name')" placeholder='Mentee Name' required/>
+                            <input type='text' class='form-control filter-fld' id='mentee_name' name="mentee_name" [(ngModel)]='filter.mentee_name' (keyup)="filterList($event,'mentee_name')" placeholder='Mentee Name' />
+                            <!-- <div class="error_msg" *ngIf="mentee_name.touched && mentee_name.invalid">
+                                <div *ngIf="mentee_name.errors.required">
+                                    <small class="error_text"> Mentee Name is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td>
-                            <input type='text' id='user_contact_number' class='form-control filter-fld' [(ngModel)]='filter.user_contact_number' (keyup)="filterList($event,'user_contact_number')" placeholder='Contact Number' />
+                            <input type='text' id='user_contact_number'  name='user_contact_number' class='form-control filter-fld' [(ngModel)]='filter.user_contact_number' (keyup)="filterList($event,'user_contact_number')" placeholder='Contact Number'/>
+                            <!-- <div class="error_msg" *ngIf="user_contact_number.touched && user_contact_number.invalid">
+                                <div *ngIf="user_contact_number.errors.required">
+                                    <small class="error_text"> Contact Number is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td>
-                            <input type='text' id='user_email_id' class='form-control filter-fld' [(ngModel)]='filter.user_email_id' placeholder='Email ID' (keyup)="filterList($event,'user_email_id')" />
+                            <input type='text' id='user_email_id' name='user_email_id' class='form-control filter-fld' [(ngModel)]='filter.user_email_id' placeholder='Email ID' (keyup)="filterList($event,'user_email_id')"/>
+                            <!-- <div class="error_msg" *ngIf="user_email_id.touched && user_email_id.invalid">
+                                <div *ngIf="user_email_id.errors.required">
+                                    <small class="error_text"> Email id is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td> </td>
                         <td> </td>

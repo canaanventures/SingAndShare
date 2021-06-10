@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as CryptoJS from 'crypto-js';
 import jwt_decode from "jwt-decode";
-import { User} from '../user.interface'
+//import { User} from '../user.interface'
 
 @Component({
   selector: 'app-users',

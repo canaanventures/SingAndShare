@@ -24,7 +24,7 @@
                             <div class='col-md-12'>
                                 <div class='form-group'>
                                     <label for='category_name'>Category Name <span style="color: red;">*</span></label>
-                                    <input type='text' class='form-control' placeholder='Select Category Name' id='category_name' name='category_name' [(ngModel)]='category.category_name' #category_name='ngModel' />
+                                    <input type='text' class='form-control' placeholder='Select Category Name' id='category_name' name='category_name' [(ngModel)]='category.category_name' #category_name='ngModel' required/>
                                     <div class="error_msg"
                                         *ngIf="category_name.touched && category_name.invalid">
                                         <div *ngIf="category_name.errors.required">

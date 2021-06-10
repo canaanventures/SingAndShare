@@ -164,7 +164,6 @@
                 </h5>
                 <input type='hidden' id='hidden_id' />
                 <div class='row px-4'>
-                    <form name="form" (ngSubmit)="addUser()" #userform="ngForm">
                         <div class='col-md-6'>
                             <div class='form-group'>
                                 <label for='mentee_first_name'>First Name<span style="color: red;">*</span></label>
@@ -188,44 +187,58 @@
                         <div class='col-md-6'>
                             <div class='form-group'>
                                 <label for='mentee_email_id'>Email ID<span style="color: red;">*</span></label>
-                                <input type='text' placeholder='Email ID' class='form-control' id='mentee_email_id' />
+                                <input type='text' placeholder='Email ID' class='form-control' id='mentee_email_id' name="mentee_email_id" ngModel  #mentee_email_id="ngModel" required  />
+                                <div class="error_msg"
+                                *ngIf="mentee_email_id.invalid && mentee_email_id.touched">
+                                        <small class="error_text"> Email Id is required</small>
+                                </div>
                             </div>
                         </div>
                         <div class='col-md-6'>
                             <div class='form-group'>
                                 <label for='mentee_user_type'>User Type<span style="color: red;">*</span></label>
-                                <select class='form-control' id='mentee_user_type'>
-                                    <option value='{{role.role_id}}' *ngFor="let role of userrole.data">
+                                <select class='form-control' id='mentee_user_type' name="mentee_user_type" ngModel  #mentee_user_type="ngModel" required >
+                                    <option value='{{role.role_id}}' *ngFor="let role of userrole.data" >
                                         {{role.role_name}}</option>
                                 </select>
+                                <div class="error_msg"
+                                *ngIf="mentee_user_type.invalid && mentee_user_type.touched">
+                                        <small class="error_text"> User Type is required</small>
+                                </div>
                             </div>
                         </div>
                         <div class='col-md-6' *ngIf='edit'>
                             <div class='form-group'>
                                 <label for='mentor_email_id'>Mentor Email Id<span style="color: red;">*</span></label>
-                                <input type='text' placeholder='Email ID' class='form-control' id='mentor_email_id' />
+                                <input type='text' placeholder='Email ID' class='form-control' id='mentor_email_id' name="mentor_email_id" ngModel  #mentor_email_id="ngModel" required />
+                                <div class="error_msg"
+                                *ngIf="mentor_email_id.invalid && mentor_email_id.touched">
+                                        <small class="error_text"> Mentor Email id is required</small>
+                                </div>
                             </div>
                         </div>
                         <div class='col-md-6' *ngIf='role_nme == "Admin"'>
                             <div class='form-group'>
                                 <label for='sns_name'>SNS Name<span style="color: red;">*</span></label>
-                                <select class='form-control' id='sns_name' [(ngModel)]='srs_name'>
+                                <select class='form-control' id='sns_name' [(ngModel)]='srs_name' name="sns_name" ngModel  #sns_name="ngModel" required>
                                     <option value=''>Select SRS Name</option>
                                     <option value='{{list.srs_id}}' *ngFor="let list of srslist">{{list.srs_name}}
                                     </option>
                                 </select>
+                                <div class="error_msg"
+                                *ngIf="sns_name.invalid && sns_name.touched">
+                                        <small class="error_text"> SRS Name is required</small>
+                                </div>
                             </div>
                         </div>
                         <div class='col-md-6'>
                             <div class='form-group'>
                                 <label for='submit_btn' class='w-100'> &nbsp; </label>
-                                <!-- <button id='submit_btn' *ngIf='!edit' class='btn btn-primary' (click)='addUser()'>Submit</button> -->
                                 <button id='submit_btn' *ngIf='!edit' class='btn btn-primary'>Submit</button>
                                 <button id='update_btn' *ngIf='edit' class='btn btn-primary'
                                     (click)='updateUser()'>Update</button>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

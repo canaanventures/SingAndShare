@@ -4,12 +4,22 @@
             <div class='col-md-12 p-0 mt-3'>
                 <h4 id='report_chart_msg' class='col-md-2'> PCS Report </h4>
                 <div class='form-group col-md-2'>
-                    <label for='from_date'>From Date</label>
-                    <input type='datetime-local' id='from_date' class='form-control' [(ngModel)]='filter.from_date' placeholder='From Date' (change)='fromDateChange();' />
+                    <label for='from_date'>From Date<span style="color: red;">*</span></label>
+                    <input type='datetime-local' id='from_date' name='from_date' class='form-control' [(ngModel)]='filter.from_date' #from_date='ngModel' placeholder='From Date' (change)='fromDateChange();' required/>
+                    <div class="error_msg" *ngIf="from_date.touched && from_date.invalid">
+                        <div *ngIf="from_date.errors.required">
+                            <small class="error_text"> From date is required</small>
+                        </div>
+                    </div>
                 </div>
                 <div class='form-group col-md-2'>
-                    <label for='to_date'>To Date</label>
-                    <input type='datetime-local' id='to_date' class='form-control' [(ngModel)]='filter.to_date' placeholder='To Date' />
+                    <label for='to_date'>To Date<span style="color: red;">*</span></label>
+                    <input type='datetime-local' id='to_date' name='to_date' class='form-control' [(ngModel)]='filter.to_date' #to_date='ngModel' placeholder='To Date' required/>
+                    <div class="error_msg" *ngIf="to_date.touched && to_date.invalid">
+                        <div *ngIf="to_date.errors.required">
+                            <small class="error_text"> To date is required</small>
+                        </div>
+                    </div>
                 </div>
                 <div class='form-group col-md-3'>
                     <label for='test' class='w-100'> &nbsp; </label>
@@ -42,16 +52,26 @@
                 <tbody>
                     <tr> 
                         <td>
-                            <input type='text' class='form-control filter-fld' id='member_name' [(ngModel)]='filter.member_name' (keyup)="filterList($event,'member_name')" placeholder='Your team Member Name' />
+                            <input type='text' class='form-control filter-fld' id='member_name' name='member_name' [(ngModel)]='filter.member_name'  (keyup)="filterList($event,'member_name')" placeholder='Your team Member Name'/>
+                            <!-- <div class="error_msg" *ngIf="member_name.touched && member_name.invalid">
+                                <div *ngIf="member_name.errors.required">
+                                    <small class="error_text"> Member Name is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td>
-                            <select id='current_status' class='form-control filter-fld' [(ngModel)]='filter.current_status' (change)="filterList($event,'current_status')">
+                            <select id='current_status' name='current_status' class='form-control filter-fld' [(ngModel)]='filter.current_status'  (change)="filterList($event,'current_status')" >
                                 <option value=''>Select the Name</option>
                                 <option value='Praying'>Praying</option>
                                 <option value='Sharing Gospel'>Sharing Gospel</option>
                                 <option value='Brought to SNS Fellowship'>Brought to SNS Fellowship</option>
                                 <option value='Started Bible Study'>Started Bible Study</option>
                             </select>
+                            <!-- <div class="error_msg" *ngIf="current_status.touched && current_status.invalid">
+                                <div *ngIf="current_status.errors.required">
+                                    <small class="error_text"> Name is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td> </td> 
                         <td> </td> 
