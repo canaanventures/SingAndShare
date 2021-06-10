@@ -9,3 +9,5 @@
 #btn_resetfilter{color:#fff;margin-left:10px;}
 h4#report_chart_msg{margin: 18px 0 0;font-size: 20px;text-align: left;}
 .chart_msg{text-align: center;margin-top: 45px;color: #de5d47;font-weight: 500;}
+h3#chart_msg{text-align: center;margin-top: 45px;color: #de5d47;font-weight: 500;}
+.error_text{color: red;}

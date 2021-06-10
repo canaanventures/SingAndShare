@@ -4,12 +4,22 @@
             <div class='col-md-12 p-0 mt-3'>
                 <h4 id='report_chart_msg' class='col-md-4'> New Mentor's Report </h4>
                 <div class='form-group col-md-2'>
-                    <label for='from_date'>From Date</label>
-                    <input type='datetime-local' id='from_date' class='form-control' [(ngModel)]='filter.from_date' placeholder='From Date' (change)='fromDateChange();' />
+                    <label for='from_date'>From Date<span style="color: red;">*</span></label>
+                    <input type='datetime-local' id='from_date'  name='from_date' class='form-control' [(ngModel)]='filter.from_date' #from_date="ngModel"  placeholder='From Date' (change)='fromDateChange();' required/>
+                    <div class="error_msg" *ngIf="from_date.touched && from_date.invalid">
+                        <div *ngIf="from_date.errors.required">
+                            <small class="error_text"> From date is required</small>
+                        </div>
+                    </div>
                 </div>
                 <div class='form-group col-md-2'>
-                    <label for='to_date'>To Date</label>
-                    <input type='datetime-local' id='to_date' class='form-control' [(ngModel)]='filter.to_date' placeholder='To Date' />
+                    <label for='to_date'>To Date<span style="color: red;">*</span></label>
+                    <input type='datetime-local' id='to_date' name="to_date" class='form-control' [(ngModel)]='filter.to_date' #to_date='ngModel' placeholder='To Date' required/>
+                    <div class="error_msg" *ngIf="to_date.touched && to_date.invalid">
+                        <div *ngIf="to_date.errors.required">
+                            <small class="error_text">To date is required</small>
+                        </div>
+                    </div>
                 </div>
                 <div class='form-group col-md-2'>
                     <label for='test' class='w-100'> &nbsp; </label>
@@ -44,25 +54,56 @@
                 <tbody>
                     <tr> 
                         <td>
-                            <input type='text' class='form-control filter-fld' id='user_name' [(ngModel)]='filter.user_name' (keyup)="filterList($event,'user_name')" placeholder='Your team Member Name' />
+                            <input type='text' class='form-control filter-fld' id='user_name' name="user_name" [(ngModel)]='filter.user_name' (keyup)="filterList($event,'user_name')" placeholder='Your team Member Name' />
+                            <!-- <div class="error_msg" *ngIf="user_name.touched && user_name.invalid">
+                                <div *ngIf="user_name.errors.required">
+                                    <small class="error_text">Your team Member Name is required</small>
+                                </div>
+                            </div> -->
+                            
                         </td>
                         <td>
-                            <input type='text' class='form-control filter-fld' id='user_email_id' [(ngModel)]='filter.user_email_id' (keyup)="filterList($event,'user_email_id')" placeholder='Email ID' />
+                            <input type='text' class='form-control filter-fld' id='user_email_id' name='user_email_id' [(ngModel)]='filter.user_email_id' (keyup)="filterList($event,'user_email_id')" placeholder='Email ID' />
+                            <!-- <div class="error_msg" *ngIf="user_email_id.touched && user_email_id.invalid">
+                                <div *ngIf="user_email_id.errors.required">
+                                    <small class="error_text">Email ID is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td>
-                            <input type='text' class='form-control filter-fld' id='user_contact_number' [(ngModel)]='filter.user_contact_number' (keyup)="filterList($event,'user_contact_number')" placeholder='Contact Number' />
+                            <input type='text' class='form-control filter-fld' id='user_contact_number' name="user_contact_number" [(ngModel)]='filter.user_contact_number' (keyup)="filterList($event,'user_contact_number')" placeholder='Contact Number' />
+                            <!-- <div class="error_msg" *ngIf="user_contact_number.touched && user_contact_number.invalid">
+                                <div *ngIf="user_contact_number.errors.required">
+                                    <small class="error_text">Contact Number is required</small>
+                                </div>
+                            </div> -->
                         </td> 
                         <td>
-                            <input type='text' class='form-control filter-fld' id='role_name' [(ngModel)]='filter.role_name' (keyup)="filterList($event,'role_name')" placeholder='Role Name' />
+                            <input type='text' class='form-control filter-fld' id='role_name' name='role_name' [(ngModel)]='filter.role_name' (keyup)="filterList($event,'role_name')" placeholder='Role Name' />
+                            <!-- <div class="error_msg" *ngIf="role_name.touched && role_name.invalid">
+                                <div *ngIf="role_name.errors.required">
+                                    <small class="error_text">Role Name is required</small>
+                                </div>
+                            </div> -->
                         </td> 
                         <td>
-                            <input type='text' class='form-control filter-fld' id='mentor_name' [(ngModel)]='filter.mentor_name' (keyup)="filterList($event,'mentor_name')" placeholder="Mentor's Name" />
+                            <input type='text' class='form-control filter-fld' id='mentor_name' name='mentor_name' [(ngModel)]='filter.mentor_name' (keyup)="filterList($event,'mentor_name')" placeholder="Mentor's Name" />
+                            <!-- <div class="error_msg" *ngIf="mentor_name.touched && mentor_name.invalid">
+                                <div *ngIf="mentor_name.errors.required">
+                                    <small class="error_text">Mentor's Name is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td>
-                            <input type='text' class='form-control filter-fld' id='srs_name' [(ngModel)]='filter.srs_name' (keyup)="filterList($event,'srs_name')" placeholder='SNS Name' />
+                            <input type='text' class='form-control filter-fld' id='srs_name' name='srs_name' [(ngModel)]='filter.srs_name'  (keyup)="filterList($event,'srs_name')" placeholder='SNS Name' />
+                            <!-- <div class="error_msg" *ngIf="srs_name.touched && srs_name.invalid">
+                                <div *ngIf="srs_name.errors.required">
+                                    <small class="error_text">SNS Name is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td>
-                            <select id='status' class='form-control filter-fld' [(ngModel)]='filter.status' (change)="filterList($event,'status')">
+                            <select id='status' class='form-control filter-fld' name='status' [(ngModel)]='filter.status' #status='ngModel' (change)="filterList($event,'status')">
                                 <option value=''>Select</option>
                                 <option value='Enable'>
                                     <span class='label label-success'>E</span>
@@ -71,6 +112,11 @@
                                     <span class='label label-danger'>D</span>
                                 </option>
                             </select>
+                            <!-- <div class="error_msg" *ngIf="status.touched && status.invalid">
+                                <div *ngIf="status.errors.required">
+                                    <small class="error_text">Status is required</small>
+                                </div>
+                            </div> -->
                         </td>
                     </tr>
 

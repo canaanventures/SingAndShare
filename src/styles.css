@@ -1700,6 +1700,7 @@ label{font-weight:500!important;}
 .bg-orange{background-color:#de5d47;border-color:#de5d47;}
 .bg-orange:hover{background-color:#9e2813;border-color:#9e2813;}
 .form-control{border-radius:3px!important;}
+/* .form-control .ng-touched .ng-invalid{border:2px solid red !important;} */
 
 
 /* Loader Style */
@@ -1771,3 +1772,7 @@ label{font-weight:500!important;}
 }
 .form-check-input:checked{background-color: #1ddba5;border-color: #1dc9ca;}
 .edit-modal-open .modal{overflow-y:auto;}
+
+.form-control.ng-invalid.ng-touched {
+  border:1px solid red;
+} 

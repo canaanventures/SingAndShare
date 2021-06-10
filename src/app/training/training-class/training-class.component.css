@@ -39,3 +39,4 @@ tr.table-hidden-row td .user-class-list{padding:10px;font-size:15px;background-c
 .card-child p:first-child{color: #630460;font-weight: 600;}
 .all-switch .form-check-input{margin-top:0;cursor:pointer;}
 .all-status,.all-switch{float:left;display:block;width:max-content;margin-top: 1px;margin-right: 10px;}
+.error_text{color:red}
