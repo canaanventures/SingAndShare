@@ -1,6 +1,7 @@
 <div class="backdrop" [ngStyle]="{'display':displayBlog}"></div>
 <div class="backdrop" [ngStyle]="{'display':categorydisplay}"></div>
 <div class="backdrop" [ngStyle]="{'display':commentdisplay}"></div>
+<div class="backdrop" [ngStyle]="{'display':viewBlogModal}"></div>
 
 <div class="wrapper container">
     <div class="main">
@@ -35,7 +36,7 @@
                                             <td style='text-transform: capitalize;'>{{blog.title}}</td>
                                             <td>{{blog.category_name}}</td>
                                             <td>{{blog.created_date  | date:'dd/MM/yyyy'}}</td>
-                                            <td style='text-transform:uppercase;'><span [ngClass] = "blog.status == 'Enable' ? 'label label-success' : 'label label-danger'">{{blog.status}}</span></td>
+                                            <td style='text-transform:uppercase;'><span [ngClass] = "blog.blog_status == 'Enable' ? 'label label-success' : 'label label-danger'">{{blog.blog_status}}</span></td>
                                             <td>
                                                 <img src='assets/img/approve.png' *ngIf="blog.approval_status == 'Y'" class='status-img' />
                                                 <img src='assets/img/disapprove.png' class='status-img' *ngIf="blog.approval_status == 'N'" />
@@ -46,15 +47,15 @@
                                                 </div>
                                                 <div class='action-img-div'>
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" [attr.checked]="blog.status == 'Enable' ? true : null" (change)='[disableBlog($event,blog.blog_id)]' />
+                                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" [attr.checked]="blog.blog_status == 'Enable' ? true : null" (change)='[disableBlog($event,blog.blog_id)]' />
                                                     </div>
                                                 </div>
                                                 <div class='action-img-div'>
                                                     <i class="fa fa-comments-o" aria-hidden="true" style='color:#630460;margin-left:10px;' (click)=[commentModal(blog.blog_id)]></i>
                                                 </div>
-                                                <!-- <div class='action-img-div' *ngIf='access.blog_change_status_access == 1'>
-                                                    <img src='assets/img/delete.png' class='action-img' (click)=[disableBlog(blog.blog_id)] />
-                                                </div> -->
+                                                <div class='action-img-div'>
+                                                    <i class="fa fa-eye" aria-hidden="true" style='color:#d9534f;margin-left:10px;' (click)='viewModal(blog.blog_id)'></i>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -175,5 +176,47 @@
                 </div>
             </div>
         </div> 
+    </div>
+</div>
+
+<div class="modal" id="viewBlogModal" [ngStyle]="{'display':viewBlogModal}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">View Blog</h5>
+                <button class="close" data-dismiss="modal"(click)='closeViewModal();'> <span>&times;</span> </button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body p-0">
+                    <div class='row'>
+                        <div class='col-md-7 pl-1'>
+                            <img [src]='imageToShow' class='w-100' *ngIf='imageToShow' />
+                            <img src='../../../assets/img/no-img-found-medium.png' class='w-100' *ngIf='!imageToShow' />
+                        </div>
+                        <div class='col-md-5 py-3'>
+                            <div class="form-group col-md-12 p-0">
+                                <label for="view_title">Title</label>
+                                <p id='view_title'> {{viewblog.title}} </p>
+                            </div>
+                            <div class="form-group col-md-12 p-0">
+                                <label for="view_category">Category</label>
+                                <p id='view_category'> {{viewblog.category_name}} </p>
+                            </div>
+                            <div class="form-group col-md-12 p-0">
+                                <label for="view_approve_status" class='w-100'>Approval Status</label>
+                                <p class='label label-success' id='view_approve_status' *ngIf = "viewblog.approval_status == 'Y'"> Approved </p>
+                                <p class='label label-danger' *ngIf = "viewblog.approval_status == 'N'"> Not Approved </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="form-group col-md-12 px-5 py-3">
+                            <label for="view_description" class='w-100'>Description</label>
+                            <p id='view_description' [innerHTML]='viewblog.description' class='p-1'></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

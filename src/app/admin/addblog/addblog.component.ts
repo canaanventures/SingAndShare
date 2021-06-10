@@ -11,7 +11,7 @@ import jwt_decode from "jwt-decode";
 })
 export class AddblogComponent implements OnInit {
   tk:any = {};
-  htmlContent = '';
+  htmlContent:any = String;
   bloglist:any = []; blogCatlist:any = [];
   public displayBlog='none';categorydisplay='none';
   edit_id = '';
@@ -19,8 +19,8 @@ export class AddblogComponent implements OnInit {
   public form : any;
   public formelem : any;
   resp :any; images; access; encryptInfo; 
-  edit = false; commentdisplay = 'none';
-  commentlist:any = []; imageToShow: any;
+  edit = false; commentdisplay = 'none'; viewBlogModal = 'none';
+  commentlist:any = []; imageToShow: any; viewblog:any=[];
 
   @Input() blog = {title:'',category:'',description:'',created_by_user_id:'',imgurl:'',approval_status:''};
   @Input() editblog = {imgurl:'',title:'',category:'',description:'',modified_by_user_id:'',blog_id:'',approval_status:''};
@@ -96,30 +96,38 @@ export class AddblogComponent implements OnInit {
 
   addBlog(event){
     event.preventDefault();
-    const formData = new FormData();
-    formData.append('image', this.images);
-    let title = (<HTMLInputElement>document.getElementById('title')).value.split(' ').join("-");
-    let cat = (<HTMLInputElement>document.getElementById('category')).value;
-    this.restApi.postImgMethod('addBlogImg/'+title+'/'+cat,formData).subscribe((data) => {     
-      this.blog.title = (<HTMLInputElement>document.getElementById('title')).value;
-      this.blog.category = (<HTMLInputElement>document.getElementById('category')).value;
-      if(document.getElementById('approval_status')){
-        this.blog.approval_status = (<HTMLInputElement>document.getElementById('approval_status')).value;
-      }else{
-        this.blog.approval_status = "N";
-      }
-      
-      this.blog.description = this.htmlContent.replace("'", "");
-      this.blog.created_by_user_id = this.tk.user_id;
-
-      this.resp = data;
-      this.blog.imgurl = this.resp.filepath; 
-
-      this.restApi.postMethod('addBlog',this.blog).subscribe((data:any) => {
-        this.fetchBlog();
-        this.images = '';
-        alert(this.resp.message);
+    if(this.images != ''){
+      const formData = new FormData();
+      formData.append('image', this.images);
+      let title = (<HTMLInputElement>document.getElementById('title')).value.split(' ').join("-");
+      let cat = (<HTMLInputElement>document.getElementById('category')).value;
+      this.restApi.postImgMethod('addBlogImg/'+title+'/'+cat,formData).subscribe((data) => { 
+        this.resp = data;
+        this.blog.imgurl = this.resp.filepath;
+        this.addBlogData();
       })
+    }else{
+      this.blog.imgurl = '';
+      this.addBlogData();
+    }
+  }
+
+  addBlogData(){
+    this.blog.title = (<HTMLInputElement>document.getElementById('title')).value;
+    this.blog.category = (<HTMLInputElement>document.getElementById('category')).value;
+    if(document.getElementById('approval_status')){
+      this.blog.approval_status = (<HTMLInputElement>document.getElementById('approval_status')).value;
+    }else{
+      this.blog.approval_status = "N";
+    }     
+    this.blog.description = this.htmlContent.replace(/"/gi, "");
+    this.blog.description = this.htmlContent.replace(/'/gi, "");
+    this.blog.created_by_user_id = this.tk.user_id;
+    this.restApi.postMethod('addBlog',this.blog).subscribe((data:any) => {
+      this.fetchBlog();
+      this.images = '';
+      this.displayBlog='none';
+      alert(data.message);
     })
   }
   
@@ -131,6 +139,20 @@ export class AddblogComponent implements OnInit {
       this.fetchBlog();
       alert("The blog has been disabled successfully");
     })
+  }
+
+  viewModal(id){
+    this.viewBlogModal = 'block';
+    this.restApi.getMethod('getBlogs/single/'+id).subscribe((resp:any) => {
+      this.viewblog = resp.data[0];
+      this.restApi.getImgMethod('getBlogImg/'+id).subscribe((resp:any) => {
+        (resp.status == 201) ? this.imageToShow = '' : this.createImageFromBlob(resp);
+      });
+    });
+  }
+
+  closeViewModal(){
+    this.viewBlogModal = 'none';
   }
 
   openBlogModal(){
@@ -171,15 +193,19 @@ export class AddblogComponent implements OnInit {
       (<HTMLInputElement>document.getElementById('approval_status')).value = resp.data[0].approval_status;
       this.htmlContent = resp.data[0].description;
       this.restApi.getImgMethod('getBlogImg/'+id).subscribe((resp:any) => {
-        this.createImageFromBlob(resp);
-        this.displayBlog='block';
-        document.getElementsByTagName('body')[0].classList.add('edit-modal-open');
+        if(resp.status == 201){
+          this.imageToShow = '';
+        }else{
+          this.createImageFromBlob(resp);
+          this.displayBlog='block';
+          document.getElementsByTagName('body')[0].classList.add('edit-modal-open');
+        }
       });
     });
   }
 
   updateBlog(){
-    if(this.images){
+    if(this.images != ''){
       const formData = new FormData();
       formData.append('image', this.images);
       let title = (<HTMLInputElement>document.getElementById('title')).value.split(' ').join("-");
@@ -209,10 +235,11 @@ export class AddblogComponent implements OnInit {
     this.editblog.modified_by_user_id = this.tk.user_id;
     this.editblog.blog_id = this.edit_id;
     this.restApi.postMethod('updateBlog',this.editblog).subscribe((data:any) => {     
-      alert('Blog Updated Successfully.');
+      alert(data.message);
       this.closeBlogModal();
       this.fetchBlog();
       document.getElementsByTagName('body')[0].classList.remove('edit-modal-open');
+      this.images = '';
     })
   }
 
