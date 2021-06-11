@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   public displayLogin='none';
   public resp:any;
   public loggeduser:any;
+  loginshow:boolean=true;
   classApplied = false;
   tk:any = {}; access; encryptInfo; role_name;
   classtoggle = false; f_nme; l_nme;
@@ -76,6 +77,9 @@ export class HeaderComponent implements OnInit {
     this.displayLogin='none';
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
     document.getElementsByTagName('html')[0].classList.add('modal-open');
+  }
+  fpwd(){
+    this.loginshow = false;
   }
 
   toggleHeaderMenu(){
