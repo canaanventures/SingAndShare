@@ -10,12 +10,19 @@ import { url } from 'src/app/shared/app.constant';
 export class VisitorsComponent implements OnInit {
   @Input() visitorsdetails = {visitor_name:'', visitor_email_id:'', visitor_subject:'', visitor_contact_number:'',message:''}
 
+  submitted :boolean = false;
+
   constructor(public restApi: ApiService) { }
 
   ngOnInit(): void {
   }
 
+  onFormSubmit() {
+    console.log("Full Address");  
+  }
+
   visitorDetails(event) {
+    this.submitted = true;
     event.preventDefault();
     this.visitorsdetails.visitor_name = (<HTMLInputElement>document.getElementById('visitor_name')).value;
     this.visitorsdetails.visitor_email_id = (<HTMLInputElement>document.getElementById('visitor_email_id')).value;

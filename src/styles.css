@@ -1778,3 +1778,7 @@ label{font-weight:500!important;}
 } 
 
 .error_text{color:red}
+
+.invalid-data {
+  border: 1px solid red;
+}
