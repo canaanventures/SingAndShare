@@ -9,7 +9,7 @@
 
         <nav id="navbar" class="navbar">
             <ul [class.active]="classtoggle">
-                <li *ngIf="loggeduser == false"><a class="nav-link scrollto active" href="/home">Home</a></li>
+                <li *ngIf="loggeduser == false"><a class="nav-link scrollto" href="/home">Home</a></li>
                 <li class="nav-link scrollto dropdown" *ngIf="loggeduser == false"><a style='color:#fff;'><span>About</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/mission">Mission and Vision</a></li>
@@ -78,11 +78,16 @@
     </div>
 </header><!-- End Header -->
 
+
 <div class="modal" id="login_modal" [ngStyle]="{'display':displayLogin}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body clearfix">
                 <span class='close modal-close' (click)='closeLoginModal()' data-dismiss="modal">&times;</span>
+                <div class="modal-title text-center">
+                    <img src="../../../assets/img/logo.png" alt="">
+                    <h3><b>Welcome to Members Login</b></h3>
+                </div>
                 <div class='form-group col-md-12'>
                     <label for='email_id'>Email ID<span style="color: red;">*</span></label>
                     <input type='text' class='form-control' id='email_id' name="email" placeholder='Enter your Email ID' [(ngModel)]="userdetails.email" #email='ngModel' required/>
@@ -103,9 +108,9 @@
                     </div>
                 </div>
                 </div>
-                <div class='form-group col-md-6'>
+                <div class='form-group col-md-12'>
                     <label for='user_login'> &nbsp; </label>
-                    <button class='btn btn-primary' id='user_login' (click)='userLogin()' style='background-color: #630460;border-color: #630460;cursor:pointer;'>Login</button>
+                    <button class='btn btn-primary' style="width: 70%; margin: auto; display: block;" id='user_login' (click)='userLogin()' >Login</button>
                 </div>
             </div>
         </div>

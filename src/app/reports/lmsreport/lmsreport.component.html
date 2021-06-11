@@ -2,7 +2,7 @@
     <div class="card-body h-100">
         <div class='row'>
             <div class='col-md-12 p-0 mt-3'>
-                <h4 id='report_chart_msg' class='col-md-2'> LMS Class </h4>
+                <h4 id='report_chart_msg' class='col-md-2'> Mentees Report </h4>
                 <div class='form-group col-md-2'>
                     <label for='from_date'>From Date<span style="color: red;">*</span></label>
                     <input type='datetime-local' id='from_date' name='from_date' class='form-control' [(ngModel)]='filter.from_date' #from_date='ngModel' placeholder='From Date' (change)='fromDateChange();' required/>
@@ -21,15 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='form-group col-md-2'>
-                    <label for='status'>Class Status</label>
-                    <select class='form-control' id='status' [(ngModel)]='filter.class_status'>
-                        <option value=''>Select Class Status</option>
-                        <option value='complete'>Completed</option>
-                        <option value='progress'>In Progress</option>
-                    </select>
-                </div>
-                <div class='form-group col-md-2'>
+                <div class='form-group col-md-3'>
                     <label for='test' class='w-100'> &nbsp; </label>
                     <button class='btn btn-primary' id='btn_datefilter' (click)='filterDate();'>Filter</button>
                     <button class='btn bg-orange' id='btn_resetfilter' (click)='reset();'>Reset</button>
@@ -49,7 +41,6 @@
             <table class='table-bordered table' id="mentee-excel-table">
                 <thead>
                     <tr>
-                        <th>Course Name</th>
                         <th>Class Name</th> 
                         <th>Category Name</th>  
                         <th>Instructor Name</th> 
@@ -58,31 +49,42 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr> 
                         <td>
-                            <input type='text' class='form-control filter-fld' id='course_name' [(ngModel)]='filter.course_name' (keyup)="filterList($event,'course_name')" placeholder='Course Name' />
+                            <input type='text' class='form-control filter-fld' id='mentee_name' name="mentee_name" [(ngModel)]='filter.mentee_name' (keyup)="filterList($event,'mentee_name')" placeholder='Mentee Name' />
+                            <!-- <div class="error_msg" *ngIf="mentee_name.touched && mentee_name.invalid">
+                                <div *ngIf="mentee_name.errors.required">
+                                    <small class="error_text"> Mentee Name is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td>
-                            <input type='text' class='form-control filter-fld' id='class_name' [(ngModel)]='filter.class_name' (keyup)="filterList($event,'class_name')" placeholder='Class Name' />
+                            <input type='text' id='user_contact_number'  name='user_contact_number' class='form-control filter-fld' [(ngModel)]='filter.user_contact_number' (keyup)="filterList($event,'user_contact_number')" placeholder='Contact Number'/>
+                            <!-- <div class="error_msg" *ngIf="user_contact_number.touched && user_contact_number.invalid">
+                                <div *ngIf="user_contact_number.errors.required">
+                                    <small class="error_text"> Contact Number is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td>
-                            <input type='text' id='category_name' class='form-control filter-fld' [(ngModel)]='filter.category_name' (keyup)="filterList($event,'category_name')" placeholder='Category Name' />
-                        </td>
-                        <td>
-                            <input type='text' id='instructor_name' class='form-control filter-fld' [(ngModel)]='filter.instructor_name' placeholder='Instructor Name' (keyup)="filterList($event,'instructor_name')" />
+                            <input type='text' id='user_email_id' name='user_email_id' class='form-control filter-fld' [(ngModel)]='filter.user_email_id' placeholder='Email ID' (keyup)="filterList($event,'user_email_id')"/>
+                            <!-- <div class="error_msg" *ngIf="user_email_id.touched && user_email_id.invalid">
+                                <div *ngIf="user_email_id.errors.required">
+                                    <small class="error_text"> Email id is required</small>
+                                </div>
+                            </div> -->
                         </td>
                         <td> </td>
                         <td> </td>
                     </tr>
 
                     <tr *ngIf='lmsclass.length == 0 && originalfilter.length > 0'>
-                        <td colspan='6'>
+                        <td colspan='5'>
                             <h3 class='chart_msg'>No Matches Found</h3>
                         </td>
                     </tr>
 
                     <tr *ngFor="let list of lmsclass"> 
-                        <td>{{ list.course_name }}</td>
                         <td>{{ list.class_name }}</td>
                         <td>{{ list.category_name }}</td>
                         <td>{{ list.instructor_name }}</td>

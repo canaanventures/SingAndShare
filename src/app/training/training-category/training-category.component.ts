@@ -58,7 +58,7 @@ export class TrainingCategoryComponent implements OnInit {
     this.restApi.getMethod('getLMSCategory/'+id).subscribe((resp:any) => {
       this.category = resp.data[0];    
       this.restApi.getImgMethod('getLMSCategoryImg/'+id).subscribe((data:any) => {
-        (data.status == 201) ? this.imageToShow = '' : this.createImageFromBlob(data);
+        this.createImageFromBlob(data);
       });
     });
   }

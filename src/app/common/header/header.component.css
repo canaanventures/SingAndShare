@@ -1,7 +1,7 @@
 .backdrop{background-color:rgba(0,0,0,0.6);position:absolute;width:100%;height:500vh;z-index: 1049;}
 .swiper-img-div{cursor:pointer;}
 .modal-open{overflow:hidden};
-#user_login{background-color: #630460;border-color: #630460;cursor:pointer;}
+#user_login{background-color: #630460;border-color: #630460;cursor:pointer; width: 70%; margin: auto;display: block;}
 #header .container::before{display:none;}
 #header .navbar{margin:0;}
 #logo{flex:auto;}
@@ -21,3 +21,7 @@ header{padding-top: 10px;}
     .navbar > ul > li{padding:15px;}
     #header-user-icon{margin-right: 20px;}
 }
+
+.modal-title{    font-family: "Sofia", cursive;}
+
+.modal-title img {display: block;margin: auto;}

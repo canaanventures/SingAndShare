@@ -57,30 +57,20 @@ export class EventsComponent implements OnInit {
     event.preventDefault();
     this.edit = false;
     event.preventDefault();
-    if(this.eventimages != ''){
-      const formData = new FormData();
-      formData.append('image', this.eventimages);
-      let nme = this.addevent.event_name.split(' ').join('_');
-      let dte = (<HTMLInputElement>document.getElementById('event_start_date')).value;
-      dte = dte.replace(/-/g, '_').replace(/:/g, '_');
-      this.restApi.postImgMethod('addEventImg/'+dte+'/'+nme,formData).subscribe((data:any) => {
-        this.addevent.imgurl = data.filepath;
-        this.addEventData();
+    const formData = new FormData();
+    formData.append('image', this.eventimages);
+    let nme = this.addevent.event_name.split(' ').join('_');
+    let dte = (<HTMLInputElement>document.getElementById('event_start_date')).value;
+    dte = dte.replace(/-/g, '_').replace(/:/g, '_');
+    this.restApi.postImgMethod('addEventImg/'+dte+'/'+nme,formData).subscribe((data:any) => {
+      this.addevent.imgurl = data.filepath;
+      this.addevent.created_by_user_id = this.tk.user_id;
+      this.restApi.postMethod('addEvent',this.addevent).subscribe((resp:any) => {
+        this.resp = resp.data;
+        this.getEvents();
+        this.closeModal();
+        alert(this.resp.message);
       })
-    }else{
-      this.addevent.imgurl = '';
-      this.addEventData();
-    }
-  }
-
-  addEventData(){
-    this.addevent.created_by_user_id = this.tk.user_id;
-    this.restApi.postMethod('addEvent',this.addevent).subscribe((resp:any) => {
-      this.resp = resp.data;
-      this.getEvents();
-      this.closeModal();
-      alert(resp.message);
-      this.eventimages = '';
     })
   }
 
@@ -106,34 +96,24 @@ export class EventsComponent implements OnInit {
 
   updateEvent(event:any){
     event.preventDefault();
-    if(this.eventimages != ''){
-      const formData = new FormData();
-      formData.append('image', this.eventimages);
-      let nme = this.addevent.event_name.split(' ').join('_');
-      let dte = (<HTMLInputElement>document.getElementById('event_start_date')).value;
-      dte = dte.replace(/-/g, '_').replace(/:/g, '_');
-      this.restApi.postImgMethod('addEventImg/'+dte+'/'+nme,formData).subscribe((data:any) => {
-        this.addevent.imgurl = data.filepath;
-        this.updateEventData();
+    const formData = new FormData();
+    formData.append('image', this.eventimages);
+    let nme = this.addevent.event_name.split(' ').join('_');
+    let dte = (<HTMLInputElement>document.getElementById('event_start_date')).value;
+    dte = dte.replace(/-/g, '_').replace(/:/g, '_');
+    this.restApi.postImgMethod('addEventImg/'+dte+'/'+nme,formData).subscribe((data:any) => {
+      this.addevent.imgurl = data.filepath;
+      this.addevent.modified_user_id = this.tk.user_id;
+      this.addevent.event_start_date = this.changeDateFormat((<HTMLInputElement>document.getElementById('event_start_date')).value);
+      this.addevent.event_end_date = this.changeDateFormat((<HTMLInputElement>document.getElementById('event_end_date')).value);   
+      this.restApi.postMethod('editEvent',this.addevent).subscribe((resp:any) => {
+        this.getEvents();
+        this.closeModal();
+        alert(resp.message);
       })
-    }else{
-      this.addevent.imgurl = '';
-      this.updateEventData();
-    }
-  }
-  
-  updateEventData(){
-    this.addevent.modified_user_id = this.tk.user_id;
-    this.addevent.event_start_date = this.changeDateFormat((<HTMLInputElement>document.getElementById('event_start_date')).value);
-    this.addevent.event_end_date = this.changeDateFormat((<HTMLInputElement>document.getElementById('event_end_date')).value);   
-    this.restApi.postMethod('editEvent',this.addevent).subscribe((resp:any) => {
-      this.getEvents();
-      this.closeModal();
-      alert(resp.message);
-      this.addevent.imgurl = '';
     })
   }
-
+  
   editEvent(id:any){
     this.edit = true;
     this.addevent.event_id = id;

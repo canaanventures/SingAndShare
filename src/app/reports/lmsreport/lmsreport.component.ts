@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/shared/app.service';
 export class LmsreportComponent implements OnInit {
   lmsclass:any=[]; tofilter:any=[]; originalfilter:any=[];
 
-  @Input() filter = {course_name:'',class_name:'',category_name:'',instructor_name:'',from_date:'',to_date:'',class_status:''}
+  @Input() filter = {mentee_name:'',user_contact_number:'',user_email_id:'',user_address:'',user_city:'',user_state:'',srs_name:'',mentor_name:'',status:'',from_date:'',to_date:''}
 
   constructor(public restApi: ApiService) { }
 
@@ -71,7 +71,7 @@ export class LmsreportComponent implements OnInit {
 
   exportData() {
     var table = document.getElementById("mentee-excel-table") as HTMLTableElement;
-    var rows =[]; var column1, column2, column3, column4, column5, column6;
+    var rows =[]; var column1, column2, column3, column4, column5, column6, column7, column8, column9;
     for(var i=0,row; row = table.rows[i];i++){
       column1 = row.cells[0].innerText;
       column2 = row.cells[1].innerText;
@@ -79,7 +79,10 @@ export class LmsreportComponent implements OnInit {
       column4 = row.cells[3].innerText;
       column5 = row.cells[4].innerText;
       column6 = row.cells[5].innerText;
-      rows.push([column1,column2,column3,column4,column5,column6]);
+      column7 = row.cells[6].innerText;
+      column8 = row.cells[7].innerText;
+      column9 = row.cells[8].innerText;
+      rows.push([column1,column2,column3,column4,column5,column6,column7,column8,column9]);
     }
     var csvContent = "data:text/csv;charset=utf-8,";
     rows.forEach(function(rowArray){
@@ -89,29 +92,18 @@ export class LmsreportComponent implements OnInit {
     var encodedUri = encodeURI(csvContent);
     var link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "lmsclass_report.csv");
+    link.setAttribute("download", "mentors_report.csv");
     document.body.appendChild(link);
     link.click();
   }
 
   filterDate(){
-    let arr = this.originalfilter; let f_date = this.filter.from_date; let t_date = this.filter.to_date; let result = [];
-    let status = this.filter.class_status;
-    if(status == ''){
-      result = arr;
-    }else{
-      result = arr.filter(function(item){
-        if(status == 'progress'){
-          if((new Date(f_date) <= new Date(item.end_date) && new Date(t_date) >= new Date(item.end_date)) || (new Date(f_date) <= new Date(item.start_date) && new Date(t_date) < new Date(item.end_date))){
-            return item;
-          }
-        }else if(status == 'complete'){
-          if(new Date(f_date) > new Date(item.end_date)){
-            return item;
-          }
-        }  
-      })
-    }
+    let arr = this.originalfilter; let f_date = this.filter.from_date; let t_date = this.filter.to_date;
+    let result = arr.filter(function(item){
+      if(new Date(f_date) <= new Date(item.modified_on) && new Date(t_date) >= new Date(item.modified_on)){
+        return item;
+      }
+    })
     this.lmsclass = result;
     this.tofilter = result;
   }
@@ -124,6 +116,6 @@ export class LmsreportComponent implements OnInit {
   reset(){
     this.lmsclass = this.originalfilter;
     this.tofilter = this.originalfilter;
-    this.filter = {course_name:'',class_name:'',category_name:'',instructor_name:'',from_date:'',to_date:'',class_status:''}
+    this.filter = {mentee_name:'',user_contact_number:'',user_email_id:'',user_address:'',user_city:'',user_state:'',srs_name:'',mentor_name:'',status:'',from_date:'',to_date:''}
   }
 }

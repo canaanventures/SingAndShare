@@ -62,15 +62,27 @@
                                     <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                                         <div class="row">
                                             <div class="form-group col-lg-6">
-                                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                                <input type="text" name="name" class="form-control" id="name"
+                                                    placeholder="Your Name" data-rule="minlen:4"
+                                                    data-msg="Please enter at least 4 chars" ngModel #name="ngModel"
+                                                    required />
+                                                <div class="error_msg" *ngIf="name.invalid && name.touched">
+                                                    <small class="error_text">Name is required</small>
+                                                </div>
                                             </div>
                                             <div class="form-group col-lg-6 mt-3 mt-lg-0">
-                                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                    placeholder="Your Email" data-rule="email"
+                                                    data-msg="Please enter a valid email" ngModel #email="ngModel"
+                                                    required>
+                                                    <div class="error_msg" *ngIf="email.invalid && email.touched">
+                                                        <small class="error_text">Email is required</small>
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-lg-6">
-                                                <select class="form-control" required>
+                                                <select class="form-control" name="subject" ngModel #subject="ngModel" required>
                                                     <option value="">--I want to--</option>
                                                     <option>attend fellowship/events</option>
                                                     <option>join a Bible study group</option>
@@ -78,13 +90,24 @@
                                                     <option>Share prayer point</option>
                                                     <option>Share praise point</option>
                                                 </select>
+                                                <div class="error_msg" *ngIf="subject.invalid && subject.touched">
+                                                    <small class="error_text">Subject is required</small>
+                                                </div>
                                             </div>
                                             <div class="form-group col-lg-6 mt-3 mt-lg-0">
-                                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Phone" data-rule="minlen:10" data-msg="Phone number must have 10 chars">
+                                                <input type="text" name="contact" class="form-control" id="name"
+                                                    placeholder="Your Phone" data-rule="minlen:10"
+                                                    data-msg="Phone number must have 10 chars" ngModel #contact="ngModel" required />
+                                                    <div class="error_msg" *ngIf="contact.invalid && contact.touched">
+                                                        <small class="error_text">Contact Number is required</small>
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="form-group mt-3">
-                                            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                                            <textarea class="form-control" name="message" rows="5" placeholder="Message" ngModel #message="ngModel" required></textarea>
+                                                <div class="error_msg" *ngIf="message.invalid && message.touched">
+                                                    <small class="error_text">Message is required</small>
+                                                </div>
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" title="Send Message">Send Message</button>
