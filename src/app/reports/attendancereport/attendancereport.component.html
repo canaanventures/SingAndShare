@@ -1,32 +1,36 @@
 <div class='container report-container'>
-    <div class='row'>
+    <div class='row'> 
+         <!-- <form  role="form" #f="ngForm" (ngSubmit)="f.form.valid && getAttendace($event)"> -->
         <div class='col-md-3 form-group'>
             <label for='type'>Select Type<span style="color: red;">*</span></label>
-            <select class='form-control' id='type' name="type" [(ngModel)]='report.type' #type='ngModel' required>
+            <select class='form-control' id='type' name="type"  required>
+                <!-- [(ngModel)]='report.type' #type='ngModel' -->
                 <option>Select type</option>
                 <option value='attendance'>Attendance</option>
                 <!-- <option value='event'>Event</option> -->
             </select>
-            <div class="error_msg" *ngIf="type.touched && type.invalid">
+            <!-- <div class="error_msg" *ngIf="f.submitted && type.invalid">
                 <div *ngIf="type.errors.required">
                     <small class="error_text"> Type is required</small>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class='col-md-3 form-group'>
             <label for='month'>Select Month<span style="color: red;">*</span></label>
-            <input type='month' id='month' name="val" class='form-control' placeholder='Select the Month' [(ngModel)]='report.val' #val="ngModel"  required />
-                <div class="error_msg" *ngIf="val.touched && val.invalid">
+            <input type='month' id='month' name="val" class='form-control' placeholder='Select the Month'  required />
+            <!-- [(ngModel)]='report.val' #val="ngModel"  -->
+                <!-- <div class="error_msg" *ngIf="f.submitted && val.invalid">
                     <div *ngIf="val.errors.required">
                         <small class="error_text"> Month is required</small>
                     </div>
-                </div>
+                </div> -->
         </div>
         <div class='col-md-6'>
             <label for='search_report' class='w-100'> &nbsp; </label>
-            <button class='btn btn-primary' id='search_report' (click)='getAttendace();'
-                style='margin-right:10px;'>Display Graph</button>
+            <button class='btn btn-primary' id='search_report' (click)="getAttendace($event) "
+                style='margin-right:10px;' >Display Graph</button>
         </div>
+    <!-- </form> -->
     </div>
     <div class='row' *ngIf='graphresp.length == 0'>
         <div class='col-md-12 p-0'>
@@ -43,36 +47,39 @@
     <div class="card-body h-100 mt-3">
         <div class='row'>
             <div class='col-md-12 p-0 mt-3'>
+                <!-- <form  role="form" #f="ngForm" (ngSubmit)="f.form.valid && filterDate($event);reset($event);exportData($event)"> -->
                 <div class='form-group col-md-3'>
                     <label for='from_date'>From Date<span style="color: red;">*</span></label>
-                    <input type='datetime-local' id='from_date' class='form-control' [(ngModel)]='filterdate.from_date'  #from_date="ngModel" name="from_date" required 
-                        placeholder='From Date' (change)='fromDateChange();' />
-                        <div class="error_msg" *ngIf="from_date.touched && from_date.invalid">
+                    <input type='datetime-local' id='from_date' class='form-control'  name="from_date"
+                        placeholder='From Date' (change)='fromDateChange();'  required/>
+                        <!-- [(ngModel)]='filterdate.from_date'  #from_date="ngModel" -->
+                        <!-- <div class="error_msg" *ngIf="f.submitted && from_date.invalid">
                             <div *ngIf="from_date.errors.required">
                                 <small class="error_text">From Date is required</small>
                             </div>
-                        </div>
+                        </div> -->
                 </div>
                 <div class='form-group col-md-3'>
                     <label for='to_date'>To Date<span style="color: red;">*</span></label>
-                    <input type='datetime-local' id='to_date' class='form-control' [(ngModel)]='filterdate.to_date'  #to_date="ngModel" name="to_date" required 
-                        placeholder='To Date' />
-                        <div class="error_msg" *ngIf="to_date.touched && to_date.invalid">
+                    <input type='datetime-local' id='to_date' class='form-control'  name="to_date" required placeholder='To Date'  required/>
+                    <!-- [(ngModel)]='filterdate.to_date'  #to_date="ngModel" -->
+                        <!-- <div class="error_msg" *ngIf="to_date.touched && to_date.invalid">
                             <div *ngIf="to_date.errors.required">
                                 <small class="error_text"> To Date is required</small>
                             </div>
-                        </div>
+                        </div> -->
                 </div>
                 <div class='form-group col-md-3'>
                     <label for='test' class='w-100'> &nbsp; </label>
-                    <button class='btn btn-primary' id='btn_datefilter' (click)='filterDate();'>Filter</button>
-                    <button class='btn bg-orange' id='btn_resetfilter' (click)='reset();'>Reset</button>
+                    <button class='btn btn-primary' id='btn_datefilter' (click)="filterDate($event)" >Filter</button>
+                    <button class='btn bg-orange' id='btn_resetfilter' (click)='reset()'; >Reset</button>
                 </div>
                 <div class='form-group col-md-3'>
                     <label for='download_excel' class='w-100'> &nbsp; </label>
-                    <span id='download_excel' class='float-right' (click)="exportData()"><i class="fa fa-file-excel-o"
+                    <span id='download_excel' class='float-right' (click)="exportData()" ><i class="fa fa-file-excel-o"
                             aria-hidden="true"></i></span>
                 </div>
+            <!-- </form> -->
             </div>
         </div>
         <div class='row' *ngIf='originalfilter.length == 0'>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/shared/app.service';
 import jwt_decode from "jwt-decode";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-training-class',
@@ -164,11 +165,12 @@ export class TrainingClassComponent implements OnInit {
     this.displayClassModal='none';
     this.edit = true;
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
-    this.resetForm();
+   // this.resetForm();
   }
 
-  resetForm(){
-    this.class = {cat_id:'',class_type:'',class_name:'',start_date:'',end_date:'',connection_link:'',created_by:'',description:'',modified_by:'',course_id:'',instructor_id:'',row_id:'',class_status:''};
+  resetForm(f:NgForm){
+    f.resetForm( {cat_id:'',class_type:'',class_name:'',start_date:'',end_date:'',connection_link:'',created_by:'',description:'',modified_by:'',course_id:'',instructor_id:'',row_id:'',class_status:''})
+    // this.class = {cat_id:'',class_type:'',class_name:'',start_date:'',end_date:'',connection_link:'',created_by:'',description:'',modified_by:'',course_id:'',instructor_id:'',row_id:'',class_status:''};
   }
 
   addClass(){
@@ -177,7 +179,7 @@ export class TrainingClassComponent implements OnInit {
     this.restApi.postMethod('addLMSClass',this.class).subscribe((resp:any) => {
       this.fetchClass();
       alert(resp.message);
-      this.resetForm();
+      //this.resetForm();
       this.generate = true;
     })
   }
@@ -224,7 +226,7 @@ export class TrainingClassComponent implements OnInit {
     this.restApi.postMethod('updateLMSClass',this.class).subscribe((data:any) => {     
       alert('Class Updated Successfully.');
       this.fetchClass();
-      this.resetForm();
+   //   this.resetForm();
       this.displayClassModal = 'none';
     })
   }

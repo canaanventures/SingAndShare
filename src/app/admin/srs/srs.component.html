@@ -61,13 +61,15 @@
                     <span class='close modal-close' (click)='closeModal()' data-dismiss="modal">&times;</span>
                 </h5>
                 <div class='row px-4'>
+                    <form  role="form" #f="ngForm" (ngSubmit)="f.form.valid && addBranch($event); updateBranch($event) ">
                     <div class='col-md-12'>
+                      
                         <div class='form-group'>
                             <label for='srs_name'>SNS Name<span style="color: red;">*</span></label>
                             <input type='text' placeholder='Name' class='form-control' id='srs_name' [(ngModel)]='srs.srs_name' name="srs_name"
-                            #srs_name= 'ngModel' required />
+                            #srs_name= 'ngModel' [ngClass]="{'invalid-data': srs_name.invalid && f.submitted, 'valid-data': srs_name.valid && f.submitted}"  required />
                             <div class="error_msg"
-                            *ngIf="srs_name.touched && srs_name.invalid">
+                            *ngIf="f.submitted && srs_name.invalid">
                             <div *ngIf="srs_name.errors.required">
                                 <small class="error_text" >SNS Name is required</small>
                                 
@@ -76,13 +78,12 @@
                         </div>
                     </div>
                     <div class='col-md-12'>
-                        <div class='form-group'>
+                        <div class="form-group">
                             <label for='mentee_email_id'>Captain name</label> 
-                            <select id='captain_name' class='form-control' [(ngModel)]="srs.user_id" >
-                                <option value=''>Select the Captain Name</option>
+                            <select id='captain_name' class="form-control custom-select" name="user_id" [(ngModel)]="srs.user_id"  #user_id='ngModel' >
+                                <option [selected]="true">Select a Generic Name</option>
                                 <option value='{{list.user_id}}' *ngFor='let list of caplist'>{{list.user_first_name}} {{list.user_last_name}}</option>
-                            </select>
-                           
+                             </select>
                         </div>
                     </div>
                     <div class='col-md-6'>
@@ -91,6 +92,7 @@
                             <button id='update_btn' *ngIf='edit' class='btn btn-primary' (click)='updateBranch()'>Update</button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div> 

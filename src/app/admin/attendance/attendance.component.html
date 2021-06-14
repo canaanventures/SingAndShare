@@ -7,15 +7,17 @@
                     <div class="card-body h-100 p-0">
                         <h5 class='mb-3 p-4 font-weight-bold card-header'>Add Attendance</h5>
                         <div class='row px-4'>
+                            <form  role="form" #f="ngForm" (ngSubmit)="f.form.valid && addAttendance($event)">
                             <div class='col-md-12'>
                                 <div class='form-group'>
                                     <label for='attend_sns_name'>SNS Name<span style="color: red;">*</span></label>
-                                    <select class='form-control' id='attend_sns_name' [(ngModel)]='attendancedetails.srs_id' name="srs_id" #srs_id= 'ngModel' required disabled>
+                                    <select class='form-control' id='attend_sns_name' [(ngModel)]='attendancedetails.srs_id' name="srs_id" #srs_id= 'ngModel' 
+                                    [ngClass]="{'invalid-data': srs_id.invalid && f.submitted, 'valid-data': srs_id.valid && f.submitted}"  required disabled>
                                         <option value=''>Select the Name</option>
                                         <option [value]='list.srs_id' *ngFor="let list of srslist">{{list.srs_name}}</option>
                                     </select>
                                     <div class="error_msg"
-                                *ngIf="srs_id.touched && srs_id.invalid">
+                                *ngIf="f.submitted && srs_id.invalid">
                                 <div *ngIf="srs_id.errors.required">
                                     <small class="error_text" >SNS Name is required</small> 
                                 </div>
@@ -25,9 +27,10 @@
                             <div class='col-md-12'>
                                 <div class='form-group'>
                                     <label for='meeting_date'>Meeting Date<span style="color: red;">*</span></label>
-                                    <input type='date' class='form-control' placeholder='Select Meeting Date' id='meeting_date' [(ngModel)]='attendancedetails.meeting_date' name="meeting_date" #meeting_date= 'ngModel' required >
+                                    <input type='date' class='form-control' placeholder='Select Meeting Date' id='meeting_date' [(ngModel)]='attendancedetails.meeting_date' name="meeting_date" #meeting_date= 'ngModel' 
+                                    [ngClass]="{'invalid-data': meeting_date.invalid && f.submitted, 'valid-data': meeting_date.valid && f.submitted}" required >
                                     <div class="error_msg"
-                                    *ngIf="meeting_date.touched && meeting_date.invalid">
+                                    *ngIf="f.submitted && meeting_date.invalid">
                                     <div *ngIf="meeting_date.errors.required">
                                         <small class="error_text" >Meeting Date is required</small> 
                                     </div>
@@ -37,9 +40,10 @@
                             <div class='col-md-12'>
                                 <div class='form-group'>
                                     <label for='total_members'>Total Members<span style="color: red;">*</span></label>
-                                    <input type='text' class='form-control' placeholder='No. of People Attended' id='total_members' [(ngModel)]='attendancedetails.total_members'  name="total_members" #total_members= 'ngModel' required readonly>
+                                    <input type='text' class='form-control' placeholder='No. of People Attended' id='total_members' [(ngModel)]='attendancedetails.total_members'  name="total_members" #total_members= 'ngModel'
+                                    [ngClass]="{'invalid-data': total_members.invalid && f.submitted, 'valid-data': total_members.valid && f.submitted}"  required readonly>
                                     <div class="error_msg"
-                                    *ngIf="total_members.touched && total_members.invalid">
+                                    *ngIf="f.submitted && total_members.invalid">
                                     <div *ngIf="total_members.errors.required">
                                         <small class="error_text" >Total Members is required</small> 
                                     </div>
@@ -49,9 +53,9 @@
                             <div class='col-md-12 p-0'>
                                 <div class='form-group col-md-6'>
                                     <label for='presentees'>Presentees<span style="color: red;">*</span></label>
-                                    <input type='text' class='form-control' placeholder='No. of Presentees' id='presentees' [(ngModel)]='attendancedetails.presentees' name="presentees" #presentees= 'ngModel' required readonly>
+                                    <input type='text' class='form-control' placeholder='No. of Presentees' id='presentees' [(ngModel)]='attendancedetails.presentees' name="presentees" #presentees= 'ngModel' [ngClass]="{'invalid-data': presentees.invalid && f.submitted, 'valid-data': presentees.valid && f.submitted}"  required readonly>
                                     <div class="error_msg"
-                                    *ngIf="presentees.touched && presentees.invalid">
+                                    *ngIf="f.submitted && presentees.invalid">
                                     <div *ngIf="presentees.errors.required">
                                         <small class="error_text" >Presentees is required</small> 
                                     </div>
@@ -59,9 +63,9 @@
                                 </div>
                                 <div class='form-group col-md-6'>
                                     <label for='absentees'>Absentees<span style="color: red;">*</span></label>
-                                    <input type='text' class='form-control' placeholder='No. of Absentees' id='absentees' [(ngModel)]='attendancedetails.absentees' name="absentees" #absentees= 'ngModel' required readonly>
+                                    <input type='text' class='form-control' placeholder='No. of Absentees' id='absentees' [(ngModel)]='attendancedetails.absentees' name="absentees" #absentees= 'ngModel' [ngClass]="{'invalid-data': absentees.invalid && f.submitted, 'valid-data': absentees.valid && f.submitted}"  required readonly>
                                     <div class="error_msg"
-                                    *ngIf="absentees.touched && absentees.invalid">
+                                    *ngIf="f.submitted && absentees.invalid">
                                     <div *ngIf="absentees.errors.required">
                                         <small class="error_text" >Absentees is required</small> 
                                     </div>
@@ -71,9 +75,9 @@
                             <div class='col-md-12'>
                                 <div class='form-group'>
                                     <label for='new_people_attended'>No. of new Attendes<span style="color: red;">*</span></label>
-                                    <input type='text' class='form-control' placeholder='No. of New People Attended' id='new_people_attended' [(ngModel)]='attendancedetails.new_attendees' name="new_attendees" #new_attendees= 'ngModel' required>
+                                    <input type='text' class='form-control' placeholder='No. of New People Attended' id='new_people_attended' [(ngModel)]='attendancedetails.new_attendees' name="new_attendees" #new_attendees= 'ngModel' [ngClass]="{'invalid-data': new_attendees.invalid && f.submitted, 'valid-data': new_attendees.valid && f.submitted}"  required>
                                     <div class="error_msg"
-                                    *ngIf="new_attendees.touched && new_attendees.invalid">
+                                    *ngIf="f.submitted && new_attendees.invalid">
                                     <div *ngIf="new_attendees.errors.required">
                                         <small class="error_text" >No. of new Attendes is required</small> 
                                     </div>
@@ -83,9 +87,10 @@
                             <div class='col-md-12 mt-3'>
                                 <div class='form-group'>
                                     <label for='add_attendance'> &nbsp; </label>
-                                    <button class='btn-primary btn' id='add_attendance' (click)='addAttendance()'>Add the details </button>
+                                    <button class='btn-primary btn' id='add_attendance'>Add the details </button>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>

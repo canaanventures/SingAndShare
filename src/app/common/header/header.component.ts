@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  userLogin(){
+  userLogin(event:any){
     this.userdetails.email = (<HTMLInputElement>document.getElementById('email_id')).value;
     this.userdetails.pass_word = (<HTMLInputElement>document.getElementById('your_password')).value;
     
@@ -60,6 +60,10 @@ export class HeaderComponent implements OnInit {
           //window.location.href = '/events';
         }
       });
+  }
+
+  forgotpwd(event:any){
+     console.log(event)
   }
 
   logOut() {

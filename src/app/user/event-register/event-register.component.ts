@@ -21,7 +21,7 @@ export class EventRegisterComponent implements OnInit {
     this.print_state();
   }
 
-  verifyEmail() {
+  verifyEmail(event:any) {
     this.registeruser.event_id = (<HTMLInputElement>document.getElementById('event_hidden_id')).value;
     this.verifyuser.email = (<HTMLInputElement>document.getElementById('contact_email_id')).value;
     this.restApi.postMethod('checkUser',this.verifyuser).subscribe((data:{}) => {
@@ -39,7 +39,7 @@ export class EventRegisterComponent implements OnInit {
     })
   }
 
-  userEventRegister() {
+  userEventRegister(event:any) {
     this.restApi.postMethod('registerUserForEvent',this.registeruser).subscribe((data:any) => {     
       this.insertInContactEvent(this.registeruser.contact_email_id);      
     })

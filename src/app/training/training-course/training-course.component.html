@@ -7,14 +7,15 @@
                     <div class="card-body h-100 p-0">
                         <h5 class='mb-3 p-4 font-weight-bold card-header'>Add Course</h5>
                         <div class='row px-4'>
+                            <form  role="form" #f="ngForm" (ngSubmit)="f.form.valid && addCourse($event); updateCourse($event)">
                             <div class='col-md-12'>
                                 <div class='form-group'>
                                     <img [src]='imageToShow' alt="Profile Image" class="img-fluid rounded-circle mb-2" *ngIf='imageToShow' />
                                     <img src='../../../assets/img/course.png' alt="Profile Image" class="img-fluid rounded-circle mb-2" *ngIf='!imageToShow' />
                                     <input type="file"  class="form-control custom-file-input" id="blog-image" (change)='selectImage($event)' [(ngModel)]='course.course_image_url' name="course_image_url"
-                                    #course_image_url= 'ngModel' required />
+                                    #course_image_url= 'ngModel' [ngClass]="{'invalid-data': course_image_url.invalid && f.submitted, 'valid-data': course_image_url.valid && f.submitted}" required />
                                     <div class="error_msg"
-                                        *ngIf="course_image_url.touched && course_image_url.invalid">
+                                        *ngIf="f.submitted&& course_image_url.invalid">
                                         <div *ngIf="course_image_url.errors.required">
                                             <small class="error_text"> Course Image is required</small>
                                         </div>
@@ -25,12 +26,12 @@
                                 <div class='form-group'>
                                     <label for='category_name'>Category Name<span style="color: red;">*</span></label>
                                     <select class='form-control' id='category_name' [(ngModel)]='course.category_id' name="category_id"
-                                    #category_id= 'ngModel' required >
+                                    #category_id= 'ngModel' [ngClass]="{'invalid-data': category_id.invalid && f.submitted, 'valid-data': category_id.valid && f.submitted}" required >
                                         <option value=''>Select Category Name</option>
                                         <option value='{{list.row_id}}' *ngFor='let list of catlist'>{{list.category_name}}</option>
                                     </select>
                                     <div class="error_msg"
-                                        *ngIf="category_id.touched && category_id.invalid">
+                                        *ngIf="f.submitted && category_id.invalid">
                                         <div *ngIf="category_id.errors.required">
                                             <small class="error_text"> Category Name is required</small>
                                         </div>
@@ -41,9 +42,9 @@
                                 <div class='form-group'>
                                     <label for='course_name'>Course Name<span style="color: red;">*</span></label>
                                     <input type='text' class='form-control' placeholder='Select Course Name' id='course_name' [(ngModel)]='course.course_name' name="course_name"
-                                    #course_name= 'ngModel' required/>
+                                    #course_name= 'ngModel' [ngClass]="{'invalid-data': course_name.invalid && f.submitted, 'valid-data': course_name.valid && f.submitted}" required/>
                                     <div class="error_msg"
-                                        *ngIf="course_name.touched && course_name.invalid">
+                                        *ngIf="f.submitted && course_name.invalid">
                                         <div *ngIf="course_name.errors.required">
                                             <small class="error_text"> Course Name is required</small>
                                         </div>
@@ -54,9 +55,9 @@
                                 <div class='form-group'>
                                     <label for='description'>Description<span style="color: red;">*</span></label>
                                     <textarea class='form-control' rows='5' id='description' placeholder="Course's Description" [(ngModel)]='course.course_description' name="course_description"
-                                    #course_description= 'ngModel' required></textarea>
+                                    #course_description= 'ngModel'[ngClass]="{'invalid-data': course_description.invalid && f.submitted, 'valid-data': course_description.valid && f.submitted}" required></textarea>
                                     <div class="error_msg"
-                                        *ngIf="course_description.touched && course_description.invalid">
+                                        *ngIf="f.submitted && course_description.invalid">
                                         <div *ngIf="course_description.errors.required">
                                             <small class="error_text"> Course Description is required</small>
                                         </div>
@@ -65,10 +66,13 @@
                             </div>
                             <div class='col-md-12 mt-3'>
                                 <div class='form-group'>
-                                    <button class='btn-primary btn' id='add_course' *ngIf='!edit' (click)='addCourse()'>Add the Course </button>
-                                    <button class='btn-primary btn' id='edit_course' *ngIf='edit' (click)='updateCourse()'>Update the Course </button>
+                                    <button class='btn-primary btn' id='add_course' *ngIf='!edit' >Add the Course </button>
+                                    <button class='btn-primary btn' id='edit_course' *ngIf='edit' >Update the Course </button>
+                                    <span>&nbsp; &nbsp;&nbsp;&nbsp;</span>
+                                    <span class='btn-primary btn bg-orange'  id='cancel_category' (click)=" resetForm(f)" >Cancel </span>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>

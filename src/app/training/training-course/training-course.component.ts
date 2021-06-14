@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/shared/app.service';
 import jwt_decode from "jwt-decode";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-training-course',
@@ -33,7 +34,7 @@ export class TrainingCourseComponent implements OnInit {
     });
   }
  
-  addCourse(){
+  addCourse(event:any){
     this.course.created_by = this.tk.user_id;
     if(this.images != ''){
       const formData = new FormData();
@@ -55,7 +56,7 @@ export class TrainingCourseComponent implements OnInit {
       this.fetchCourse();
       this.images = '';
       alert(resp.message);
-      this.resetForm();
+      //this.resetForm();
     })
   }
 
@@ -70,7 +71,7 @@ export class TrainingCourseComponent implements OnInit {
     });
   }
 
-  updateCourse(){
+  updateCourse(event:any){
     if(this.images != ''){
       const formData = new FormData();
       formData.append('image', this.images);
@@ -93,7 +94,7 @@ export class TrainingCourseComponent implements OnInit {
     this.restApi.postMethod('updateLMSCourse',this.course).subscribe((data:any) => {     
       alert('Category Updated Successfully.');
       this.fetchCourse();
-      this.resetForm();
+    //  this.resetForm();
     })
   }
 
@@ -136,7 +137,8 @@ export class TrainingCourseComponent implements OnInit {
     }
   }
 
-  resetForm(){
+  resetForm(f:NgForm){
+    f.resetForm(this.course = {category_id:'', course_name:'',course_description:'',row_id:'',course_image_url:'',created_by:'',course_status:'',modified_by:''})
     this.course = {category_id:'', course_name:'',course_description:'',row_id:'',course_image_url:'',created_by:'',course_status:'',modified_by:''};
     this.imageToShow = '';
     (<HTMLInputElement>document.getElementById('blog-image')).value = '';

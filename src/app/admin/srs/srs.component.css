@@ -9,3 +9,19 @@
 .error_text{
     color:red;
 }
+
+select {
+     background-image:
+      linear-gradient(45deg, transparent 50%, grey 60%),
+      linear-gradient(135deg, grey 40%, transparent 50%) !important;
+    background-position:
+      calc(100% - 30px) 14px,
+      calc(100% - 20px) 14px,
+      100% 0;
+    background-size:
+      10px 10px,
+      10px 10px; 
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }

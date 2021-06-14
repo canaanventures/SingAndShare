@@ -31,7 +31,7 @@ export class AttendancereportComponent implements OnInit {
     this.report.srs_id = this.tk.srs_id;
     this.report.type = 'attendance';
     this.report.val = '2021-05';
-    this.getAttendace();
+    this.getAttendace(event);
     this.getAttendancelist();
   }
 
@@ -40,7 +40,7 @@ export class AttendancereportComponent implements OnInit {
     return this.monthArr[dte.getMonth()]+' '+dte.getDate()+','+dte.getFullYear();
   }
 
-  getAttendace(){
+  getAttendace(event:any){
     //this.spinner.show();
     let dte = this.report.val;
     this.report.val = this.report.val.split('-')[1];
@@ -215,7 +215,7 @@ export class AttendancereportComponent implements OnInit {
     link.click();
   }
 
-  filterDate(){
+  filterDate(event:any){
     this.restApi.postMethod('getAttendanceReportListByDate',this.filterdate).subscribe((resp:any) => {
       this.attendancelist = resp.data;
       this.tofilter = resp.data;

@@ -25,3 +25,8 @@ header{padding-top: 10px;}
 .modal-title{    font-family: "Sofia", cursive;}
 
 .modal-title img {display: block;margin: auto;}
+
+
+.welcome, .fpwd{font-family: "Steelheart"; font-size:"40px !important"}
+
+/*.fpwd{font-family: "Sofia", cursive;}*/

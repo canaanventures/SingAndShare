@@ -1,8 +1,14 @@
 main img{width:100%;}
-main .col-md-6,main .col-lg-6{padding:15px;}
-#team {padding: 20px 0;overflow: hidden;}
+main .col-md-6,main .col-lg-6{padding:1px;}
+#team {padding: 0px 0;overflow: hidden;}
 main{margin-bottom:20px;}
 #purpose .about-img {padding:0;}
 #purpose, #features{padding:0;}
 #features .content{padding:0}
 #features h2{margin-top:20px;}
+
+.purpose, .whoweare, .whatwedo {font-family: "Messy Script"; color: black;}
+
+.whoweare{ margin-top: 20px;}
+
+.purpose a{color: black; font-size: 32px;}

@@ -79,14 +79,14 @@
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                    <form id='blog_form' name='addBlogForm'> <!-- (ngSubmit)="addBlog($event)" -->
+                    <form id='blog_form' name='addBlogForm' role="form" #f="ngForm" (ngSubmit)="f.form.valid && addBlog($event); updateBlog($event)"> <!-- (ngSubmit)="addBlog($event)" -->
                         <input type='hidden' name='blog_id' id='blog-id' [value]=edit_id />
                         <img [src]='imageToShow' class='col-md-4'  *ngIf='edit' />
                         <div class="form-group col-md-4">
                             <label for="title">Title<span style="color: red;">*</span></label>
-                            <input type="text" name='title' class="form-control" id='title' value="" placeholder='Enter the title of the blog' [(ngModel)]='editblog.title'  #title='ngModel' required />
+                            <input type="text" name='title' class="form-control" id='title' value="" placeholder='Enter the title of the blog' [(ngModel)]='editblog.title'  #title='ngModel'  [ngClass]="{'invalid-data': title.invalid && f.submitted, 'valid-data': title.valid && f.submitted}"  required />
                             <div class="error_msg"
-                            *ngIf="title.touched && title.invalid">
+                            *ngIf="f.submitted && title.invalid">
                             <div *ngIf="title.errors.required">
                                 <small class="error_text" >Blog Title is required</small> 
                             </div>
@@ -94,12 +94,12 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="category">Category<span style="color: red;">*</span></label>
-                            <select class="form-control" name='category' id='category' [(ngModel)]='editblog.category'  #category='ngModel' required >
+                            <select class="form-control" name='category' id='category' [(ngModel)]='editblog.category'  #category='ngModel'  [ngClass]="{'invalid-data': category.invalid && f.submitted, 'valid-data': category.valid && f.submitted}"  required >
                                 <option value=''>Select Blog Category</option>
                                 <option [value]='list.category_id' *ngFor='let list of blogCatlist'>{{list.category_name}}</option>
                             </select>
                             <div class="error_msg"
-                            *ngIf="category.touched && category.invalid">
+                            *ngIf="f.submitted && category.invalid">
                             <div *ngIf="category.errors.required">
                                 <small class="error_text" >Blog Category is required</small> 
                             </div>
@@ -107,35 +107,35 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="blog-image">Upload Image<span style="color: red;">*</span></label>
-                            <input type="file" name='blog_image' class="form-control custom-file-input" id="blog-image" (change)='selectImage($event)' [(ngModel)]='editblog.imgurl'  #imgurl='ngModel' required />
+                            <input type="file" name='blog_image' class="form-control custom-file-input" id="blog-image" (change)='selectImage($event)' [(ngModel)]='editblog.imgurl'  #imgurl='ngModel'  [ngClass]="{'invalid-data': imgurl.invalid && f.submitted, 'valid-data': imgurl.valid && f.submitted}"  required />
                             <div class="error_msg"
-                            *ngIf="imgurl.touched && imgurl.invalid">
+                            *ngIf="f.submitted && imgurl.invalid">
                             <div *ngIf="imgurl.errors.required">
                                 <small class="error_text" >Blog Image is required</small> 
                             </div>
                         </div>
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="description">Description<span style="color: red;">*</span></label>
-                            <angular-editor id='description' name='description' [config]="editorConfig"  [(ngModel)]='editblog.description'  #description='ngModel' required></angular-editor>
+                            <label for="description">Blog<span style="color: red;">*</span></label>
+                            <angular-editor id='description' name='description' [config]="editorConfig"  [(ngModel)]='editblog.description'  #description='ngModel'  [ngClass]="{'invalid-data': description.invalid && f.submitted, 'valid-data': description.valid && f.submitted}"  required></angular-editor>
                             <!-- [(ngModel)]="htmlContent" -->
                             <div class="error_msg"
-                            *ngIf="description.touched && description.invalid">
+                            *ngIf="f.submitted && description.invalid">
                             <div *ngIf="description.errors.required">
-                                <small class="error_text" > Blog Description is required</small> 
+                                <small class="error_text" > Blog  is required</small> 
                             </div>
                         </div>
                         </div>
                         <div class="form-group col-md-4" *ngIf='edit && access.blog_approve_access == 1'>
                             <label for="approval_status">Approval Status</label>
                             <select id='approval_status' name='approval_status' class='form-control'
-                            [(ngModel)]='editblog.approval_status'  #approval_status='ngModel' required>
+                            [(ngModel)]='editblog.approval_status'  #approval_status='ngModel'  [ngClass]="{'invalid-data': approval_status.invalid && f.submitted, 'valid-data': approval_status.valid && f.submitted}"  required>
                                 <option value=''>Select Status</option>
                                 <option value='Y'>Approve</option>
                                 <option value='N'>Disapprove</option>
                             </select>
                             <div class="error_msg"
-                            *ngIf="approval_status.touched && approval_status.invalid">
+                            *ngIf="f.submitted && approval_status.invalid">
                             <div *ngIf="approval_status.errors.required">
                                 <small class="error_text" >Approval Status is required</small> 
                             </div>
@@ -143,8 +143,8 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for='updateBlog' *ngIf='edit'></label>
-                            <button class="btn btn-primary" type='submit' (click)='addBlog($event)' [ngStyle]="{'display': (blogtype=='add') ? 'block' : 'none'}" *ngIf='!edit'> Add Blog </button>
-                            <button class="btn btn-primary" id='updateBlog' (click)='updateBlog()' [ngStyle]="{'display': (blogtype=='update') ? 'block' : 'none'}" *ngIf='edit'> Update Blog </button>
+                            <button class="btn btn-primary" type='submit'  [ngStyle]="{'display': (blogtype=='add') ? 'block' : 'none'}" *ngIf='!edit'> Add Blog </button>
+                            <button class="btn btn-primary" id='updateBlog' [ngStyle]="{'display': (blogtype=='update') ? 'block' : 'none'}" *ngIf='edit'> Update Blog </button>
                         </div>
                     </form>
                 </div>
@@ -159,12 +159,13 @@
             <div class="modal-body">
                 <h5 class='mb-3 card-header'> Add Category <span class='close modal-close' (click)='closeBlogModal()' data-dismiss="modal">&times;</span> </h5>
                 <div class='px-4'>
+                    <form  role="form" #f="ngForm" (ngSubmit)="f.form.valid && addBlogCat($event)">
                     <div class='col-md-12'>
                         <div class='form-group'>
                             <label for='blog_category_name'>Blog Category Name<span style="color: red;">*</span></label>
-                            <input type='text' id='blog_category_name' class='form-control' placeholder='Add Blog Category Name' [(ngModel)]='addcat.category_name' name="category_name" #category_name='ngModel' required/>
+                            <input type='text' id='blog_category_name' class='form-control' placeholder='Add Blog Category Name' [(ngModel)]='addcat.category_name' name="category_name" #category_name='ngModel' [ngClass]="{'invalid-data': category_name.invalid && f.submitted, 'valid-data': category_name.valid && f.submitted}" required/>
                             <div class="error_msg"
-                            *ngIf="category_name.touched && category_name.invalid">
+                            *ngIf="f.submitted && category_name.invalid">
                             <div *ngIf="category_name.errors.required">
                                 <small class="error_text" >Blog Category Name is required</small> 
                             </div>
@@ -174,9 +175,10 @@
                     <div class='col-md-6'>
                         <div class='form-group'>
                             <label for='submit_btn_add'> &nbsp; </label>                        
-                            <button id='submit_btn_add' class='btn btn-primary bg-orange' (click)='addBlogCat()'>Submit</button>
+                            <button id='submit_btn_add' class='btn btn-primary bg-orange' >Submit</button>
                         </div>
                     </div>
+                </form>
                 </div>
             </div>
         </div> 

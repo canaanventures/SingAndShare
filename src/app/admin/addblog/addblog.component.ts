@@ -82,9 +82,10 @@ export class AddblogComponent implements OnInit {
     sanitize: false,
     toolbarPosition: 'top',
     toolbarHiddenButtons: [
-      ['bold', 'italic'],
-      ['fontSize']
+      ['undo','redo','bold', 'italic'],
+      ['fontSize','customClasses','insertVideo']
     ]
+
   };
 
   selectImage(event){
@@ -178,7 +179,7 @@ export class AddblogComponent implements OnInit {
     });
   }
 
-  updateBlog(){
+  updateBlog(event:any){
     if(this.images){
       const formData = new FormData();
       formData.append('image', this.images);
@@ -228,7 +229,7 @@ export class AddblogComponent implements OnInit {
       });
   }
 
-  addBlogCat(){   
+  addBlogCat(event:any){   
     this.addcat.created_by = this.tk.user_id;
     this.restApi.postMethod('addBlogCategory',this.addcat).subscribe((resp:any) => {
       this.getBlogCat();

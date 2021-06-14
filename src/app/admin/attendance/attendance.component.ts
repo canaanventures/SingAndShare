@@ -38,7 +38,7 @@ export class AttendanceComponent implements OnInit {
       });
   }
 
-  addAttendance() {   
+  addAttendance(event:any) {   
     this.attendancedetails.created_by = this.tk.user_id;
     this.restApi.postMethod('addAttendance',this.attendancedetails).subscribe((resp:any) => {
       let arr = [...this.done,...this.todo];

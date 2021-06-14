@@ -27,7 +27,7 @@ export class MenteeRegisterComponent implements OnInit {
     (<HTMLInputElement>document.getElementById('mentor_email_id')).value = this.decryptedInfo.mentor_email_id;
   }
 
-  register(){
+  register(event:any){
     this.userdetails.user_first_name = (<HTMLInputElement>document.getElementById('mentee_reg_first_name')).value;
     this.userdetails.user_last_name = (<HTMLInputElement>document.getElementById('mentee_reg_last_name')).value;
     this.userdetails.user_email_id = (<HTMLInputElement>document.getElementById('mentee_reg_email_id')).value;

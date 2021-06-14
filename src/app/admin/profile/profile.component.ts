@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
     document.getElementById('blog-image').click();
   }
 
-  updateProfile() {
+  updateProfile(event:any) {
     if(this.images){
       const formData = new FormData();
       formData.append('image', this.images);
@@ -56,6 +56,10 @@ export class ProfileComponent implements OnInit {
     }else{
       this.updateEditProfile('');
     }
+  }
+
+  changepwd(event:any){
+    console.log(event);
   }
 
   updateEditProfile(resp){

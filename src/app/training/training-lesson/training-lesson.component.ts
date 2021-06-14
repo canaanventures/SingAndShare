@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/shared/app.service';
 import jwt_decode from "jwt-decode";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-training-lesson',
@@ -40,7 +41,7 @@ export class TrainingLessonComponent implements OnInit {
     });
   }
  
-  addLesson(){
+  addLesson(event:any){
     this.lesson.created_by = this.tk.user_id;
     if(this.images != ''){
       const formData = new FormData();
@@ -62,7 +63,7 @@ export class TrainingLessonComponent implements OnInit {
       this.fetchLesson();
       this.images = '';
       alert(resp.message);
-      this.resetForm();
+     // this.resetForm();
     })
   }
 
@@ -77,7 +78,7 @@ export class TrainingLessonComponent implements OnInit {
     });
   }
 
-  updateLesson(){
+  updateLesson(event:any){
     if(this.images != ''){
       const formData = new FormData();
       formData.append('image', this.images);
@@ -100,7 +101,7 @@ export class TrainingLessonComponent implements OnInit {
     this.restApi.postMethod('updateLMSLesson',this.lesson).subscribe((data:any) => {     
       alert(data.message);
       this.fetchLesson();
-      this.resetForm();
+      //this.resetForm();
     })
   }
 
@@ -142,7 +143,8 @@ export class TrainingLessonComponent implements OnInit {
     }
   }
 
-  resetForm(){
+  resetForm(f:NgForm){
+    f.resetForm({course_id:'', category_id:'', lesson_name:'', lesson_description:'',row_id:'',lesson_image_url:'', created_by:'', lesson_status:'',modified_by:''})
     this.lesson = {course_id:'', category_id:'', lesson_name:'', lesson_description:'',row_id:'',lesson_image_url:'', created_by:'', lesson_status:'',modified_by:''};
     this.imageToShow = '';
     (<HTMLInputElement>document.getElementById('blog-image')).value = '';

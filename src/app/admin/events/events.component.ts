@@ -279,7 +279,7 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  addGallery(){
+  addGallery(event:any){
     const formData = new FormData();
     for (var i = 0; i < this.images.length; i++) { 
       formData.append("image", this.images[i]);

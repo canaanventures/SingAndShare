@@ -7,3 +7,7 @@ h3{margin:15px 0;text-align:center;}
 #add_event_btn{position: absolute;right: 15%; top: 30px;}
 .calendar-parent-container{position:relative;}
 .error_text{color:red;}
+
+.fc-daygrid-body .fc-daygrid-body-unbalanced{
+    background-color: #825555;
+}

@@ -14,5 +14,8 @@ export class FirststepComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onSubmit($event){
+
+  }
   
 }

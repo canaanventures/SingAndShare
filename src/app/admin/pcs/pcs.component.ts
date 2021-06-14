@@ -21,7 +21,7 @@ export class PcsComponent implements OnInit {
     this.getPCS('all','load');
   }
 
-  addPCS(){
+  addPCS(event:any){
     this.pcs.user_id = this.tk.user_id;
     this.pcs.status = 'Y';
     this.restApi.postMethod('addPCS',this.pcs).subscribe((resp:any) => {
@@ -64,7 +64,7 @@ export class PcsComponent implements OnInit {
     this.pcs = {pcs_id:'',name_of_user:'',relation_with_user:'',city:'',state:'',current_status:'',user_id:'',status:'',pcs_description:''}
   }
 
-  upDatePCS(){
+  upDatePCS(event:any){
     this.pcs.pcs_id = this.pcs.pcs_id;
     this.restApi.postMethod('upDatePCS',this.pcs).subscribe((resp:any) => {
       this.getPCS('all','update');

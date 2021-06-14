@@ -72,3 +72,5 @@
     #contact .section-header .section-title{text-align:center;}
     #contact .section-header .section-divider{float: none;margin: 0 auto;margin-bottom: 30px;}
 }
+
+.section-header .upcoming, .section-header .about{font-family: "Messy Script"; font-size: 40px !important}

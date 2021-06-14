@@ -164,12 +164,13 @@
                 </h5>
                 <input type='hidden' id='hidden_id' />
                 <div class='row px-4'>
+                    <form  role="form" #f="ngForm" (ngSubmit)="f.form.valid && addUser($event);updateUser($event)">
                         <div class='col-md-6'>
                             <div class='form-group'>
                                 <label for='mentee_first_name'>First Name<span style="color: red;">*</span></label>
-                                <input type='text' placeholder='First Name' class='form-control' id='mentee_first_name' name="first_name" ngModel  #first_name="ngModel" required/>
+                                <input type='text' placeholder='First Name' class='form-control' id='mentee_first_name' name="first_name" ngModel  #first_name="ngModel" [ngClass]="{'invalid-data': first_name.invalid && f.submitted, 'valid-data': first_name.valid && f.submitted}" required/>
                                 <div class="error_msg"
-                                *ngIf="first_name.invalid && first_name.touched">
+                                *ngIf="first_name.invalid && f.submitted">
                                         <small class="error_text"> First Name is required</small>
                                 </div>
                             </div>
@@ -177,9 +178,11 @@
                         <div class='col-md-6'>
                             <div class='form-group'>
                                 <label for='mentee_last_name'>Last Name<span style="color: red;">*</span></label>
-                                <input type='text' placeholder='Last Name' class='form-control' id='mentee_last_name' name="last_name" ngModel  #last_name="ngModel" required />
+                                <input type='text' placeholder='Last Name' class='form-control' id='mentee_last_name' name="last_name" ngModel  #last_name="ngModel" 
+                                [ngClass]="{'invalid-data': last_name.invalid && f.submitted, 'valid-data': last_name.valid && f.submitted}"
+                                required />
                                 <div class="error_msg"
-                                *ngIf="last_name.invalid && last_name.touched">
+                                *ngIf="last_name.invalid && f.submitted">
                                         <small class="error_text"> Last Name is required</small>
                                 </div>
                             </div>
@@ -187,32 +190,33 @@
                         <div class='col-md-6'>
                             <div class='form-group'>
                                 <label for='mentee_email_id'>Email ID<span style="color: red;">*</span></label>
-                                <input type='text' placeholder='Email ID' class='form-control' id='mentee_email_id' name="mentee_email_id" ngModel  #mentee_email_id="ngModel" required  />
+                                <input type='text' placeholder='Email ID' class='form-control' id='mentee_email_id' name="mentee_email_id" ngModel  #mentee_email_id="ngModel" [ngClass]="{'invalid-data': mentee_email_id.invalid && f.submitted, 'valid-data': mentee_email_id.valid && f.submitted}" required  />
                                 <div class="error_msg"
-                                *ngIf="mentee_email_id.invalid && mentee_email_id.touched">
+                                *ngIf="mentee_email_id.invalid && f.submitted">
                                         <small class="error_text"> Email Id is required</small>
                                 </div>
                             </div>
                         </div>
                         <div class='col-md-6'>
                             <div class='form-group'>
-                                <label for='mentee_user_type'>User Type<span style="color: red;">*</span></label>
-                                <select class='form-control' id='mentee_user_type' name="mentee_user_type" ngModel  #mentee_user_type="ngModel" required >
+                                <label for='mentee_user_type'>User Type</label>
+                                <select class='form-control' id='mentee_user_type' name="mentee_user_type" >
+                                    <!--  ngModel  #mentee_user_type="ngModel" [ngClass]="{'invalid-data': mentee_user_type.invalid && f.submitted, 'valid-data': mentee_user_type.valid && f.submitted}" required -->
                                     <option value='{{role.role_id}}' *ngFor="let role of userrole.data" >
                                         {{role.role_name}}</option>
                                 </select>
-                                <div class="error_msg"
-                                *ngIf="mentee_user_type.invalid && mentee_user_type.touched">
+                                <!-- <div class="error_msg"
+                                *ngIf="mentee_user_type.invalid && f.submitted">
                                         <small class="error_text"> User Type is required</small>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class='col-md-6' *ngIf='edit'>
                             <div class='form-group'>
                                 <label for='mentor_email_id'>Mentor Email Id<span style="color: red;">*</span></label>
-                                <input type='text' placeholder='Email ID' class='form-control' id='mentor_email_id' name="mentor_email_id" ngModel  #mentor_email_id="ngModel" required />
+                                <input type='text' placeholder='Email ID' class='form-control' id='mentor_email_id' name="mentor_email_id" ngModel  #mentor_email_id="ngModel" [ngClass]="{'invalid-data': mentor_email_id.invalid && f.submitted, 'valid-data': mentor_email_id.valid && f.submitted}" required />
                                 <div class="error_msg"
-                                *ngIf="mentor_email_id.invalid && mentor_email_id.touched">
+                                *ngIf="mentor_email_id.invalid && f.submitted">
                                         <small class="error_text"> Mentor Email id is required</small>
                                 </div>
                             </div>
@@ -220,13 +224,13 @@
                         <div class='col-md-6' *ngIf='role_nme == "Admin"'>
                             <div class='form-group'>
                                 <label for='sns_name'>SNS Name<span style="color: red;">*</span></label>
-                                <select class='form-control' id='sns_name' [(ngModel)]='srs_name' name="sns_name" ngModel  #sns_name="ngModel" required>
+                                <select class='form-control snsselect' id='sns_name' [(ngModel)]='srs_name' name="sns_name" ngModel  #sns_name="ngModel" [ngClass]="{'invalid-data': sns_name.invalid && f.submitted, 'valid-data': sns_name.valid && f.submitted}" required>
                                     <option value=''>Select SRS Name</option>
                                     <option value='{{list.srs_id}}' *ngFor="let list of srslist">{{list.srs_name}}
                                     </option>
                                 </select>
                                 <div class="error_msg"
-                                *ngIf="sns_name.invalid && sns_name.touched">
+                                *ngIf="sns_name.invalid && f.submitted">
                                         <small class="error_text"> SRS Name is required</small>
                                 </div>
                             </div>
@@ -236,9 +240,10 @@
                                 <label for='submit_btn' class='w-100'> &nbsp; </label>
                                 <button id='submit_btn' *ngIf='!edit' class='btn btn-primary'>Submit</button>
                                 <button id='update_btn' *ngIf='edit' class='btn btn-primary'
-                                    (click)='updateUser()'>Update</button>
+                                    >Update</button>
                             </div>
                         </div>
+                    </form>
                 </div>
             </div>
         </div>

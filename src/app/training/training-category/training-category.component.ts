@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/app.service';
 import jwt_decode from "jwt-decode";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-training-category',
@@ -26,7 +27,7 @@ export class TrainingCategoryComponent implements OnInit {
     });
   }
 
-  addCategory(){
+  addCategory(event:any){
     this.category.created_by = this.tk.user_id;
     if(this.images != ''){
       const formData = new FormData();
@@ -48,7 +49,7 @@ export class TrainingCategoryComponent implements OnInit {
       this.fetchCategory();
       this.images = '';
       alert(resp.message);
-      this.resetForm();
+     // this.resetForm();
     })
   }
 
@@ -63,7 +64,7 @@ export class TrainingCategoryComponent implements OnInit {
     });
   }
 
-  updateCategory(){
+  updateCategory(event:any){
     if(this.images != ''){
       const formData = new FormData();
       formData.append('image', this.images);
@@ -76,6 +77,10 @@ export class TrainingCategoryComponent implements OnInit {
     }
   }
 
+  // reset(){
+  //     this.resetForm();
+  // }
+
   updateCategoryData(resp){
     if(resp == ''){
       this.category.category_image_url = resp; 
@@ -86,7 +91,7 @@ export class TrainingCategoryComponent implements OnInit {
     this.restApi.postMethod('updateLMSCategory',this.category).subscribe((data:any) => {     
       alert('Category Updated Successfully.');
       this.fetchCategory();
-      this.resetForm();
+     // this.resetForm();
     })
   }
 
@@ -128,7 +133,9 @@ export class TrainingCategoryComponent implements OnInit {
     }
   }
 
-  resetForm(){
+  resetForm(f:NgForm){
+    f.resetForm( {category_name:'',category_description:'',row_id:'',category_image_url:'',created_by:'',category_status:'',modified_by:''
+    })
     this.category = {category_name:'',category_description:'',row_id:'',category_image_url:'',created_by:'',category_status:'',modified_by:''};
     this.imageToShow = '';
     (<HTMLInputElement>document.getElementById('blog-image')).value = '';

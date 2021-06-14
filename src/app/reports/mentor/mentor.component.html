@@ -4,22 +4,25 @@
             <div class='col-md-12 p-0 mt-3'>
                 <h4 id='report_chart_msg' class='col-md-2'> Mentors Report </h4>
                 <div class='form-group col-md-2'>
-                    <label for='from_date'>From Date<span style="color: red;">*</span></label>
-                    <input type='datetime-local' id='from_date' class='form-control' [(ngModel)]='filter.from_date' #from_date="ngModel" name="from_date" required placeholder='From Date' (change)='fromDateChange();' />
-                    <div class="error_msg" *ngIf="from_date.touched && from_date.invalid">
+                    <label for='from_date'>From Date</label>
+                    <input type='datetime-local' id='from_date' class='form-control'  name="from_date" required placeholder='From Date' (change)='fromDateChange();' />
+                    <!-- <span style="color: red;">*</span> -->
+                    <!-- [(ngModel)]='filter.from_date' #from_date="ngModel" -->
+                    <!-- <div class="error_msg" *ngIf="from_date.touched && from_date.invalid">
                         <div *ngIf="from_date.errors.required">
                             <small class="error_text"> From date is required</small>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class='form-group col-md-2'>
-                    <label for='to_date'>To Date<span style="color: red;">*</span></label>
-                    <input type='datetime-local' id='to_date' class='form-control' [(ngModel)]='filter.to_date' placeholder='To Date' #to_date="ngModel" name="to_date" required />
-                    <div class="error_msg" *ngIf="to_date.touched && to_date.invalid">
+                    <label for='to_date'>To Date</label>
+                    <input type='datetime-local' id='to_date' class='form-control' name="to_date" required />
+                    <!--  [(ngModel)]='filter.to_date' placeholder='To Date' #to_date="ngModel" -->
+                    <!-- <div class="error_msg" *ngIf="to_date.touched && to_date.invalid">
                         <div *ngIf="to_date.errors.required">
                             <small class="error_text"> To date is required</small>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class='form-group col-md-3'>
                     <label for='test' class='w-100'> &nbsp; </label>
